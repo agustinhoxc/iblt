@@ -210,26 +210,78 @@
   .sec-foot-cta{text-align:center;margin-top:46px}
 
   /* ---------- DIAGNOSTICS ---------- */
-  .diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .diag{
-    position:relative;border:1px solid var(--line);border-radius:18px;padding:38px 34px;
-    background:linear-gradient(150deg,var(--bg-card),var(--bg-soft));
-    transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden;
-  }
-  .diag::before{
-    content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;
-    background:radial-gradient(400px 200px at 80% 0%,var(--teal-glow),transparent 70%);
-  }
-  .diag:hover{transform:translateY(-6px);border-color:var(--teal-dim);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  .diag:hover::before{opacity:1}
-  .diag .tag{position:relative;font-size:.7rem;font-weight:700;letter-spacing:.14em;color:var(--teal);
-    border:1px solid var(--teal-dim);border-radius:999px;padding:5px 13px;display:inline-block;margin-bottom:20px}
-  .diag h3{position:relative;font-size:1.55rem;letter-spacing:.02em}
-  .diag p{position:relative;color:var(--muted);margin-top:14px;font-size:.95rem}
-  .diag .soon{position:relative;display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.82rem;color:var(--text);font-weight:700}
-  .diag .soon .pulse{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 var(--teal-glow);animation:pulse 2.2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--teal-glow)}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
-  @media(max-width:760px){.diag-grid{grid-template-columns:1fr}}
+
+<section class="block" id="diagnosticos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Prontos para ativação</span>
+      <h2>Diagnósticos que antecedem cada captação.</h2>
+      <p>Ferramentas em implementação para mapear, antes da submissão, onde está o seu maior risco — e onde está a sua maior oportunidade.</p>
+    </div>
+    <div class="diag-grid">
+
+      <!-- ============ DIAGNÓSTICO 1: PROPRIEDADE INTELECTUAL ============ -->
+      <div class="diag reveal">
+        <span class="tag">Disponível</span>
+        <h3>Diagnóstico de Propriedade Intelectual</h3>
+        <p>Mapeamento do seu ativo intangível: o que pode ser protegido, o que já está exposto e como a IP fortalece a sua tese de inovação perante os avaliadores.</p>
+        <a href="diagnosticos/" class="btn btn-primary" style="margin-top:14px;display:inline-block">Acessar diagnósticos →</a>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 2: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 2]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 2]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 3: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 3]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 3]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 4: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 4]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 4]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 5: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 5]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 5]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 6: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 6]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 6]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+      <!-- ============ DIAGNÓSTICO 7: [TITULO AQUI] ============ -->
+      <div class="diag reveal">
+        <span class="tag">Em breve</span>
+        <h3>[TITULO DO DIAGNOSTICO 7]</h3>
+        <p>[DESCRICAO BREVE DO DIAGNOSTICO 7]</p>
+        <span class="soon"><span class="pulse"></span> Em breve disponível — peça um aviso prévio</span>
+      </div>
+
+    </div>
+    <div class="sec-foot-cta reveal">
+      <a class="btn btn-ghost" href="https://wa.me/5531998675400?text=Quero%20receber%20um%20aviso%20pr%C3%A9vio%20dos%20diagn%C3%B3sticos%20do%20IBLT%20ou%20realizar%20uma%20mentoria%20preliminar." target="_blank" rel="noopener">Receber aviso prévio ou agendar mentoria preliminar</a>
+    </div>
+  </div>
+</section>
 
   /* ---------- FINAL CTA ---------- */
   .final{padding:84px 0;text-align:center;position:relative;border-top:1px solid var(--line)}
