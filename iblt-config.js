@@ -8,8 +8,8 @@
 window.IBLT_CONFIG = {
 
   /* --- Contato --- */
-  email:    "contato@iblt.org.br",   // destino do botão "Enviar por e-mail"
-  whatsapp: "5531999999999",         // << TROQUE pelo número real (internacional, sem +, sem espaços)
+  email:    "advogadolucasmorais@gmail.com",   // destino do botão "Enviar por e-mail"
+  whatsapp: "5531998675400",         // << TROQUE pelo número real (internacional, sem +, sem espaços)
 
   /* --- Supabase (onde os diagnósticos ficam guardados) --- */
   supabase: {
