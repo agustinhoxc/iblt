@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Favicon IBLT — Grafo Austral em tile preto absoluto.
+       Traços e nós reforçados para legibilidade em 16–32 px. -->
+  <rect width="128" height="128" rx="28" fill="#000000"/>
+  <g transform="translate(4,4)" stroke="#FFFFFF" stroke-linecap="round" fill="none">
+    <line x1="60.5" y1="16"   x2="66.5"  y2="104"  stroke-width="4"/>
+    <line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="4"/>
+    <line x1="66.5" y1="104"  x2="77.2"  y2="70.4" stroke-width="2.4"/>
+    <line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2.4"/>
+  </g>
+  <g transform="translate(4,4)" fill="#FFFFFF">
+    <circle cx="66.5"  cy="104"  r="8"/>
+    <circle cx="19.5"  cy="56.8" r="7"/>
+    <circle cx="60.5"  cy="16"   r="6.4"/>
+    <circle cx="101.5" cy="43.2" r="5.6"/>
+    <circle cx="77.2"  cy="70.4" r="4.4"/>
+  </g>
+</svg>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identidade Visual IBLT — Grafo Austral | Instituto Brasileiro de Liderança Tecnológica</title>
+<meta name="description" content="Apresentação da identidade visual do IBLT: o símbolo Grafo Austral — um grafo que oculta o Cruzeiro do Sul construído sobre a proporção áurea. Conceito, construção, variações, paleta e aplicações.">
+<meta name="theme-color" content="#0B0D0F">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --preto:#000000;
+    --fundo:#0B0D0F;
+    --painel:#111417;
+    --grafite:#23282E;
+    --linha:rgba(255,255,255,.09);
+    --branco:#FFFFFF;
+    --texto:#E8EAEC;
+    --neblina:#8B939B;
+    --profundo:#0A1E30;
+    --petroleo:#10454F;
+    --tecnologico:#2E6E7E;
+    --ouro:#B39A68;
+    --sans:'Helvetica Neue', Inter, 'Neue Haas Grotesk', Arial, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--fundo);color:var(--texto);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    font-weight:300;
+  }
+  ::selection{background:var(--ouro);color:var(--preto)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  h1,h2,h3{font-weight:400;color:var(--branco);letter-spacing:-.015em;line-height:1.15}
+  .eyebrow{
+    display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--ouro);margin-bottom:20px;
+  }
+
+  section{padding:96px 0;border-top:1px solid var(--linha)}
+  section:first-of-type{border-top:0}
+  .sec-head{max-width:620px;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+  .sec-head p{color:var(--neblina);margin-top:16px;font-size:1rem}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:92vh;display:grid;place-items:center;text-align:center;padding:80px 0}
+  .hero .mark{width:min(300px,58vw);color:var(--branco);position:relative}
+  .hero .mark svg{width:100%;height:auto;display:block}
+
+  /* camada do significado oculto */
+  .crux{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
+  .revelado .crux{opacity:1}
+  .crux .tracado{stroke:var(--ouro);stroke-width:.7;stroke-dasharray:3 4;fill:none;opacity:.85}
+  .crux text{fill:var(--ouro);font-family:var(--sans);font-size:5.4px;letter-spacing:.12em;font-weight:400}
+  .revelado .base-linhas{opacity:.28}
+  .base-linhas{transition:opacity .8s ease}
+
+  .hero h1{font-size:clamp(1.5rem,3vw,2.1rem);margin-top:48px;font-weight:300}
+  .hero h1 strong{font-weight:500}
+  .hero .lema{color:var(--neblina);font-size:.95rem;margin-top:12px;letter-spacing:.04em}
+  .revelar{
+    margin-top:36px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    background:transparent;border:1px solid var(--linha);color:var(--texto);
+    font-family:var(--sans);font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    padding:13px 26px;border-radius:999px;transition:border-color .25s,color .25s;
+  }
+  .revelar:hover{border-color:var(--ouro);color:var(--ouro)}
+  .revelar .ponto{width:7px;height:7px;border-radius:50%;background:var(--ouro);animation:respira 2.6s ease-in-out infinite}
+  @keyframes respira{0%,100%{opacity:.35}50%{opacity:1}}
+
+  /* desenho da constelação ao carregar */
+  .base-linhas line{stroke-dasharray:130;stroke-dashoffset:130;animation:traca 1.4s ease forwards}
+  .base-linhas line:nth-child(2){animation-delay:.35s}
+  .base-linhas line:nth-child(3){animation-delay:.75s}
+  .base-linhas line:nth-child(4){animation-delay:.95s}
+  @keyframes traca{to{stroke-dashoffset:0}}
+  .nos circle{opacity:0;animation:acende .5s ease forwards}
+  .nos circle:nth-child(1){animation-delay:1.15s}
+  .nos circle:nth-child(2){animation-delay:1.25s}
+  .nos circle:nth-child(3){animation-delay:1.35s}
+  .nos circle:nth-child(4){animation-delay:1.45s}
+  .nos circle:nth-child(5){animation-delay:1.6s}
+  @keyframes acende{to{opacity:1}}
+
+  /* ---------- CONCEITO: TRÊS LEITURAS ---------- */
+  .leituras{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha)}
+  .leitura{background:var(--fundo);padding:38px 30px}
+  .leitura .num{font-size:.72rem;letter-spacing:.24em;color:var(--ouro);font-weight:600;margin-bottom:18px}
+  .leitura h3{font-size:1.12rem;margin-bottom:12px;font-weight:500}
+  .leitura p{font-size:.9rem;color:var(--neblina)}
+  @media(max-width:800px){.leituras{grid-template-columns:1fr}}
+
+  /* ---------- CONSTRUÇÃO ---------- */
+  .construcao{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .grade-painel{
+    background:var(--painel);border:1px solid var(--linha);padding:44px;
+  }
+  .grade-painel svg{width:100%;height:auto;display:block;color:var(--branco)}
+  .grade line.aurea{stroke:var(--ouro);stroke-width:.6;stroke-dasharray:2 3;opacity:.9}
+  .grade text{fill:var(--ouro);font-family:var(--sans);font-size:4.6px;letter-spacing:.1em}
+  .grade .malha{stroke:rgba(255,255,255,.07);stroke-width:.4}
+
+  .dados{list-style:none}
+  .dados li{
+    display:flex;justify-content:space-between;gap:18px;align-items:baseline;
+    padding:15px 2px;border-bottom:1px solid var(--linha);font-size:.9rem;
+  }
+  .dados li:first-child{border-top:1px solid var(--linha)}
+  .dados .estrela{color:var(--branco);font-weight:500}
+  .dados .mag{color:var(--neblina);font-variant-numeric:tabular-nums}
+  .nota{font-size:.82rem;color:var(--neblina);margin-top:22px}
+  .nota b{color:var(--ouro);font-weight:500}
+  @media(max-width:880px){.construcao{grid-template-columns:1fr}}
+
+  /* ---------- VARIAÇÕES ---------- */
+  .variacoes{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .variante{aspect-ratio:1;display:grid;place-items:center;border:1px solid var(--linha);position:relative}
+  .variante svg{width:56%;height:auto}
+  .variante .rotulo{
+    position:absolute;left:12px;bottom:10px;font-size:.62rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--neblina);font-weight:500;
+  }
+  .v-positiva{background:var(--branco);color:var(--preto)}
+  .v-positiva .rotulo{color:#8a8a86}
+  .v-negativa{background:var(--preto);color:var(--branco)}
+  .v-grafite{background:var(--grafite);color:var(--branco)}
+  .v-profunda{background:var(--profundo);color:var(--branco)}
+  .v-institucional{background:var(--preto);color:var(--ouro)}
+  @media(max-width:880px){.variacoes{grid-template-columns:repeat(2,1fr)}.variacoes .variante:last-child{grid-column:span 2}}
+
+  /* ---------- LOCKUPS ---------- */
+  .lockups{display:grid;gap:14px}
+  .lockup{
+    border:1px solid var(--linha);background:var(--painel);
+    display:flex;align-items:center;justify-content:center;gap:26px;padding:56px 30px;flex-wrap:wrap;
+  }
+  .lockup .simbolo{width:64px;color:var(--branco);flex:none}
+  .lockup .simbolo svg{width:100%;height:auto;display:block}
+  .sigla{font-size:2.1rem;font-weight:500;color:var(--branco);letter-spacing:.34em;margin-right:-.34em}
+  .divisor-v{width:1px;height:52px;background:var(--linha)}
+  .nome-completo{display:flex;flex-direction:column;gap:4px}
+  .nome-completo .linha1{font-size:1.05rem;font-weight:500;color:var(--branco);letter-spacing:.06em}
+  .nome-completo .linha2{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--neblina)}
+  .lockup.vertical{flex-direction:column;gap:22px;text-align:center}
+  .lockup.vertical .simbolo{width:92px}
+
+  /* ---------- PALETA ---------- */
+  .paleta{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .cor{border:1px solid var(--linha)}
+  .cor .amostra{aspect-ratio:1/1.1}
+  .cor .info{padding:12px 12px 14px;background:var(--painel)}
+  .cor .info .n{font-size:.76rem;font-weight:500;color:var(--branco);letter-spacing:.04em}
+  .cor .info .h{font-size:.7rem;color:var(--neblina);font-variant-numeric:tabular-nums;margin-top:2px}
+  @media(max-width:880px){.paleta{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.paleta{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- TIPOGRAFIA ---------- */
+  .tipo-painel{border:1px solid var(--linha);background:var(--painel);padding:52px 44px}
+  .tipo-painel .familia{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro);font-weight:600;margin-bottom:28px}
+  .tipo-painel .display{font-size:clamp(1.9rem,4.4vw,3.2rem);color:var(--branco);font-weight:400;letter-spacing:-.015em;line-height:1.12}
+  .tipo-painel .corpo{margin-top:26px;max-width:560px;color:var(--neblina);font-size:.95rem}
+  .tipo-painel .escala{margin-top:34px;display:flex;gap:34px;flex-wrap:wrap;align-items:baseline;color:var(--branco)}
+  .tipo-painel .escala span{display:block}
+
+  /* ---------- APLICAÇÕES ---------- */
+  .aplicacoes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .app{border:1px solid var(--linha);background:var(--painel);padding:34px;display:grid;place-items:center;gap:22px;text-align:center}
+  .app .rotulo{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--neblina);font-weight:500}
+  .fav-linha{display:flex;align-items:flex-end;gap:18px}
+  .fav{border-radius:22%;overflow:hidden;background:var(--preto);display:grid;place-items:center}
+  .fav svg{width:78%;height:auto;color:var(--branco)}
+  .fav.g{width:64px;height:64px}
+  .fav.m{width:36px;height:36px;border-radius:9px}
+  .fav.p{width:20px;height:20px;border-radius:5px}
+  .avatar{width:84px;height:84px;border-radius:50%;background:var(--petroleo);display:grid;place-items:center}
+  .avatar svg{width:56%;color:var(--branco)}
+  .cartao{
+    width:100%;max-width:280px;aspect-ratio:1.75;background:var(--preto);
+    border:1px solid var(--grafite);padding:20px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;
+  }
+  .cartao .topo{display:flex;justify-content:space-between;align-items:flex-start}
+  .cartao svg{width:30px;color:var(--branco)}
+  .cartao .sigla-mini{font-size:.9rem;letter-spacing:.3em;color:var(--branco);font-weight:500}
+  .cartao .base{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+  @media(max-width:880px){.aplicacoes{grid-template-columns:1fr}}
+
+  /* ---------- RODAPÉ ---------- */
+  footer{border-top:1px solid var(--linha);padding:44px 0;text-align:center}
+  footer small{color:var(--neblina);font-size:.78rem;letter-spacing:.06em}
+  footer .voltar{display:inline-block;margin-top:10px;font-size:.8rem;color:var(--ouro);letter-spacing:.08em}
+
+  .surge{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .surge.em{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .surge{opacity:1;transform:none}
+    .base-linhas line{stroke-dashoffset:0}
+    .nos circle{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<!-- símbolo-fonte, reutilizado em toda a página -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="marca" viewBox="0 0 120 120">
+    <g class="base-linhas" stroke="currentColor" stroke-linecap="round" fill="none">
+      <line x1="60.5" y1="16"   x2="66.5"  y2="104"  stroke-width="2"/>
+      <line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="2"/>
+      <line x1="66.5" y1="104"  x2="77.2"  y2="70.4" stroke-width="1.1"/>
+      <line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="1.1"/>
+    </g>
+    <g class="nos" fill="currentColor">
+      <circle cx="66.5"  cy="104"  r="5.4"/>
+      <circle cx="19.5"  cy="56.8" r="4.7"/>
+      <circle cx="60.5"  cy="16"   r="4.2"/>
+      <circle cx="101.5" cy="43.2" r="3.6"/>
+      <circle cx="77.2"  cy="70.4" r="2.6"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Identidade visual · Proposta 01</span>
+    <figure class="mark" id="marcaHero">
+      <svg viewBox="0 0 120 120" aria-label="Símbolo Grafo Austral"><use href="#marca"/></svg>
+      <!-- camada do significado oculto -->
+      <svg class="crux" viewBox="0 0 120 120" aria-hidden="true">
+        <path class="tracado" d="M60.5,16 L66.5,104 M19.5,56.8 L101.5,43.2"/>
+        <circle class="tracado" cx="62.8" cy="49.6" r="6.5"/>
+        <text x="70"    y="110">α Acrux</text>
+        <text x="6"     y="50">β Mimosa</text>
+        <text x="48"    y="9">γ Gacrux</text>
+        <text x="96"    y="36">δ Imai</text>
+        <text x="82"    y="76">ε Ginan</text>
+        <text x="46"    y="44">φ</text>
+      </svg>
+    </figure>
+    <h1><strong>IBLT</strong> — Instituto Brasileiro de Liderança Tecnológica</h1>
+    <p class="lema">Inteligência silenciosa.</p>
+    <button class="revelar" id="btnRevelar" aria-pressed="false">
+      <span class="ponto"></span><span id="txtRevelar">Revelar o significado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ CONCEITO ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">O conceito</span>
+      <h2>Grafo Austral: um símbolo, três leituras.</h2>
+      <p>À primeira vista, uma rede. Ao segundo olhar, um céu. Ao terceiro, matemática pura. O símbolo se revela em camadas — como uma boa ideia.</p>
+    </div>
+    <div class="leituras surge">
+      <div class="leitura">
+        <div class="num">LEITURA I</div>
+        <h3>O grafo</h3>
+        <p>Cinco nós ligados por vetores: rede inteligente, pensamento sistêmico, conexões entre pessoas e conhecimento. É a leitura imediata — tecnologia sem nenhum clichê de tecnologia.</p>
+      </div>
+      <div class="leitura">
+        <div class="num">LEITURA II</div>
+        <h3>O Cruzeiro do Sul</h3>
+        <p>Os nós ocupam as posições das cinco estrelas do Cruzeiro do Sul, e o raio de cada nó codifica a magnitude real de cada estrela. A constelação que orientou navegadores torna-se a metáfora do Instituto: liderança é orientação. Brasil, sem bandeira.</p>
+      </div>
+      <div class="leitura">
+        <div class="num">LEITURA III</div>
+        <h3>A proporção áurea</h3>
+        <p>Os dois eixos se cruzam exatamente na seção áurea do eixo maior (38,2%). Ginan, a quinta estrela, ocupa o segundo ponto áureo (61,8%). O rigor matemático não está ilustrado no símbolo — está embutido nele.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSTRUÇÃO ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">A construção</span>
+      <h2>Geometria que se desenha com régua e compasso.</h2>
+      <p>Nada é aproximado. Cada coordenada nasce da divisão áurea do eixo principal; cada raio, do catálogo astronômico.</p>
+    </div>
+    <div class="construcao">
+      <div class="grade-painel surge">
+        <svg viewBox="0 0 120 120" class="grade" aria-label="Grade de construção do símbolo">
+          <!-- malha -->
+          <g class="malha">
+            <line x1="0" y1="30" x2="120" y2="30"/><line x1="0" y1="60" x2="120" y2="60"/><line x1="0" y1="90" x2="120" y2="90"/>
+            <line x1="30" y1="0" x2="30" y2="120"/><line x1="60" y1="0" x2="60" y2="120"/><line x1="90" y1="0" x2="90" y2="120"/>
+          </g>
+          <!-- linhas áureas do eixo principal (y = 16 + 88·0,382 e y = 16 + 88·0,618) -->
+          <line class="aurea" x1="4" y1="49.6" x2="116" y2="49.6"/>
+          <line class="aurea" x1="4" y1="70.4" x2="116" y2="70.4"/>
+          <text x="6" y="47">0,382 · φ</text>
+          <text x="6" y="68">0,618 · φ</text>
+          <use href="#marca" style="color:#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="surge">
+        <ul class="dados">
+          <li><span class="estrela">α · Acrux</span><span class="mag">magnitude 0,77 → raio 5,4</span></li>
+          <li><span class="estrela">β · Mimosa</span><span class="mag">magnitude 1,25 → raio 4,7</span></li>
+          <li><span class="estrela">γ · Gacrux</span><span class="mag">magnitude 1,64 → raio 4,2</span></li>
+          <li><span class="estrela">δ · Imai</span><span class="mag">magnitude 2,79 → raio 3,6</span></li>
+          <li><span class="estrela">ε · Ginan</span><span class="mag">magnitude 3,59 → raio 2,6</span></li>
+        </ul>
+        <p class="nota">O cruzamento dos eixos cai no <b>primeiro ponto áureo</b> do eixo γ–α. Ginan — a menor estrela, o indivíduo dentro do sistema — ocupa o <b>segundo ponto áureo</b>. Peso visual decrescente, significado crescente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIAÇÕES ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">Variações cromáticas</span>
+      <h2>Uma cor por vez. Sempre.</h2>
+      <p>O símbolo é monocromático por princípio: funciona em positivo, negativo, grafite, azul-profundo e — apenas em aplicações institucionais — dourado fosco sobre preto.</p>
+    </div>
+    <div class="variacoes surge">
+      <div class="variante v-positiva"><svg viewBox="0 0 120 120"><use href="#marca"/></svg><span class="rotulo">Positiva</span></div>
+      <div class="variante v-negativa"><svg viewBox="0 0 120 120"><use href="#marca"/></svg><span class="rotulo">Negativa</span></div>
+      <div class="variante v-grafite"><svg viewBox="0 0 120 120"><use href="#marca"/></svg><span class="rotulo">Grafite</span></div>
+      <div class="variante v-profunda"><svg viewBox="0 0 120 120"><use href="#marca"/></svg><span class="rotulo">Azul-profundo</span></div>
+      <div class="variante v-institucional"><svg viewBox="0 0 120 120"><use href="#marca"/></svg><span class="rotulo">Institucional · ouro</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCKUPS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">Assinaturas</span>
+      <h2>Três formas de assinar. Um único sistema.</h2>
+    </div>
+    <div class="lockups">
+      <div class="lockup surge">
+        <div class="simbolo"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+        <div class="divisor-v"></div>
+        <span class="sigla">IBLT</span>
+      </div>
+      <div class="lockup surge">
+        <div class="simbolo"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+        <div class="divisor-v"></div>
+        <div class="nome-completo">
+          <span class="linha1">Instituto Brasileiro</span>
+          <span class="linha2">de Liderança Tecnológica</span>
+        </div>
+      </div>
+      <div class="lockup vertical surge">
+        <div class="simbolo"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+        <div class="nome-completo">
+          <span class="sigla" style="font-size:1.5rem">IBLT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PALETA ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">Paleta</span>
+      <h2>Cores que não pedem atenção.</h2>
+    </div>
+    <div class="paleta surge">
+      <div class="cor"><div class="amostra" style="background:#000000"></div><div class="info"><div class="n">Preto Absoluto</div><div class="h">#000000</div></div></div>
+      <div class="cor"><div class="amostra" style="background:#FFFFFF"></div><div class="info"><div class="n">Branco</div><div class="h">#FFFFFF</div></div></div>
+      <div class="cor"><div class="amostra" style="background:#23282E"></div><div class="info"><div class="n">Grafite</div><div class="h">#23282E</div></div></div>
+      <div class="cor"><div class="amostra" style="background:#0A1E30"></div><div class="info"><div class="n">Azul-Profundo</div><div class="h">#0A1E30</div></div></div>
+      <div class="cor"><div class="amostra" style="background:#10454F"></div><div class="info"><div class="n">Azul-Petróleo</div><div class="h">#10454F</div></div></div>
+      <div class="cor"><div class="amostra" style="background:#B39A68"></div><div class="info"><div class="n">Ouro Fosco</div><div class="h">#B39A68</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIPOGRAFIA ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">Tipografia</span>
+      <h2>Grotesca neutra, voz firme.</h2>
+      <p>Helvetica Neue como titular (com Inter e Neue Haas Grotesk como equivalentes livres). Pesos contidos: light para texto, regular e medium para títulos. Nunca bold pesado, nunca condensada.</p>
+    </div>
+    <div class="tipo-painel surge">
+      <div class="familia">Helvetica Neue · Inter · Neue Haas Grotesk</div>
+      <div class="display">A liderança tecnológica<br>se constrói com método.</div>
+      <p class="corpo">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz — 0 1 2 3 4 5 6 7 8 9. O texto corre em peso light, entrelinha generosa, sem ornamento.</p>
+      <div class="escala">
+        <span style="font-size:2rem;font-weight:500">Medium 500</span>
+        <span style="font-size:1.4rem;font-weight:400">Regular 400</span>
+        <span style="font-size:1rem;font-weight:300">Light 300</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APLICAÇÕES ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head surge">
+      <span class="eyebrow">Aplicações</span>
+      <h2>Do favicon de 16 pixels à gravação em metal.</h2>
+      <p>Traços de peso único e nós sólidos: o símbolo sobrevive à serigrafia, ao bordado, ao baixo relevo e ao ícone de aba do navegador.</p>
+    </div>
+    <div class="aplicacoes">
+      <div class="app surge">
+        <div class="fav-linha">
+          <div class="fav g"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+          <div class="fav m"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+          <div class="fav p"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+        </div>
+        <span class="rotulo">Favicon · 64 / 32 / 16 px</span>
+      </div>
+      <div class="app surge">
+        <div class="avatar"><svg viewBox="0 0 120 120"><use href="#marca"/></svg></div>
+        <span class="rotulo">Avatar · redes sociais</span>
+      </div>
+      <div class="app surge">
+        <div class="cartao">
+          <div class="topo">
+            <svg viewBox="0 0 120 120"><use href="#marca"/></svg>
+            <span class="sigla-mini">IBLT</span>
+          </div>
+          <span class="base">Instituto Brasileiro de Liderança Tecnológica</span>
+        </div>
+        <span class="rotulo">Cartão institucional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <small>Grafo Austral — proposta de identidade visual · IBLT</small><br>
+    <a class="voltar" href="./index.html">← Voltar ao site</a>
+  </div>
+</footer>
+
+<script>
+  // revelar o significado oculto
+  const btn = document.getElementById('btnRevelar');
+  const fig = document.getElementById('marcaHero');
+  const txt = document.getElementById('txtRevelar');
+  btn.addEventListener('click', ()=>{
+    const on = fig.classList.toggle('revelado');
+    btn.setAttribute('aria-pressed', on);
+    txt.textContent = on ? 'Ocultar o significado' : 'Revelar o significado';
+  });
+
+  // reveal ao rolar
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('em'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.surge').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

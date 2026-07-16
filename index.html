@@ -5,14 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Escrita de Editais de Inovação | Consultoria para Captação de Recursos FINEP/BNDES — IBLT</title>
 <meta name="description" content="Consultoria especialista em escrita de editais de inovação e captação de recursos de fomento. Aumente sua chance de aprovação em editais da FINEP, BNDES e FAPEMIG/FAPESP com metodologia da Tríplice Hélice. Fale com um especialista.">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F1419">
 <style>
   :root{
     --bg:#0F1419;
     --bg-soft:#151B22;
     --bg-card:#1A222B;
-    --teal:#2DD4BF;
-    --teal-dim:#1F4E5F;
-    --teal-glow:rgba(45,212,191,.22);
+    --teal:#4AA3B8;
+    --teal-dim:#10454F;
+    --teal-glow:rgba(74,163,184,.22);
+    --ouro:#B39A68;
     --white:#FFFFFF;
     --text:#E4E9EE;
     --muted:#8A98A6;
@@ -39,7 +42,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
   .eyebrow{
     font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--teal);font-weight:700;margin-bottom:18px;display:inline-block;
+    color:var(--ouro);font-weight:700;margin-bottom:18px;display:inline-block;
   }
 
   /* ---------- NAV ---------- */
@@ -52,10 +55,10 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
   .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.15rem;color:var(--white);font-weight:700}
   .brand .mark{
-    width:34px;height:34px;border-radius:8px;flex:none;
-    background:linear-gradient(135deg,var(--teal),var(--teal-dim));
-    display:grid;place-items:center;font-family:var(--serif);font-weight:700;color:var(--bg);font-size:1rem;
+    width:36px;height:36px;flex:none;color:var(--teal);
+    display:grid;place-items:center;
   }
+  .brand .mark svg{width:100%;height:auto;display:block}
   .brand small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.16em;color:var(--muted);font-weight:600;text-transform:uppercase}
   .nav-links{display:flex;gap:32px;align-items:center}
   .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s}
@@ -82,7 +85,7 @@
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
   .hero h1{font-size:clamp(2.3rem,4.6vw,3.7rem)}
   .hero h1 .accent{
-    background:linear-gradient(120deg,var(--teal),#7af0e0);
+    background:linear-gradient(120deg,var(--teal),#8ECFDD);
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   }
   .hero p.sub{font-size:1.1rem;color:var(--text);margin:26px 0 8px;max-width:560px}
@@ -117,7 +120,7 @@
   }
   .node .dot{
     width:62px;height:62px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;
-    border:2px solid var(--teal);background:rgba(45,212,191,.07);
+    border:2px solid var(--teal);background:rgba(74,163,184,.07);
     font-family:var(--serif);font-size:1.5rem;color:var(--teal);
     animation:float 5s ease-in-out infinite;
   }
@@ -144,7 +147,7 @@
     display:flex;gap:8px;flex-wrap:wrap;
   }
   .chip{font-size:.72rem;font-weight:700;color:var(--teal);border:1px solid var(--teal-dim);
-    border-radius:999px;padding:5px 12px;background:rgba(45,212,191,.05)}
+    border-radius:999px;padding:5px 12px;background:rgba(74,163,184,.05)}
 
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr;gap:40px}
@@ -199,7 +202,7 @@
   .case-data .row:nth-child(odd){background:rgba(255,255,255,.018)}
   .case-data .row .k{color:var(--muted)}
   .case-data .row .v{color:var(--white);font-weight:700;text-align:right}
-  .case-capital{padding:18px 24px;background:rgba(45,212,191,.06);display:flex;align-items:baseline;justify-content:space-between}
+  .case-capital{padding:18px 24px;background:rgba(74,163,184,.06);display:flex;align-items:baseline;justify-content:space-between}
   .case-capital .cl{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
   .case-capital .cv{font-family:var(--serif);font-size:1.5rem;color:var(--teal)}
   .frl{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text);margin-bottom:18px}
@@ -248,7 +251,7 @@
   .test-card .tc-mark{
     width:46px;height:46px;border-radius:11px;flex:none;display:grid;place-items:center;
     font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--teal);
-    border:1px solid var(--teal-dim);background:rgba(45,212,191,.07);
+    border:1px solid var(--teal-dim);background:rgba(74,163,184,.07);
   }
   .test-card .tc-org{font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
   .test-card h3{font-size:1.18rem;font-family:var(--serif);line-height:1.25;margin-top:3px}
@@ -277,8 +280,8 @@
     transition:transform .25s,border-color .25s,box-shadow .25s,background .25s;
   }
   .j-step:hover .j-dot{
-    transform:translateY(-4px);border-color:var(--teal);background:rgba(45,212,191,.08);
-    box-shadow:0 0 0 6px rgba(45,212,191,.06),0 10px 26px var(--teal-glow);
+    transform:translateY(-4px);border-color:var(--teal);background:rgba(74,163,184,.08);
+    box-shadow:0 0 0 6px rgba(74,163,184,.06),0 10px 26px var(--teal-glow);
   }
   .j-lbl{font-size:.78rem;font-weight:700;color:var(--white);line-height:1.3}
   .j-sub{font-size:.68rem;color:var(--muted);margin-top:3px}
@@ -338,7 +341,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#home" class="brand">
-      <span class="mark">i</span>
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span>
       <span>IBLT<small>Liderança Tecnológica</small></span>
     </a>
     <nav class="nav-links">
@@ -649,7 +652,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#home" class="brand"><span class="mark">i</span><span>IBLT<small>Liderança Tecnológica</small></span></a>
+        <a href="#home" class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span><span>IBLT<small>Liderança Tecnológica</small></span></a>
         <p class="about">Instituto Brasileiro de Liderança Tecnológica. Atuamos na convergência da Tríplice Hélice — Universidade, Indústria e Governo — para transformar inovação em capital financeiro real.</p>
       </div>
       <div class="foot-col">
