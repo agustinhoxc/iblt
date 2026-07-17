@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformação Digital para Micro e Pequenas Empresas (MPE) | Sites e Agentes de IA — IBLT</title>
+<meta name="description" content="Consultoria em inovação e transformação digital para micro e pequenas empresas, sem complicação: site profissional + agente de IA no WhatsApp atendendo 24h. Faça o diagnóstico gratuito de Maturidade Digital e descubra onde seu negócio está perdendo vendas.">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FFFFFF">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./iblt-config.js"></script>
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F4F7F9;
+    --card:#FFFFFF;
+    --texto:#1B2B36;
+    --profundo:#0A1E30;
+    --petroleo:#10454F;
+    --tec:#4AA3B8;
+    --tec-suave:rgba(74,163,184,.12);
+    --ouro:#8F7443;
+    --ouro-claro:#B39A68;
+    --muted:#5A6B77;
+    --linha:rgba(10,30,48,.12);
+    --ok:#2E7D5B;
+    --serif:Georgia, 'Times New Roman', serif;
+    --sans:Arial, Calibri, 'Helvetica Neue', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--texto);font-family:var(--sans);
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--petroleo);color:#fff}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--profundo);line-height:1.18;letter-spacing:-.01em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .conteudo{position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ouro);font-weight:700;margin-bottom:18px;display:inline-block;
+  }
+  .block{padding:88px 0}
+
+  /* ---------- FUNDO: GRAFO AUSTRAL 3D ---------- */
+  .fundo3d{
+    position:fixed;z-index:0;pointer-events:none;
+    top:4vh;right:-14vw;width:min(86vh,940px);opacity:.075;
+    animation:flutua 26s ease-in-out infinite;
+  }
+  .fundo3d svg{width:100%;height:auto;display:block}
+  .fundo3d .tras line,.fundo3d .frente line,.fundo3d .hastes line{
+    stroke:var(--petroleo);stroke-linecap:round;
+    stroke-dasharray:200;stroke-dashoffset:200;animation:desenha 2.4s ease forwards;
+  }
+  .fundo3d .hastes line{stroke-dasharray:40;stroke-dashoffset:40;animation-delay:1.5s;animation-duration:1s}
+  .fundo3d .tras line:nth-child(2),.fundo3d .frente line:nth-child(2){animation-delay:.35s}
+  .fundo3d .tras line:nth-child(3),.fundo3d .frente line:nth-child(3){animation-delay:.7s}
+  .fundo3d .tras line:nth-child(4),.fundo3d .frente line:nth-child(4){animation-delay:.9s}
+  .fundo3d circle{opacity:0;animation:surge3d .6s ease forwards;animation-delay:2s}
+  @keyframes desenha{to{stroke-dashoffset:0}}
+  @keyframes surge3d{to{opacity:1}}
+  @keyframes flutua{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-26px) rotate(1.2deg)}}
+  @media(max-width:900px){.fundo3d{opacity:.05;top:auto;bottom:-6vh;right:-30vw;width:120vw}}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--linha);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.15rem;color:var(--profundo);font-weight:700}
+  .brand .mark{width:36px;height:36px;flex:none;color:var(--petroleo);display:grid;place-items:center}
+  .brand .mark svg{width:100%;height:auto;display:block}
+  .brand small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.16em;color:var(--muted);font-weight:600;text-transform:uppercase}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--profundo)}
+  .nav-links a.current{color:var(--petroleo);font-weight:700}
+  .nav-cta{
+    font-family:var(--sans);font-size:.86rem;font-weight:700;color:#fff;
+    background:var(--petroleo);padding:10px 18px;border-radius:8px;transition:transform .2s,box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(16,69,79,.28)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--profundo);font-size:1.5rem;cursor:pointer}
+  @media(max-width:900px){.nav-links{display:none}.nav-toggle{display:block}}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:700;
+    border-radius:10px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--petroleo);color:#fff;padding:15px 26px;font-size:1rem;box-shadow:0 12px 30px rgba(16,69,79,.22)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(16,69,79,.3)}
+  .btn-ghost{background:transparent;color:var(--profundo);border-color:var(--linha);padding:15px 24px;font-size:1rem}
+  .btn-ghost:hover{border-color:var(--petroleo);color:var(--petroleo)}
+  .wa-ico{width:20px;height:20px;flex:none;fill:currentColor}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 70px}
+  .hero-inner{max-width:720px}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+  .hero h1 .destaque{color:var(--petroleo)}
+  .hero p.sub{font-size:1.12rem;color:var(--texto);margin:24px 0 0;max-width:640px}
+  .hero p.sub strong{color:var(--profundo)}
+  .hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .hero-nota{margin-top:16px;font-size:.85rem;color:var(--muted)}
+
+  /* ---------- DORES ---------- */
+  .dores{background:var(--bg-soft);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .sec-head{max-width:680px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:1.02rem}
+  .dor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .dor{
+    background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:24px 22px;
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+  }
+  .dor:hover{transform:translateY(-4px);border-color:var(--tec);box-shadow:0 18px 40px rgba(10,30,48,.08)}
+  .dor .fala{font-family:var(--serif);font-size:1.02rem;color:var(--profundo);font-style:italic;line-height:1.4}
+  .dor .custo{margin-top:14px;font-size:.82rem;color:var(--muted)}
+  .dor .custo b{color:var(--ouro)}
+  @media(max-width:960px){.dor-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.dor-grid{grid-template-columns:1fr}}
+
+  /* ---------- ENTREGAS (FOCO) ---------- */
+  .entrega-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .entrega{
+    position:relative;background:var(--card);border:1px solid var(--linha);border-radius:18px;padding:36px 32px;
+    transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden;
+  }
+  .entrega::after{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--petroleo);transition:width .35s}
+  .entrega:hover{transform:translateY(-5px);border-color:var(--petroleo);box-shadow:0 26px 60px rgba(10,30,48,.1)}
+  .entrega:hover::after{width:100%}
+  .entrega .icone{width:52px;height:52px;color:var(--petroleo);margin-bottom:20px}
+  .entrega .icone svg{width:100%;height:100%}
+  .entrega h3{font-size:1.45rem;margin-bottom:12px}
+  .entrega p.desc{color:var(--muted);font-size:.96rem}
+  .entrega ul{list-style:none;margin-top:18px}
+  .entrega li{
+    position:relative;padding-left:26px;margin-bottom:10px;font-size:.92rem;color:var(--texto);
+  }
+  .entrega li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:2px;background:var(--tec)}
+  .entrega .pratica{
+    margin-top:20px;padding:14px 16px;background:var(--tec-suave);border-radius:10px;
+    font-size:.88rem;color:var(--petroleo);font-weight:700;
+  }
+  @media(max-width:860px){.entrega-grid{grid-template-columns:1fr}}
+
+  .combo{
+    margin-top:18px;background:var(--petroleo);color:#fff;border-radius:18px;
+    padding:34px 36px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  }
+  .combo h3{color:#fff;font-size:1.35rem}
+  .combo p{color:rgba(255,255,255,.82);font-size:.95rem;margin-top:8px;max-width:560px}
+  .combo p b{color:var(--ouro-claro)}
+  .combo .btn{background:#fff;color:var(--petroleo);padding:14px 24px}
+  .combo .btn:hover{transform:translateY(-2px)}
+
+  .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  .mini{
+    background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:22px 20px;
+    transition:transform .25s,border-color .25s;
+  }
+  .mini:hover{transform:translateY(-3px);border-color:var(--tec)}
+  .mini h4{font-family:var(--sans);font-size:.95rem;color:var(--profundo);margin-bottom:8px}
+  .mini p{font-size:.82rem;color:var(--muted)}
+  @media(max-width:960px){.mini-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.mini-grid{grid-template-columns:1fr}}
+
+  /* ---------- PROCESSO ---------- */
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:passo}
+  .passo{
+    background:var(--bg-soft);border:1px solid var(--linha);border-radius:16px;padding:30px 26px;position:relative;
+  }
+  .passo::before{
+    counter-increment:passo;content:counter(passo,decimal-leading-zero);
+    font-family:var(--serif);font-size:2.4rem;color:var(--tec);opacity:.55;display:block;margin-bottom:12px;
+  }
+  .passo h3{font-size:1.15rem;margin-bottom:10px}
+  .passo p{font-size:.9rem;color:var(--muted)}
+  @media(max-width:820px){.passos{grid-template-columns:1fr}}
+
+  /* ---------- CREDENCIAL ---------- */
+  .credencial{
+    background:var(--bg-soft);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);
+    padding:56px 0;text-align:center;
+  }
+  .credencial p.frase{font-family:var(--serif);font-size:1.25rem;color:var(--profundo);max-width:640px;margin:0 auto}
+  .credencial p.apoio{color:var(--muted);font-size:.92rem;max-width:600px;margin:14px auto 26px}
+  .selos{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .selo{
+    font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--petroleo);
+    border:1px solid var(--linha);border-radius:999px;padding:8px 18px;background:var(--card);
+  }
+
+  /* ---------- DIAGNÓSTICO ---------- */
+  .diag-painel{
+    max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--linha);border-radius:20px;
+    box-shadow:0 30px 80px rgba(10,30,48,.08);overflow:hidden;
+  }
+  .diag-topo{padding:30px 36px 0}
+  .progresso{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .prog-barra{flex:1;height:6px;background:var(--bg-soft);border-radius:999px;overflow:hidden}
+  .prog-fill{height:100%;width:0;background:var(--petroleo);border-radius:999px;transition:width .4s ease}
+  .prog-txt{font-size:.78rem;color:var(--muted);font-weight:700;white-space:nowrap}
+  .diag-corpo{padding:26px 36px 36px}
+  .etapa{display:none}
+  .etapa.ativa{display:block;animation:entra .35s ease}
+  @keyframes entra{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .etapa h3{font-size:1.35rem;margin-bottom:6px}
+  .etapa .dica{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+  .pergunta{margin-bottom:26px}
+  .pergunta .rotulo{font-weight:700;color:var(--profundo);font-size:.98rem;margin-bottom:12px;display:block}
+  .opcoes{display:grid;gap:10px}
+  .opcoes.colunas{grid-template-columns:1fr 1fr}
+  @media(max-width:620px){.opcoes.colunas{grid-template-columns:1fr}}
+  .opcao{position:relative}
+  .opcao input{position:absolute;opacity:0;pointer-events:none}
+  .opcao label{
+    display:block;padding:13px 16px;border:1px solid var(--linha);border-radius:10px;cursor:pointer;
+    font-size:.92rem;color:var(--texto);transition:border-color .2s,background .2s,color .2s;background:var(--card);
+  }
+  .opcao label:hover{border-color:var(--tec)}
+  .opcao input:checked + label{border-color:var(--petroleo);background:var(--tec-suave);color:var(--petroleo);font-weight:700}
+  .pergunta.erro .rotulo{color:#B4232A}
+  .pergunta.erro .opcao label{border-color:rgba(180,35,42,.4)}
+  .insight{
+    margin:26px 0 4px;padding:16px 18px;border-left:3px solid var(--ouro-claro);background:var(--bg-soft);
+    border-radius:0 10px 10px 0;font-size:.9rem;color:var(--texto);
+  }
+  .insight b{color:var(--petroleo)}
+  .campo{margin-bottom:16px}
+  .campo label{display:block;font-weight:700;font-size:.88rem;color:var(--profundo);margin-bottom:7px}
+  .campo input,.campo select{
+    width:100%;padding:12px 14px;border:1px solid var(--linha);border-radius:10px;font-family:var(--sans);
+    font-size:.95rem;color:var(--texto);background:var(--card);outline:none;transition:border-color .2s;
+  }
+  .campo input:focus,.campo select:focus{border-color:var(--petroleo)}
+  .campo.erro input{border-color:#B4232A}
+  .campos-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:620px){.campos-2{grid-template-columns:1fr}}
+  .diag-nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px}
+  .diag-nav .btn{padding:13px 24px;font-size:.95rem}
+  .lgpd{font-size:.76rem;color:var(--muted);margin-top:16px}
+
+  /* ---------- RESULTADO ---------- */
+  .resultado{display:none;padding:36px;text-align:center}
+  .resultado.ativa{display:block;animation:entra .4s ease}
+  .medidor{width:210px;height:120px;margin:0 auto 6px;position:relative}
+  .medidor svg{width:100%;height:auto;overflow:visible}
+  .medidor .trilho{stroke:var(--bg-soft);stroke-width:14;fill:none}
+  .medidor .valor{stroke:var(--petroleo);stroke-width:14;fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
+  .medidor .num{position:absolute;left:0;right:0;bottom:0;font-family:var(--serif);font-size:2.6rem;color:var(--profundo)}
+  .medidor .num small{font-size:1rem;color:var(--muted)}
+  .tier-chip{
+    display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--petroleo);border:1px solid var(--petroleo);border-radius:999px;padding:7px 18px;margin:10px 0 6px;
+  }
+  .resultado p.leitura{color:var(--muted);max-width:520px;margin:10px auto 30px;font-size:.95rem}
+  .eixos{max-width:520px;margin:0 auto 30px;text-align:left}
+  .eixo{margin-bottom:14px}
+  .eixo .topo{display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:var(--profundo);margin-bottom:6px}
+  .eixo .barra{height:8px;background:var(--bg-soft);border-radius:999px;overflow:hidden}
+  .eixo .fill{height:100%;width:0;background:var(--tec);border-radius:999px;transition:width 1s ease .3s}
+  .dinheiro{max-width:560px;margin:0 auto 30px;text-align:left;background:var(--bg-soft);border-radius:14px;padding:24px 26px}
+  .dinheiro h4{font-family:var(--sans);font-size:.98rem;color:var(--profundo);margin-bottom:14px}
+  .dinheiro ul{list-style:none}
+  .dinheiro li{position:relative;padding-left:24px;margin-bottom:12px;font-size:.9rem;color:var(--texto)}
+  .dinheiro li::before{content:"";position:absolute;left:0;top:.45em;width:10px;height:10px;border-radius:50%;background:var(--ouro-claro)}
+  .dinheiro li b{color:var(--petroleo)}
+  .resultado-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .send-status{margin-top:16px;font-size:.82rem;color:var(--muted)}
+  .send-status.ok{color:var(--ok)}
+  .send-status.bad{color:#B4232A}
+
+  /* ---------- CTA FINAL ---------- */
+  .final{padding:90px 0;text-align:center}
+  .final h2{font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:640px;margin:0 auto}
+  .final p{color:var(--muted);margin:16px auto 30px;max-width:540px;font-size:1.05rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--linha);padding:50px 0 38px;background:var(--bg-soft)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:34px}
+  footer .brand{margin-bottom:16px}
+  footer .about{font-size:.9rem;color:var(--muted);max-width:340px}
+  .foot-col h5{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--profundo);margin-bottom:16px}
+  .foot-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--petroleo)}
+  .foot-bottom{border-top:1px solid var(--linha);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .foot-bottom small{color:var(--muted);font-size:.82rem}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:30px}}
+
+  .wa-float{
+    position:fixed;right:22px;bottom:22px;z-index:60;
+    width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;
+    box-shadow:0 12px 30px rgba(37,211,102,.4);transition:transform .25s;
+  }
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .fundo3d line{stroke-dashoffset:0}
+    .fundo3d circle{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FUNDO 3D — GRAFO AUSTRAL ============ -->
+<div class="fundo3d" aria-hidden="true">
+  <svg viewBox="0 0 140 130" fill="none">
+    <!-- camada de trás (profundidade) -->
+    <g class="tras" opacity=".45">
+      <line x1="69.5" y1="9"    x2="75.5"  y2="97"   stroke-width="1.4"/>
+      <line x1="28.5" y1="49.8" x2="110.5" y2="36.2" stroke-width="1.4"/>
+      <line x1="75.5" y1="97"   x2="86.2"  y2="63.4" stroke-width=".8"/>
+      <line x1="86.2" y1="63.4" x2="110.5" y2="36.2" stroke-width=".8"/>
+    </g>
+    <!-- hastes de profundidade -->
+    <g class="hastes" opacity=".4">
+      <line x1="60.5"  y1="16"   x2="69.5"  y2="9"    stroke-width=".7"/>
+      <line x1="66.5"  y1="104"  x2="75.5"  y2="97"   stroke-width=".7"/>
+      <line x1="19.5"  y1="56.8" x2="28.5"  y2="49.8" stroke-width=".7"/>
+      <line x1="101.5" y1="43.2" x2="110.5" y2="36.2" stroke-width=".7"/>
+      <line x1="77.2"  y1="70.4" x2="86.2"  y2="63.4" stroke-width=".7"/>
+    </g>
+    <!-- camada da frente -->
+    <g class="frente">
+      <line x1="60.5" y1="16"   x2="66.5"  y2="104"  stroke-width="2"/>
+      <line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="2"/>
+      <line x1="66.5" y1="104"  x2="77.2"  y2="70.4" stroke-width="1.1"/>
+      <line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="1.1"/>
+    </g>
+    <g fill="#10454F">
+      <circle cx="69.5"  cy="9"    r="2.2" opacity=".35"/>
+      <circle cx="75.5"  cy="97"   r="2.8" opacity=".35"/>
+      <circle cx="28.5"  cy="49.8" r="2.4" opacity=".35"/>
+      <circle cx="110.5" cy="36.2" r="1.9" opacity=".35"/>
+      <circle cx="86.2"  cy="63.4" r="1.4" opacity=".35"/>
+      <circle cx="66.5"  cy="104"  r="5.4"/>
+      <circle cx="19.5"  cy="56.8" r="4.7"/>
+      <circle cx="60.5"  cy="16"   r="4.2"/>
+      <circle cx="101.5" cy="43.2" r="3.6"/>
+      <circle cx="77.2"  cy="70.4" r="2.6"/>
+    </g>
+  </svg>
+</div>
+
+<div class="conteudo">
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="./index.html" class="brand">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span>
+      <span>IBLT<small>Liderança Tecnológica</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="./index.html">Início</a>
+      <a href="./como-funciona.html">Como funciona</a>
+      <a href="./mpe.html" class="current">Para MPEs</a>
+      <a href="#entregas">O que fazemos</a>
+      <a href="#diagnostico">Maturidade Digital</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5531998675400?text=Ol%C3%A1%2C%20tenho%20uma%20micro%2Fpequena%20empresa%20e%20quero%20conversar%20sobre%20transforma%C3%A7%C3%A3o%20digital." target="_blank" rel="noopener">Falar com a gente</a>
+    <button class="nav-toggle" aria-label="Abrir menu" onclick="document.querySelector('.nav-links').style.display = (getComputedStyle(document.querySelector('.nav-links')).display==='none'?'flex':'none')">☰</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner reveal in">
+    <span class="eyebrow">Consultoria em inovação e transformação digital · Micro e pequenas empresas</span>
+    <h1>Seu negócio <span class="destaque">respondendo, aparecendo e vendendo</span> na internet. Sem complicação.</h1>
+    <p class="sub">Cliente que chama no WhatsApp e ninguém responde é <strong>venda indo pro concorrente</strong>. A gente resolve isso do jeito simples: um site que mostra seu negócio no Google e um <strong>agente de inteligência artificial</strong> que atende na hora, 24 horas por dia — enquanto você toca a empresa.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#diagnostico">Descobrir minha Maturidade Digital — grátis</a>
+      <a class="btn btn-ghost" href="#entregas">Ver o que a gente faz</a>
+    </div>
+    <p class="hero-nota">Diagnóstico de 5 minutos · resultado na hora · sem letra miúda</p>
+  </div>
+</section>
+
+<!-- ============ DORES ============ -->
+<section class="block dores">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Isso acontece aí?</span>
+      <h2>Todo dia, dinheiro escapa por frestas que ninguém vê.</h2>
+    </div>
+    <div class="dor-grid">
+      <div class="dor reveal">
+        <p class="fala">"Vi a mensagem do cliente só de noite… ele já tinha comprado em outro lugar."</p>
+        <p class="custo"><b>O custo:</b> cada hora sem resposta derruba a chance de fechar a venda.</p>
+      </div>
+      <div class="dor reveal">
+        <p class="fala">"Meu Instagram tá parado desde o ano passado. Não tenho tempo de postar."</p>
+        <p class="custo"><b>O custo:</b> quem te procura e encontra a página parada acha que a empresa parou junto.</p>
+      </div>
+      <div class="dor reveal">
+        <p class="fala">"Não tenho site. Quem pesquisa meu ramo no Google acha os concorrentes."</p>
+        <p class="custo"><b>O custo:</b> você paga aluguel do ponto físico e deixa o ponto digital de graça pros outros.</p>
+      </div>
+      <div class="dor reveal">
+        <p class="fala">"Tudo passa por mim: orçamento, agenda, cobrança. Se eu paro, a empresa para."</p>
+        <p class="custo"><b>O custo:</b> seu tempo — o recurso mais caro da empresa — gasto respondendo a mesma pergunta 30 vezes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTREGAS (FOCO DESTAQUE) ============ -->
+<section class="block" id="entregas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O que a gente entrega</span>
+      <h2>Duas peças que trabalham por você — dia e noite.</h2>
+      <p>Nada de pacote de 40 itens que ninguém entende. O centro da transformação digital de uma MPE são duas coisas que dão resultado visível: um site que traz cliente e uma inteligência artificial que atende cliente.</p>
+    </div>
+
+    <div class="entrega-grid">
+      <div class="entrega reveal">
+        <div class="icone" aria-hidden="true">
+          <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 14 Q6 8 12 8 H34 Q40 8 40 14 V26 Q40 32 34 32 H20 L12 40 V32 Q6 32 6 26 Z"/>
+            <path d="M30 14 l1.6 3.4 3.4 1.6 -3.4 1.6 -1.6 3.4 -1.6-3.4 -3.4-1.6 3.4-1.6 Z" fill="currentColor" stroke="none"/>
+            <line x1="14" y1="24" x2="24" y2="24"/>
+          </svg>
+        </div>
+        <h3>Agente de IA no WhatsApp</h3>
+        <p class="desc">Um atendente que nunca dorme, nunca esquece e responde em segundos — com o jeito da sua empresa.</p>
+        <ul>
+          <li>Responde na hora: preço, horário, endereço, entrega, disponibilidade</li>
+          <li>Atende de madrugada, feriado e fim de semana — quando você descansa</li>
+          <li>Agenda horário, monta orçamento e organiza o pedido</li>
+          <li>Chama você só quando é conversa que precisa de gente</li>
+        </ul>
+        <p class="pratica">Na prática: nenhum cliente fica sem resposta. Nunca mais.</p>
+      </div>
+
+      <div class="entrega reveal">
+        <div class="icone" aria-hidden="true">
+          <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="10" width="40" height="32" rx="4"/>
+            <line x1="6" y1="19" x2="46" y2="19"/>
+            <circle cx="12" cy="14.5" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="17" cy="14.5" r="1" fill="currentColor" stroke="none"/>
+            <path d="M13 28 h14 M13 34 h20"/>
+            <path d="M38 26 l4 4 -4 4" />
+          </svg>
+        </div>
+        <h3>Site profissional que vende</h3>
+        <p class="desc">Seu ponto na internet, aberto 24h: bonito, rápido e feito pra quem procura no Google te encontrar.</p>
+        <ul>
+          <li>Aparece nas buscas do Google e no mapa da sua cidade</li>
+          <li>Mostra produtos, serviços e preços do jeito que o cliente entende</li>
+          <li>Recebe pedido, orçamento e agendamento direto no seu WhatsApp</li>
+          <li>Fácil de atualizar — sem depender de sobrinho ou de sorte</li>
+        </ul>
+        <p class="pratica">Na prática: quem te procura, te acha — e chega já querendo comprar.</p>
+      </div>
+    </div>
+
+    <div class="combo reveal">
+      <div>
+        <h3>Juntos, viram uma máquina.</h3>
+        <p>O site <b>traz</b> o cliente, o agente de IA <b>atende</b> o cliente, e você fica com a parte boa: <b>fechar a venda</b>. É isso que chamamos de transformação digital — o resto é detalhe.</p>
+      </div>
+      <a class="btn" href="#diagnostico">Quero isso na minha empresa</a>
+    </div>
+
+    <div class="mini-grid">
+      <div class="mini reveal"><h4>Presença no Google</h4><p>Perfil da Empresa configurado e em dia: endereço, fotos, avaliações e horário certos.</p></div>
+      <div class="mini reveal"><h4>Automação de rotina</h4><p>Agenda, lembrete, cobrança e follow-up rodando sozinhos, sem post-it na parede.</p></div>
+      <div class="mini reveal"><h4>Redes sociais com método</h4><p>Um jeito simples de postar com constância — sem virar refém do algoritmo.</p></div>
+      <div class="mini reveal"><h4>Time treinado</h4><p>Sua equipe aprende a usar as ferramentas no dia a dia. Simples, no ritmo de vocês.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESSO ============ -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Como a gente trabalha</span>
+      <h2>Simples de verdade, em três passos.</h2>
+      <p>Transformação digital não precisa de reunião de duas horas nem de palavra em inglês. Precisa de começo, meio e resultado.</p>
+    </div>
+    <div class="passos">
+      <div class="passo reveal">
+        <h3>Diagnóstico gratuito</h3>
+        <p>Você responde o teste de Maturidade Digital aqui embaixo, em 5 minutos. A gente entende onde sua empresa está e onde o dinheiro está escapando.</p>
+      </div>
+      <div class="passo reveal">
+        <h3>Plano em linguagem de gente</h3>
+        <p>Você recebe um plano curto: o que fazer primeiro, quanto custa e o que esperar de resultado. Sem promessa mágica, sem letra miúda.</p>
+      </div>
+      <div class="passo reveal">
+        <h3>Implantação acompanhada</h3>
+        <p>A gente monta, instala, treina você e sua equipe — e fica junto até estar rodando. Você não recebe um login e um "boa sorte".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENCIAL ============ -->
+<section class="credencial">
+  <div class="wrap reveal">
+    <p class="frase">"Método sério, papo simples."</p>
+    <p class="apoio">Somos o mesmo time que estrutura projetos de inovação junto a FINEP, BNDES e fundações de amparo à pesquisa, e que atua no ecossistema de apoio à pequena empresa. Essa engenharia toda fica nos bastidores — com você, a conversa é direta.</p>
+    <div class="selos">
+      <span class="selo">Ecossistema Sebrae</span>
+      <span class="selo">FINEP</span>
+      <span class="selo">BNDES</span>
+      <span class="selo">FAPEMIG / FAPESP</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNÓSTICO MATURIDADE DIGITAL ============ -->
+<section class="block" id="diagnostico">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;max-width:720px;margin-left:auto;margin-right:auto">
+      <span class="eyebrow">Diagnóstico gratuito</span>
+      <h2>Qual é a Maturidade Digital da sua empresa?</h2>
+      <p>Responda com sinceridade — leva uns 5 minutos. No final, você recebe sua nota de 0 a 100, o seu nível e um mapa claro de onde sua empresa está deixando dinheiro na mesa.</p>
+    </div>
+
+    <div class="diag-painel reveal">
+      <div class="diag-topo">
+        <div class="progresso">
+          <div class="prog-barra"><div class="prog-fill" id="progFill"></div></div>
+          <span class="prog-txt" id="progTxt">Etapa 1 de 5</span>
+        </div>
+      </div>
+
+      <form class="diag-corpo" id="formDiag" novalidate>
+
+        <!-- ETAPA 1 · VENDAS E PRESENÇA -->
+        <div class="etapa ativa" data-etapa="1">
+          <h3>Vendas e presença online</h3>
+          <p class="dica">Como sua empresa aparece e vende na internet hoje.</p>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Sua empresa vende pela internet?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_vende" id="v1" value="nao" data-pts="0"><label for="v1">Não vendo pela internet</label></div>
+              <div class="opcao"><input type="radio" name="q_vende" id="v2" value="whats_insta" data-pts="5"><label for="v2">Vendo pelo WhatsApp ou Instagram, quando aparece alguém</label></div>
+              <div class="opcao"><input type="radio" name="q_vende" id="v3" value="frequente" data-pts="10"><label for="v3">Sim — pedidos chegam com frequência pela internet</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Você já fez anúncios online (Instagram, Google, iFood…)?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_anuncio" id="a1" value="nunca" data-pts="0"><label for="a1">Nunca fiz</label></div>
+              <div class="opcao"><input type="radio" name="q_anuncio" id="a2" value="ja_impulsionei" data-pts="4"><label for="a2">Já impulsionei uma publicação ou outra</label></div>
+              <div class="opcao"><input type="radio" name="q_anuncio" id="a3" value="invisto" data-pts="8"><label for="a3">Invisto em anúncio todo mês</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-multi>
+            <span class="rotulo">Em quais redes sua empresa está? (marque todas)</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="checkbox" name="q_redes" id="r1" value="instagram" data-pts="2"><label for="r1">Instagram</label></div>
+              <div class="opcao"><input type="checkbox" name="q_redes" id="r2" value="facebook" data-pts="2"><label for="r2">Facebook</label></div>
+              <div class="opcao"><input type="checkbox" name="q_redes" id="r3" value="tiktok" data-pts="2"><label for="r3">TikTok</label></div>
+              <div class="opcao"><input type="checkbox" name="q_redes" id="r4" value="google_perfil" data-pts="2"><label for="r4">Perfil da Empresa no Google (Maps)</label></div>
+              <div class="opcao"><input type="checkbox" name="q_redes" id="r5" value="nenhuma" data-pts="0" data-exclusivo><label for="r5">Nenhuma dessas</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Com que frequência a empresa posta conteúdo?</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="radio" name="q_freq" id="f1" value="quase_nunca" data-pts="0"><label for="f1">Quase nunca</label></div>
+              <div class="opcao"><input type="radio" name="q_freq" id="f2" value="quando_da" data-pts="2"><label for="f2">Quando dá tempo</label></div>
+              <div class="opcao"><input type="radio" name="q_freq" id="f3" value="toda_semana" data-pts="5"><label for="f3">Toda semana</label></div>
+              <div class="opcao"><input type="radio" name="q_freq" id="f4" value="quase_todo_dia" data-pts="8"><label for="f4">Quase todo dia</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Quem cuida das postagens hoje?</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="radio" name="q_quem" id="qp1" value="ninguem" data-pts="0"><label for="qp1">Ninguém</label></div>
+              <div class="opcao"><input type="radio" name="q_quem" id="qp2" value="eu_quando_sobra" data-pts="2"><label for="qp2">Eu, quando sobra tempo</label></div>
+              <div class="opcao"><input type="radio" name="q_quem" id="qp3" value="alguem_do_time" data-pts="5"><label for="qp3">Alguém do time</label></div>
+              <div class="opcao"><input type="radio" name="q_quem" id="qp4" value="com_metodo" data-pts="8"><label for="qp4">Agência ou rotina com método</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 · SITE E GOOGLE -->
+        <div class="etapa" data-etapa="2">
+          <h3>Site e Google</h3>
+          <p class="dica">O que o cliente encontra quando procura você.</p>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Sua empresa tem site?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_site" id="s1" value="nao_nunca_pensei" data-pts="0"><label for="s1">Não — e nunca tinha pensado nisso</label></div>
+              <div class="opcao"><input type="radio" name="q_site" id="s2" value="nao_mas_quero" data-pts="3"><label for="s2">Não, mas já pensei em ter</label></div>
+              <div class="opcao"><input type="radio" name="q_site" id="s3" value="tem_desatualizado" data-pts="6"><label for="s3">Tenho, mas está desatualizado</label></div>
+              <div class="opcao"><input type="radio" name="q_site" id="s4" value="tem_atualizado" data-pts="12"><label for="s4">Tenho, e está em dia</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Quando alguém procura seu ramo no Google, sua empresa aparece?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_google" id="g1" value="nao_sei" data-pts="0"><label for="g1">Não sei, nunca procurei</label></div>
+              <div class="opcao"><input type="radio" name="q_google" id="g2" value="nao_aparece" data-pts="1"><label for="g2">Não aparece</label></div>
+              <div class="opcao"><input type="radio" name="q_google" id="g3" value="aparece_desatualizado" data-pts="5"><label for="g3">Aparece, mas com informação errada ou desatualizada</label></div>
+              <div class="opcao"><input type="radio" name="q_google" id="g4" value="aparece_em_dia" data-pts="10"><label for="g4">Aparece com tudo em dia</label></div>
+            </div>
+          </div>
+
+          <p class="insight"><b>Pra pensar:</b> 9 em cada 10 compras hoje começam com uma busca no Google — mesmo quando terminam na loja física. Se você não aparece, o concorrente aparece por você.</p>
+        </div>
+
+        <!-- ETAPA 3 · ESTRUTURA -->
+        <div class="etapa" data-etapa="3">
+          <h3>Estrutura da empresa</h3>
+          <p class="dica">O básico que sustenta qualquer passo digital.</p>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Tem computador na empresa?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_pc" id="p1" value="nao" data-pts="0"><label for="p1">Não — tudo pelo celular</label></div>
+              <div class="opcao"><input type="radio" name="q_pc" id="p2" value="sim_pouco_usado" data-pts="3"><label for="p2">Sim, mas é pouco usado</label></div>
+              <div class="opcao"><input type="radio" name="q_pc" id="p3" value="sim_uso_diario" data-pts="6"><label for="p3">Sim, uso todo dia</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Como é a internet aí?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_net" id="n1" value="nao_tem" data-pts="0"><label for="n1">Não tem internet fixa</label></div>
+              <div class="opcao"><input type="radio" name="q_net" id="n2" value="instavel" data-pts="3"><label for="n2">Tem, mas vive caindo</label></div>
+              <div class="opcao"><input type="radio" name="q_net" id="n3" value="boa" data-pts="6"><label for="n3">Boa e estável</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Seus colaboradores usam internet no trabalho?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_colab" id="c1" value="sou_so_eu" data-pts="4"><label for="c1">Sou só eu na empresa</label></div>
+              <div class="opcao"><input type="radio" name="q_colab" id="c2" value="nao_usam" data-pts="0"><label for="c2">Não usam</label></div>
+              <div class="opcao"><input type="radio" name="q_colab" id="c3" value="so_celular" data-pts="3"><label for="c3">Usam, mas só o celular pessoal</label></div>
+              <div class="opcao"><input type="radio" name="q_colab" id="c4" value="faz_parte_rotina" data-pts="6"><label for="c4">Sim, faz parte da rotina de trabalho</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 4 · ATENDIMENTO -->
+        <div class="etapa" data-etapa="4">
+          <h3>Atendimento</h3>
+          <p class="dica">A parte onde quase toda MPE está perdendo dinheiro sem perceber.</p>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Quando um cliente chama no WhatsApp, em quanto tempo ele recebe resposta?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_tempo" id="t1" value="na_hora" data-pts="10"><label for="t1">Na hora, quase sempre</label></div>
+              <div class="opcao"><input type="radio" name="q_tempo" id="t2" value="algumas_horas" data-pts="5"><label for="t2">Em algumas horas</label></div>
+              <div class="opcao"><input type="radio" name="q_tempo" id="t3" value="dia_seguinte" data-pts="2"><label for="t3">Só no dia seguinte, às vezes</label></div>
+              <div class="opcao"><input type="radio" name="q_tempo" id="t4" value="quando_da" data-pts="0"><label for="t4">Quando dá — o WhatsApp vive lotado</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Você já perdeu venda porque demorou a responder?</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="radio" name="q_perdeu" id="pe1" value="sim_com_certeza" data-pts="0"><label for="pe1">Sim, com certeza</label></div>
+              <div class="opcao"><input type="radio" name="q_perdeu" id="pe2" value="acho_que_sim" data-pts="2"><label for="pe2">Acho que sim</label></div>
+              <div class="opcao"><input type="radio" name="q_perdeu" id="pe3" value="nao_sei" data-pts="4"><label for="pe3">Não sei dizer</label></div>
+              <div class="opcao"><input type="radio" name="q_perdeu" id="pe4" value="nunca" data-pts="8"><label for="pe4">Nunca — respondo rápido</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">E fora do horário — de noite, feriado, fim de semana?</span>
+            <div class="opcoes">
+              <div class="opcao"><input type="radio" name="q_fora" id="fo1" value="ninguem_responde" data-pts="0"><label for="fo1">Ninguém responde — fica pro dia seguinte</label></div>
+              <div class="opcao"><input type="radio" name="q_fora" id="fo2" value="eu_do_celular" data-pts="3"><label for="fo2">Eu respondo do celular, a qualquer hora (até de madrugada)</label></div>
+              <div class="opcao"><input type="radio" name="q_fora" id="fo3" value="tenho_alguem" data-pts="6"><label for="fo3">Tenho alguém que cobre</label></div>
+              <div class="opcao"><input type="radio" name="q_fora" id="fo4" value="ja_automatico" data-pts="10"><label for="fo4">Já é automático — responde sozinho</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Quantas vezes por dia vocês respondem as MESMAS perguntas (preço, horário, endereço, "tem entrega?")…</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="radio" name="q_repetidas" id="re1" value="o_dia_todo" data-pts="0"><label for="re1">O dia todo</label></div>
+              <div class="opcao"><input type="radio" name="q_repetidas" id="re2" value="algumas_vezes" data-pts="4"><label for="re2">Algumas vezes</label></div>
+              <div class="opcao"><input type="radio" name="q_repetidas" id="re3" value="quase_nunca" data-pts="8"><label for="re3">Quase nunca</label></div>
+            </div>
+          </div>
+
+          <div class="pergunta" data-req>
+            <span class="rotulo">Última: se o seu WhatsApp respondesse sozinho, na hora, 24 horas por dia — o que mudaria na sua empresa?</span>
+            <div class="opcoes colunas">
+              <div class="opcao"><input type="radio" name="q_mudaria" id="m1" value="venderia_mais" data-pts="0"><label for="m1">Eu venderia mais</label></div>
+              <div class="opcao"><input type="radio" name="q_mudaria" id="m2" value="tempo_de_volta" data-pts="0"><label for="m2">Eu teria meu tempo de volta</label></div>
+              <div class="opcao"><input type="radio" name="q_mudaria" id="m3" value="atenderia_melhor" data-pts="0"><label for="m3">Meu cliente seria melhor atendido</label></div>
+              <div class="opcao"><input type="radio" name="q_mudaria" id="m4" value="tudo_isso" data-pts="0"><label for="m4">Tudo isso junto</label></div>
+            </div>
+          </div>
+
+          <p class="insight"><b>Percebeu?</b> Cada resposta que demora, cada pergunta repetida e cada madrugada respondendo do celular tem o mesmo remédio: um <b>agente de IA</b> atendendo por você. Isso já existe, cabe no bolso de uma MPE — e é exatamente o que a gente instala.</p>
+        </div>
+
+        <!-- ETAPA 5 · CONTATO -->
+        <div class="etapa" data-etapa="5">
+          <h3>Quase lá — pra quem enviamos o resultado?</h3>
+          <p class="dica">Seu resultado aparece na hora, aqui na tela. Esses dados servem pra gente montar seu plano personalizado.</p>
+
+          <div class="campos-2">
+            <div class="campo" data-req-campo><label for="ct_nome">Seu nome*</label><input type="text" id="ct_nome" autocomplete="name" placeholder="Como você quer ser chamado(a)"></div>
+            <div class="campo" data-req-campo><label for="ct_empresa">Nome da empresa*</label><input type="text" id="ct_empresa" autocomplete="organization" placeholder="Ex.: Padaria Estrela"></div>
+          </div>
+          <div class="campos-2">
+            <div class="campo" data-req-campo><label for="ct_whats">WhatsApp*</label><input type="tel" id="ct_whats" autocomplete="tel" placeholder="(31) 9 9999-9999"></div>
+            <div class="campo"><label for="ct_email">E-mail</label><input type="email" id="ct_email" autocomplete="email" placeholder="voce@empresa.com.br"></div>
+          </div>
+          <div class="campos-2">
+            <div class="campo"><label for="ct_cidade">Cidade</label><input type="text" id="ct_cidade" autocomplete="address-level2" placeholder="Ex.: Belo Horizonte"></div>
+            <div class="campo">
+              <label for="ct_segmento">Ramo da empresa</label>
+              <select id="ct_segmento">
+                <option value="">Escolher…</option>
+                <option>Comércio / loja</option>
+                <option>Alimentação</option>
+                <option>Serviços</option>
+                <option>Saúde e beleza</option>
+                <option>Indústria / produção</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <p class="lgpd">Seus dados são usados apenas para gerar o diagnóstico e o contato sobre ele. Nada de spam, nada de repasse a terceiros.</p>
+        </div>
+
+        <div class="diag-nav">
+          <button type="button" class="btn btn-ghost" id="btnVoltar" style="visibility:hidden">← Voltar</button>
+          <button type="button" class="btn btn-primary" id="btnAvancar">Avançar →</button>
+        </div>
+      </form>
+
+      <!-- RESULTADO -->
+      <div class="resultado" id="telaResultado">
+        <span class="eyebrow">Seu resultado</span>
+        <div class="medidor">
+          <svg viewBox="0 0 210 120">
+            <path class="trilho" d="M15,110 A90,90 0 0 1 195,110"/>
+            <path class="valor" id="arcoValor" d="M15,110 A90,90 0 0 1 195,110"/>
+          </svg>
+          <div class="num"><span id="numScore">0</span><small>/100</small></div>
+        </div>
+        <div class="tier-chip" id="chipTier">—</div>
+        <h3 id="tituloTier" style="margin-top:6px"></h3>
+        <p class="leitura" id="leituraTier"></p>
+
+        <div class="eixos" id="listaEixos"></div>
+
+        <div class="dinheiro">
+          <h4>Onde sua empresa está deixando dinheiro na mesa:</h4>
+          <ul id="listaDinheiro"></ul>
+        </div>
+
+        <div class="resultado-ctas">
+          <a class="btn btn-primary" id="ctaWhats" href="#" target="_blank" rel="noopener">
+            <svg class="wa-ico" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.69 5.514l-.999 3.648 3.808-.999zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+            Quero meu plano — falar no WhatsApp
+          </a>
+          <button class="btn btn-ghost" id="btnRefazer" type="button">Refazer diagnóstico</button>
+        </div>
+        <p class="send-status" id="sendStatus"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="final">
+  <div class="wrap reveal">
+    <span class="eyebrow">Sem neurose, sem enrolação</span>
+    <h2>Sua empresa não precisa "virar tech". Precisa vender mais e trabalhar menos.</h2>
+    <p>É exatamente isso que site + agente de IA fazem por uma micro e pequena empresa. Comece pelo diagnóstico — ou chame a gente direto.</p>
+    <a class="btn btn-primary" href="https://wa.me/5531998675400?text=Ol%C3%A1%2C%20tenho%20uma%20MPE%20e%20quero%20saber%20como%20site%20%2B%20agente%20de%20IA%20funcionariam%20no%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.69 5.514l-.999 3.648 3.808-.999zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      Falar com a gente agora
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="./index.html" class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span><span>IBLT<small>Liderança Tecnológica</small></span></a>
+        <p class="about">Instituto Brasileiro de Liderança Tecnológica. Da micro empresa do bairro ao projeto de fomento nacional: tecnologia que vira resultado.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <a href="./index.html">Início</a>
+        <a href="./como-funciona.html">Como funciona</a>
+        <a href="./mpe.html">Para MPEs</a>
+        <a href="#diagnostico">Diagnóstico Maturidade Digital</a>
+      </div>
+      <div class="foot-col">
+        <h5>Fale conosco</h5>
+        <a href="https://wa.me/5531998675400?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20MPEs%20do%20IBLT." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:advogadolucasmorais@gmail.com">advogadolucasmorais@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="yr"></span> IBLT — Instituto Brasileiro de Liderança Tecnológica. Todos os direitos reservados.</small>
+      <small>Transformação digital para micro e pequenas empresas</small>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /conteudo -->
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="wa-float" href="https://wa.me/5531998675400?text=Ol%C3%A1%2C%20tenho%20uma%20MPE%20e%20quero%20conversar%20com%20o%20IBLT." target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.69 5.514l-.999 3.648 3.808-.999zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+</a>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- Reveal ao rolar ---- */
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ============================================================
+   DIAGNÓSTICO DE MATURIDADE DIGITAL
+   ============================================================ */
+const $  = s=>document.querySelector(s);
+const $$ = s=>Array.from(document.querySelectorAll(s));
+const IBLT = Object.assign({email:'advogadolucasmorais@gmail.com',whatsapp:'5531998675400',endpoint:''},(window.IBLT_CONFIG||{}));
+
+const TOTAL_ETAPAS = 5;
+let etapaAtual = 1;
+
+const progFill = $('#progFill'), progTxt = $('#progTxt');
+const btnVoltar = $('#btnVoltar'), btnAvancar = $('#btnAvancar');
+
+function pintaProgresso(){
+  progFill.style.width = (etapaAtual/TOTAL_ETAPAS*100) + '%';
+  progTxt.textContent = `Etapa ${etapaAtual} de ${TOTAL_ETAPAS}`;
+  btnVoltar.style.visibility = etapaAtual===1 ? 'hidden' : 'visible';
+  btnAvancar.textContent = etapaAtual===TOTAL_ETAPAS ? 'Ver meu resultado →' : 'Avançar →';
+}
+
+function mostraEtapa(n){
+  $$('.etapa').forEach(e=>e.classList.toggle('ativa', +e.dataset.etapa===n));
+  etapaAtual=n; pintaProgresso();
+  $('.diag-painel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function validaEtapa(n){
+  const etapa = $(`.etapa[data-etapa="${n}"]`);
+  let ok = true;
+  etapa.querySelectorAll('.pergunta[data-req]').forEach(p=>{
+    const marcado = p.querySelector('input:checked');
+    p.classList.toggle('erro', !marcado);
+    if(!marcado) ok=false;
+  });
+  etapa.querySelectorAll('.campo[data-req-campo]').forEach(c=>{
+    const v = c.querySelector('input').value.trim();
+    c.classList.toggle('erro', !v);
+    if(!v) ok=false;
+  });
+  return ok;
+}
+
+btnAvancar.addEventListener('click', ()=>{
+  if(!validaEtapa(etapaAtual)) return;
+  if(etapaAtual < TOTAL_ETAPAS){ mostraEtapa(etapaAtual+1); }
+  else { gerarResultado(); }
+});
+btnVoltar.addEventListener('click', ()=>{ if(etapaAtual>1) mostraEtapa(etapaAtual-1); });
+
+/* "Nenhuma dessas" é exclusivo no multi de redes */
+$$('input[name="q_redes"]').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    if(cb.hasAttribute('data-exclusivo') && cb.checked){
+      $$('input[name="q_redes"]').forEach(o=>{ if(o!==cb) o.checked=false; });
+    } else if(cb.checked){
+      const excl = $$('input[name="q_redes"]').find(o=>o.hasAttribute('data-exclusivo'));
+      if(excl) excl.checked=false;
+    }
+  });
+});
+
+/* ---- Pontuação ---- */
+const EIXOS = [
+  {nome:'Vendas e presença', qs:['q_vende','q_anuncio','q_freq','q_quem'], multi:'q_redes', max:42},
+  {nome:'Site e Google',     qs:['q_site','q_google'],                     max:22},
+  {nome:'Estrutura',         qs:['q_pc','q_net','q_colab'],                max:18},
+  {nome:'Atendimento',       qs:['q_tempo','q_perdeu','q_fora','q_repetidas'], max:36},
+];
+
+function pts(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? +el.dataset.pts : 0;
+}
+function val(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+function multiPts(name, cap){
+  return Math.min(cap, $$(`input[name="${name}"]:checked`).reduce((s,e)=>s + (+e.dataset.pts||0), 0));
+}
+function multiVals(name){ return $$(`input[name="${name}"]:checked`).map(e=>e.value); }
+
+function calcula(){
+  const eixos = EIXOS.map(e=>{
+    let soma = e.qs.reduce((s,q)=>s+pts(q),0);
+    if(e.multi) soma += multiPts(e.multi, 8);
+    const perc = Math.round(soma/e.max*100);
+    return {eixo:e.nome, score:perc, status: perc>=70?'Forte': perc>=40?'Em construção':'Frágil'};
+  });
+  const totalMax = EIXOS.reduce((s,e)=>s+e.max,0);
+  const totalPts = EIXOS.reduce((s,e,i)=>{
+    let soma = e.qs.reduce((x,q)=>x+pts(q),0);
+    if(e.multi) soma += multiPts(e.multi, 8);
+    return s+soma;
+  },0);
+  const score = Math.round(totalPts/totalMax*100);
+
+  let tier, leitura;
+  if(score < 30){ tier='Ponto de partida';
+    leitura='Sua empresa ainda opera quase toda no mundo analógico. A boa notícia: é daqui que vêm os saltos mais rápidos — os primeiros passos digitais costumam trazer resultado em semanas.';
+  } else if(score < 55){ tier='Primeiros passos digitais';
+    leitura='Já existe presença digital, mas ela é improvisada — depende de tempo sobrando e de memória. Com um pouco de estrutura, o que hoje é esforço vira rotina que roda sozinha.';
+  } else if(score < 80){ tier='Em crescimento';
+    leitura='Sua empresa já entendeu o jogo digital. O próximo nível é parar de fazer no braço o que a tecnologia faz melhor: atendimento, agenda e follow-up automáticos liberam você pra crescer.';
+  } else { tier='Pronta para escalar';
+    leitura='Estrutura digital acima da média das MPEs brasileiras. Agora é otimizar: IA no atendimento e automação fina para escalar sem inchar a folha de pagamento.';
+  }
+  return {score, tier, leitura, eixos};
+}
+
+/* ---- Onde está perdendo dinheiro (personalizado) ---- */
+function bulletsDinheiro(){
+  const b=[];
+  const tempo=val('q_tempo'), perdeu=val('q_perdeu'), fora=val('q_fora'), rep=val('q_repetidas');
+  const site=val('q_site'), goog=val('q_google'), freq=val('q_freq');
+
+  if(['algumas_horas','dia_seguinte','quando_da'].includes(tempo) || ['sim_com_certeza','acho_que_sim'].includes(perdeu))
+    b.push('<b>Resposta lenta no WhatsApp.</b> Um agente de IA responde em segundos, 24h — cada cliente atendido na hora é uma venda que deixa de ir pro concorrente.');
+  if(fora==='ninguem_responde')
+    b.push('<b>Cliente falando com o vácuo à noite e no fim de semana.</b> Pedido chega fora do horário o tempo todo; com atendimento automático, ele é respondido — e vira venda — antes de você acordar.');
+  if(fora==='eu_do_celular')
+    b.push('<b>Você é o plantão 24h da empresa.</b> Um agente de IA assume a madrugada e devolve seu descanso — sem deixar nenhum cliente sem resposta.');
+  if(['o_dia_todo','algumas_vezes'].includes(rep))
+    b.push('<b>Horas por semana respondendo preço, horário e endereço.</b> Essas perguntas repetidas são exatamente o que a IA responde sozinha, na hora, com o tom da sua empresa.');
+  if(['nao_nunca_pensei','nao_mas_quero'].includes(site))
+    b.push('<b>Sem site, quem procura no Google encontra o concorrente.</b> Um site profissional é seu vendedor aberto 24h — e o primeiro passo pra aparecer nas buscas.');
+  if(site==='tem_desatualizado')
+    b.push('<b>Site desatualizado passa impressão de empresa parada.</b> Atualizar e conectar o site ao WhatsApp transforma visita em pedido.');
+  if(['nao_sei','nao_aparece'].includes(goog))
+    b.push('<b>Sua empresa está invisível no Google.</b> Configurar o Perfil da Empresa (Maps) é rápido e coloca você na frente de quem procura seu ramo na sua cidade.');
+  if(goog==='aparece_desatualizado')
+    b.push('<b>Informação errada no Google espanta cliente.</b> Horário e endereço desatualizados geram viagem perdida — e avaliação ruim.');
+  if(['quase_nunca','quando_da'].includes(freq))
+    b.push('<b>Redes paradas esfriam o interesse.</b> Uma rotina simples de conteúdo (com apoio de IA) mantém sua vitrine digital viva sem consumir seu dia.');
+  if(!b.length)
+    b.push('<b>Sua base está sólida — o dinheiro agora está na escala.</b> IA no atendimento e automação de rotina permitem crescer o faturamento sem crescer o custo fixo na mesma proporção.');
+  return b;
+}
+
+/* ---- Resultado ---- */
+const ARC_LEN = 282.74; // comprimento do arco do medidor
+let ultimoDiag = null;
+
+function gerarResultado(){
+  const d = calcula();
+  const dados = {
+    nome:$('#ct_nome').value.trim(), empresa:$('#ct_empresa').value.trim(),
+    whatsapp:$('#ct_whats').value.trim(), email:$('#ct_email').value.trim(),
+    cidade:$('#ct_cidade').value.trim(), segmento:$('#ct_segmento').value,
+    respostas:{
+      vende:val('q_vende'), anuncio:val('q_anuncio'), redes:multiVals('q_redes'),
+      frequencia:val('q_freq'), quem_posta:val('q_quem'),
+      site:val('q_site'), google:val('q_google'),
+      computador:val('q_pc'), internet:val('q_net'), colaboradores:val('q_colab'),
+      tempo_resposta:val('q_tempo'), perdeu_venda:val('q_perdeu'),
+      fora_horario:val('q_fora'), perguntas_repetidas:val('q_repetidas'),
+      o_que_mudaria:val('q_mudaria')
+    }
+  };
+  const bullets = bulletsDinheiro();
+  ultimoDiag = {d, dados, bullets};
+
+  // pinta a tela
+  $('#formDiag').style.display='none';
+  $('.diag-topo').style.display='none';
+  const tela = $('#telaResultado'); tela.classList.add('ativa');
+
+  const arco = $('#arcoValor');
+  arco.style.strokeDasharray = ARC_LEN;
+  arco.style.strokeDashoffset = ARC_LEN;
+  requestAnimationFrame(()=>{ arco.style.strokeDashoffset = ARC_LEN*(1-d.score/100); });
+
+  // contador
+  const numEl = $('#numScore'); let n=0;
+  const passo = Math.max(1, Math.round(d.score/40));
+  const timer = setInterval(()=>{ n=Math.min(d.score,n+passo); numEl.textContent=n; if(n>=d.score) clearInterval(timer); }, 30);
+
+  $('#chipTier').textContent = `Maturidade Digital: ${d.score}/100`;
+  $('#tituloTier').textContent = d.tier;
+  $('#leituraTier').textContent = d.leitura;
+
+  $('#listaEixos').innerHTML = d.eixos.map(e=>`
+    <div class="eixo">
+      <div class="topo"><span>${e.eixo}</span><span>${e.score}% · ${e.status}</span></div>
+      <div class="barra"><div class="fill" data-w="${e.score}"></div></div>
+    </div>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    $$('#listaEixos .fill').forEach(f=>f.style.width=f.dataset.w+'%');
+  }));
+
+  $('#listaDinheiro').innerHTML = bullets.map(b=>`<li>${b}</li>`).join('');
+
+  const msg = encodeURIComponent(
+`Olá! Acabei de fazer o diagnóstico de Maturidade Digital no site do IBLT.
+Sou ${dados.nome}, da ${dados.empresa}${dados.segmento?` (${dados.segmento})`:''}${dados.cidade?`, de ${dados.cidade}`:''}.
+Meu resultado: ${d.score}/100 — ${d.tier}.
+Quero conversar sobre os próximos passos (site + agente de IA).`);
+  $('#ctaWhats').href = `https://wa.me/${IBLT.whatsapp}?text=${msg}`;
+
+  tela.scrollIntoView({behavior:'smooth',block:'start'});
+  saveToSupabase(dados, d, bullets);
+  if(IBLT.endpoint) sendToEndpoint(dados, d, bullets);
+}
+
+$('#btnRefazer').addEventListener('click', ()=>{
+  $('#telaResultado').classList.remove('ativa');
+  $('#formDiag').style.display='block';
+  $('.diag-topo').style.display='block';
+  $('#formDiag').reset();
+  $$('.pergunta').forEach(p=>p.classList.remove('erro'));
+  mostraEtapa(1);
+});
+
+/* ---- Persistência no Supabase (mesmo padrão dos demais diagnósticos) ---- */
+async function saveToSupabase(dados, d, bullets){
+  const cfg=(window.IBLT_CONFIG||{}).supabase;
+  const st=$('#sendStatus');
+  const configured = cfg && cfg.url && cfg.anonKey && !/SEU-PROJETO|SUA_ANON_KEY/.test((cfg.url||'')+(cfg.anonKey||''));
+  if(!configured || !window.supabase){ return; }
+  st.textContent='Salvando diagnóstico…'; st.className='send-status';
+  try{
+    const client=window.supabase.createClient(cfg.url,cfg.anonKey);
+    const { error }=await client.from(cfg.table||'diagnosticos').insert({
+      tipo:'Maturidade Digital', slug:'MPE', ativo:dados.empresa,
+      prontidao:d.score, tier:d.tier, frl:d.tier,
+      contato_email:dados.email||null, contato_tel:dados.whatsapp||null, contato_org:dados.empresa||null,
+      eixos:d.eixos,
+      proximos_passos:bullets.map(b=>b.replace(/<[^>]+>/g,'')),
+      dados:dados
+    });
+    if(error) throw error;
+    st.textContent='✓ Diagnóstico salvo com segurança.'; st.className='send-status ok';
+  }catch(e){
+    st.textContent='Não foi possível salvar online agora — mas seu resultado está aí em cima, e o WhatsApp funciona normalmente.'; st.className='send-status bad';
+  }
+}
+
+/* ---- Envio opcional (Formspree etc.) ---- */
+function sendToEndpoint(dados, d, bullets){
+  fetch(IBLT.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      _subject:`Maturidade Digital – ${dados.empresa} (${d.score}/100)`,
+      empresa:dados.empresa, nome:dados.nome, whatsapp:dados.whatsapp, email:dados.email,
+      cidade:dados.cidade, segmento:dados.segmento,
+      score:d.score, tier:d.tier, eixos:d.eixos,
+      oportunidades:bullets.map(b=>b.replace(/<[^>]+>/g,'')), respostas:dados.respostas
+    })
+  }).catch(()=>{});
+}
+
+pintaProgresso();
+</script>
+</body>
+</html>
