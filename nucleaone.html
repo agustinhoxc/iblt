@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUCLEA ONE — plataforma microfluídica brasileira de extração de DNA | IBLT</title>
+<meta name="description" content="NUCLEA ONE: cartucho microfluídico para extrair DNA no ponto de cuidado, nascido de pesquisa na UFMG e desenvolvido em cooperação com a HUST e com a Digifluidic/Universidade de Macau, na China, para as necessidades do Brasil.">
+<link rel="canonical" href="https://iblt.com.br/nucleaone">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F1419">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="IBLT — Instituto Brasileiro de Liderança Tecnológica">
+<meta property="og:title" content="NUCLEA ONE — diagnóstico molecular onde o Brasil precisa">
+<meta property="og:description" content="Plataforma microfluídica de extração de DNA nascida na UFMG, desenvolvida com parceiros chineses e tropicalizada para o SUS, o campo e a Amazônia.">
+<meta property="og:url" content="https://iblt.com.br/nucleaone">
+<meta property="og:image" content="https://iblt.com.br/nucleaone-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#0F1419; --bg-soft:#151B22; --bg-card:#1A222B;
+  --azul:#4AA3B8; --petroleo:#10454F; --ouro:#B39A68; --tinta:#8ECFDD; --ouro-claro:#D9C79C;
+  --ink:#E4E9EE; --white:#FFFFFF; --muted:#8A98A6; --faint:#63717D;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.16);
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:Arial,Calibri,'Helvetica Neue',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--azul);color:var(--bg)}
+a{color:inherit}
+svg,video,iframe,img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--white);font-weight:400;line-height:1.16;letter-spacing:-.012em}
+h2{font-size:clamp(1.85rem,3.5vw,2.7rem)}
+h3{font-size:1.42rem;margin-bottom:14px}
+h4{font-size:1.12rem;font-family:var(--sans);font-weight:700;color:var(--white);letter-spacing:0}
+p{max-width:68ch}
+p + p{margin-top:16px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.lead{font-size:1.1rem}
+.muted{color:var(--muted)}
+.skip{position:absolute;left:-9999px;top:10px;background:var(--azul);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:700;z-index:100}
+.skip:focus{left:14px}
+:focus-visible{outline:2px solid var(--tinta);outline-offset:3px;border-radius:3px}
+sup.r{font-size:.62em;line-height:0;margin-left:2px;top:-.5em;position:relative}
+sup.r a{color:var(--azul);text-decoration:none;font-weight:700}
+sup.r a:hover{text-decoration:underline}
+
+/* ---------------- NAV ---------------- */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(15,20,25,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:18px;position:relative}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--serif);font-size:1.1rem;color:var(--white);font-weight:700}
+.brand .mark{width:32px;height:32px;flex:none;color:var(--azul)}
+.brand small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;color:var(--muted);font-weight:600;text-transform:uppercase}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:.87rem;color:var(--muted);text-decoration:none;padding:6px 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a.ativo{color:var(--white);border-color:var(--ouro)}
+.nav-cta{font-size:.83rem;font-weight:700;color:var(--bg);background:var(--azul);padding:10px 15px;border-radius:8px;text-decoration:none;white-space:nowrap;transition:background .2s}
+.nav-cta:hover{background:var(--tinta)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line-2);color:var(--white);border-radius:8px;width:42px;height:40px;font-size:1.05rem;cursor:pointer}
+@media(max-width:1080px){
+  .nav-links{display:none;position:absolute;top:68px;left:-24px;right:-24px;flex-direction:column;align-items:stretch;gap:0;background:var(--bg-soft);border-bottom:1px solid var(--line);padding:4px 24px 14px}
+  .nav-links.aberto{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav-toggle{display:inline-grid;place-items:center}
+}
+@media(max-width:560px){.nav-cta{display:none}}
+
+/* ---------------- BOTÕES ---------------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:.97rem;border-radius:10px;padding:14px 22px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn-primary{background:var(--azul);color:var(--bg)}
+.btn-primary:hover{background:var(--tinta)}
+.btn-ghost{border-color:var(--line-2);color:var(--white);background:transparent}
+.btn-ghost:hover{border-color:var(--ouro);color:var(--ouro-claro)}
+.btn-sm{padding:11px 17px;font-size:.88rem}
+.wa-ico{width:18px;height:18px;fill:currentColor;flex:none}
+
+/* ---------------- HERO ---------------- */
+.hero{padding:74px 0 60px}
+.produto{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.produto .wordmark{font-family:var(--serif);font-size:1.02rem;letter-spacing:.22em;color:var(--white)}
+.produto .sep{width:1px;height:20px;background:var(--line-2)}
+.produto .desc{font-size:.89rem;color:var(--muted)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);gap:52px;align-items:end}
+.hero h1{font-size:clamp(2.25rem,5vw,4rem);line-height:1.05;max-width:18ch}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px;align-items:start}}
+
+/* ---------------- FIGURA DO CHIP ---------------- */
+.chip-fig{margin-top:54px;min-width:0;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--bg-soft)}
+.chip-stage{padding:20px 20px 4px;background-image:linear-gradient(rgba(142,207,221,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(142,207,221,.05) 1px,transparent 1px);background-size:32px 32px}
+.chip-cap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:6px 20px 16px;font-family:var(--serif);font-style:italic;font-size:.87rem;color:var(--muted)}
+.chip-cap button{font-family:var(--sans);font-style:normal;font-size:.79rem;font-weight:700;color:var(--ink);background:transparent;border:1px solid var(--line-2);border-radius:999px;padding:7px 15px;cursor:pointer;white-space:nowrap}
+.chip-cap button:hover{border-color:var(--ouro);color:var(--ouro-claro)}
+.ficha{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-2)}
+.ficha > div{padding:15px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ficha > div:nth-child(3n){border-right:0}
+.ficha > div:nth-last-child(-n+3){border-bottom:0}
+.ficha dt{font-size:.75rem;color:var(--muted);margin-bottom:3px}
+.ficha dd{font-size:.93rem;color:var(--white);line-height:1.45}
+@media(max-width:820px){
+  .ficha{grid-template-columns:1fr 1fr}
+  .ficha > div:nth-child(3n){border-right:1px solid var(--line)}
+  .ficha > div:nth-child(2n){border-right:0}
+  .ficha > div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+  .ficha > div:nth-last-child(-n+2){border-bottom:0}
+}
+@media(max-width:480px){
+  .ficha{grid-template-columns:1fr}
+  .ficha > div{border-right:0 !important;border-bottom:1px solid var(--line) !important}
+  .ficha > div:last-child{border-bottom:0 !important}
+}
+
+/* ---------------- CHIP (SVG) ---------------- */
+.chip .body{fill:#131D26;stroke:rgba(142,207,221,.30);stroke-width:1.4}
+.chip .edge{fill:none;stroke:rgba(142,207,221,.10);stroke-width:1}
+.chip .heater{fill:none;stroke:rgba(179,154,104,.5);stroke-width:1.2;stroke-dasharray:5 5}
+.chip .heater-trace{fill:none;stroke:rgba(179,154,104,.5);stroke-width:1.4;stroke-linejoin:round}
+.chip .ch-outer{fill:none;stroke:#17505B;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.chip .ch-inner{fill:none;stroke:var(--tinta);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+.chip .butt{stroke-linecap:butt}
+.chip .chamber{fill:#17505B;stroke:var(--tinta);stroke-width:1.3}
+.chip .magnet{fill:none;stroke:var(--azul);stroke-width:1.2;stroke-dasharray:3 4;opacity:.75}
+.chip .port{fill:var(--bg);stroke:var(--tinta);stroke-width:1.6}
+.chip .port-in{fill:var(--tinta)}
+.chip .np-cluster{fill:var(--azul)}
+.chip .lbl text{font-family:var(--sans);font-size:14px;fill:var(--ink)}
+.chip .lbl line{stroke:rgba(228,233,238,.26);stroke-width:1}
+.chip .lbl circle{fill:var(--ouro)}
+.chip .dim line{stroke:rgba(228,233,238,.22);stroke-width:1}
+.chip .dim text{font-family:var(--serif);font-style:italic;font-size:13px;fill:var(--muted)}
+.chip .dim .dim-bg{fill:var(--bg-soft)}
+.chip-hero .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:desenha 1.7s cubic-bezier(.62,.08,.2,1) .15s forwards}
+.chip-hero .fade{opacity:0;animation:aparece .7s ease forwards}
+.chip-hero .f1{animation-delay:.9s}
+.chip-hero .f2{animation-delay:1.25s}
+.chip-hero .f3{animation-delay:1.6s}
+@keyframes desenha{to{stroke-dashoffset:0}}
+@keyframes aparece{to{opacity:1}}
+@media(max-width:680px){
+  .chip-hero .lbl,.chip-hero .dim{display:none}
+  .chip-stage,.lab .palco{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .chip-stage .chip,.lab .palco .chip{min-width:600px}
+}
+/* chip interativo */
+.chip-lab .mk circle{fill:var(--bg);stroke:var(--ouro);stroke-width:1.4}
+.chip-lab .mk text{font-family:var(--sans);font-size:12px;font-weight:700;fill:var(--ouro-claro)}
+.chip-lab .zone{transition:opacity .35s ease}
+.chip-lab .hl{opacity:0;transition:opacity .35s ease}
+.chip-lab .hl-cells{fill:none;stroke:var(--tinta);stroke-width:1.3}
+.chip-lab .hl-bound,.chip-lab .hl-out{fill:var(--ouro-claro)}
+.chip-lab .hl-waste{fill:var(--azul)}
+.chip-lab[data-sel] .zone{opacity:.32}
+.chip-lab[data-sel="lise"] .zone-lise,
+.chip-lab[data-sel="captura"] .zone-captura,
+.chip-lab[data-sel="lavagem"] .zone-lavagem,
+.chip-lab[data-sel="lavagem"] .zone-captura,
+.chip-lab[data-sel="eluicao"] .zone-eluicao{opacity:1}
+.chip-lab[data-sel="lise"] .hl-cells,
+.chip-lab[data-sel="captura"] .hl-bound,
+.chip-lab[data-sel="lavagem"] .hl-bound,
+.chip-lab[data-sel="lavagem"] .hl-waste,
+.chip-lab[data-sel="eluicao"] .hl-out{opacity:1}
+.chip-lab[data-sel="lise"] .zone-lise .heater,
+.chip-lab[data-sel="lise"] .zone-lise .heater-trace{stroke:var(--ouro-claro)}
+.chip-lab[data-sel="captura"] .zone-captura .magnet{stroke:var(--ouro-claro);opacity:1}
+
+/* ---------------- CAPÍTULOS ---------------- */
+.cap{padding:104px 0;border-top:1px solid var(--line)}
+.cap-grid{display:grid;grid-template-columns:116px minmax(0,1fr);gap:0 44px;min-width:0}
+.cap-mark{position:sticky;top:104px;align-self:start}
+.cap-mark .num{font-family:var(--serif);font-size:3rem;color:var(--ouro);line-height:.9}
+.cap-mark .nome{font-size:.82rem;color:var(--muted);margin-top:10px;max-width:96px}
+.cap-head h2{max-width:20ch}
+.cap-head .lead{margin-top:18px;color:var(--ink)}
+.sub{margin-top:64px}
+.sub-lead{color:var(--muted);margin-top:-4px;margin-bottom:22px}
+@media(max-width:980px){
+  .cap{padding:76px 0}
+  .cap-grid{grid-template-columns:minmax(0,1fr)}
+  .cap-mark{position:static;display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .cap-mark .num{font-size:1.8rem}
+  .cap-mark .nome{margin-top:0;max-width:none}
+}
+
+/* ---------------- PRESSÕES + MAPA BRASIL ---------------- */
+.press{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:54px;align-items:start;margin-top:44px;min-width:0}
+.press-list{list-style:none}
+.press-list li{display:grid;grid-template-columns:148px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.press-list li:last-child{border-bottom:1px solid var(--line)}
+.press-list .n{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--ouro-claro)}
+.press-list .n small{display:block;font-family:var(--sans);font-size:.7rem;color:var(--muted);letter-spacing:.02em;margin-top:8px;line-height:1.4}
+.press-list h3{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.press-list p{font-size:.95rem;color:var(--muted);max-width:52ch}
+.mapa-br{position:sticky;top:100px}
+.brasil .rg{stroke-width:6.2}
+.brasil .rg-norte{stroke:#E4D2A2}
+.brasil .rg-nordeste{stroke:#D3BC8A}
+.brasil .rg-centro-oeste{stroke:#9C8A63}
+.brasil .rg-sul{stroke:#83745A}
+.brasil .rg-sudeste{stroke:#6E624E}
+.brasil .rg{transition:opacity .25s ease}
+.brasil[data-foco] .rg{opacity:.2}
+.brasil[data-foco="norte"] .rg-norte,.brasil[data-foco="nordeste"] .rg-nordeste,
+.brasil[data-foco="centro-oeste"] .rg-centro-oeste,.brasil[data-foco="sul"] .rg-sul,
+.brasil[data-foco="sudeste"] .rg-sudeste{opacity:1}
+.brasil .cid circle{fill:var(--ink)}
+.brasil .cid text{font-family:var(--sans);font-size:14px;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.brasil .cid.origem circle{fill:var(--ouro)}
+.brasil .cid.origem text{fill:var(--ouro-claro)}
+.legenda{list-style:none;margin-top:18px;display:grid;gap:7px}
+.legenda li{display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--muted);cursor:default}
+.legenda .sw{width:14px;height:14px;border-radius:3px;flex:none}
+.legenda b{color:var(--ink);font-weight:700;margin-left:auto;font-variant-numeric:tabular-nums}
+.fig-nota{font-family:var(--serif);font-style:italic;font-size:.85rem;color:var(--faint);margin-top:14px;max-width:46ch}
+@media(max-width:900px){.press{grid-template-columns:1fr;gap:38px}.mapa-br{position:static;max-width:440px}}
+@media(max-width:560px){.press-list li{grid-template-columns:1fr;gap:6px}}
+
+/* ---------------- DEFINIÇÕES (soberania) ---------------- */
+.defs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:26px}
+.defs > div{padding:18px 20px 0 0;border-top:2px solid var(--ouro);margin-right:22px}
+.defs dt{font-family:var(--sans);font-weight:700;color:var(--white);font-size:.98rem;margin-bottom:6px}
+.defs dd{font-size:.9rem;color:var(--muted)}
+@media(max-width:980px){.defs{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.defs{grid-template-columns:1fr}.defs > div{margin-right:0}}
+
+/* ---------------- VÍDEO ---------------- */
+.video{margin:52px auto 0;max-width:880px;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:var(--bg-soft)}
+.video .quadro{position:relative;aspect-ratio:16/9;background:#0C1218}
+.video .quadro > *{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video figcaption{padding:16px 20px;display:flex;gap:18px;justify-content:space-between;align-items:baseline;flex-wrap:wrap}
+.video figcaption b{font-family:var(--sans);font-size:.98rem;color:var(--white)}
+.video figcaption span{font-size:.88rem;color:var(--muted)}
+.vazio{display:grid;place-items:center;text-align:center;gap:10px;color:var(--faint);background-image:linear-gradient(rgba(142,207,221,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(142,207,221,.045) 1px,transparent 1px);background-size:32px 32px}
+.vazio .play{width:54px;height:54px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;margin:0 auto}
+.vazio .play svg{width:18px;height:18px;fill:var(--muted)}
+.vazio p{font-size:.86rem;max-width:34ch;margin:0 auto}
+
+/* ---------------- LINHA DO TEMPO ---------------- */
+.tl{list-style:none;margin-top:46px;position:relative}
+.tl > li{display:grid;grid-template-columns:118px 26px minmax(0,1fr);gap:0 18px;padding-bottom:40px;position:relative}
+.tl > li::before{content:"";position:absolute;left:130px;top:14px;bottom:-6px;width:1px;background:var(--line-2)}
+.tl > li:last-child{padding-bottom:0}
+.tl > li:last-child::before{display:none}
+.tl .quando{font-family:var(--serif);font-style:italic;color:var(--muted);text-align:right;font-size:.95rem;padding-top:1px}
+.tl .ponto{width:13px;height:13px;border-radius:50%;background:var(--azul);margin:7px auto 0;box-shadow:0 0 0 5px var(--bg)}
+.tl .parceria .ponto{background:var(--ouro)}
+.tl .proximo .ponto{background:var(--bg);border:1.6px solid var(--ouro)}
+.tl h3{font-size:1.24rem;margin-bottom:8px}
+.tl p{color:var(--muted);font-size:.98rem}
+.tl .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--azul);border:1px solid rgba(74,163,184,.4);border-radius:999px;padding:3px 10px;margin-bottom:10px}
+.tl .parceria .tag{color:var(--ouro-claro);border-color:rgba(179,154,104,.45)}
+.tl .proximo .tag{color:var(--muted);border-color:var(--line-2)}
+.cn-tiles{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;max-width:580px}
+.cn-tiles span{width:40px;height:52px;border:1px solid rgba(179,154,104,.45);border-radius:4px;display:grid;place-items:center;font-size:.72rem;font-weight:700;color:var(--ouro-claro);background:rgba(179,154,104,.07)}
+.cn-nota{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--faint);margin-top:12px}
+@media(max-width:720px){
+  .tl > li{grid-template-columns:26px minmax(0,1fr);gap:0 14px}
+  .tl > li::before{left:12px}
+  .tl .quando{grid-column:2;text-align:left;margin-bottom:6px}
+  .tl .ponto{grid-row:1;grid-column:1}
+  .tl .conteudo{grid-column:2}
+}
+
+/* ---------------- LABORATÓRIO DO CHIP ---------------- */
+.lab{margin-top:36px;min-width:0;border:1px solid var(--line-2);border-radius:18px;background:var(--bg-soft);overflow:hidden}
+.lab .palco{padding:18px 18px 6px;background-image:linear-gradient(rgba(142,207,221,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(142,207,221,.05) 1px,transparent 1px);background-size:32px 32px}
+.etapas{display:flex;gap:8px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--line)}
+.etapas button{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line-2);border-radius:999px;padding:9px 16px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.etapas button .n{font-family:var(--serif);color:var(--ouro);font-size:.95rem}
+.etapas button[aria-selected="true"]{color:var(--bg);background:var(--tinta);border-color:var(--tinta)}
+.etapas button[aria-selected="true"] .n{color:var(--petroleo)}
+.etapa-painel{padding:4px 22px 26px}
+.etapa-painel h4{margin-bottom:8px}
+.etapa-painel p{color:var(--muted);font-size:.98rem}
+
+/* ---------------- NANOPARTÍCULA ---------------- */
+.np-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:center;margin-top:30px}
+.np-fig{border:1px solid var(--line-2);border-radius:18px;background:var(--bg-soft);padding:10px}
+.np .np-core{fill:#243040;stroke:#5C6C7A;stroke-width:1.2}
+.np .np-shell{fill:rgba(142,207,221,.07);stroke:rgba(142,207,221,.55);stroke-width:1.2}
+.np .np-pei{fill:none;stroke:var(--azul);stroke-width:1.5;stroke-linecap:round}
+.np .np-plus{fill:none;stroke:var(--tinta);stroke-width:1.5;stroke-linecap:round;transition:opacity .5s ease}
+.np .np-t1{font-family:var(--sans);font-size:15px;font-weight:700;fill:var(--white)}
+.np .np-t2{font-family:var(--sans);font-size:12px;fill:var(--tinta)}
+.np .np-t3{font-family:var(--sans);font-size:13px;fill:var(--ouro-claro)}
+.np .np-s1,.np .np-s2{fill:none;stroke:var(--ouro-claro);stroke-width:2}
+.np .np-rung{stroke:rgba(179,154,104,.65);stroke-width:1.4}
+.np .np-dna{transform-box:view-box;transform-origin:170px 196px;transition:transform .9s cubic-bezier(.4,.1,.2,1),opacity .9s ease}
+.np.solto .np-dna{transform:translate(54px,-58px) rotate(11deg)}
+.np.solto .np-plus{opacity:.12}
+.np-estado{display:flex;gap:8px;margin:20px 0 22px}
+.np-estado button{font-family:var(--sans);font-size:.88rem;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line-2);border-radius:999px;padding:9px 18px;cursor:pointer}
+.np-estado button[aria-pressed="true"]{color:var(--bg);background:var(--ouro-claro);border-color:var(--ouro-claro)}
+.camadas{list-style:none;display:grid;gap:14px}
+.camadas li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:14px;align-items:start}
+.camadas .pt{width:13px;height:13px;border-radius:50%;margin-top:7px}
+.camadas b{color:var(--white)}
+.camadas p{font-size:.94rem;color:var(--muted);margin-top:2px}
+@media(max-width:900px){.np-grid{grid-template-columns:1fr;gap:26px}}
+
+/* ---------------- MÉTODO ---------------- */
+.metodo{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:26px;counter-reset:m}
+.metodo li{position:relative;padding-top:30px}
+.metodo li::before{counter-increment:m;content:counter(m);position:absolute;top:0;left:0;font-family:var(--serif);color:var(--ouro);font-size:1.1rem}
+.metodo li::after{content:"";position:absolute;top:9px;left:22px;right:-22px;height:1px;background:var(--line-2)}
+.metodo li:last-child::after{display:none}
+.metodo h4{font-size:1rem;margin-bottom:6px}
+.metodo p{font-size:.9rem;color:var(--muted)}
+@media(max-width:900px){.metodo{grid-template-columns:1fr 1fr}.metodo li::after{display:none}}
+@media(max-width:560px){.metodo{grid-template-columns:1fr}}
+
+/* ---------------- TRL ---------------- */
+.trl{margin-top:22px}
+.trl-barra{display:grid;grid-template-columns:repeat(9,1fr);gap:4px}
+.trl-barra span{height:10px;border-radius:3px;background:rgba(255,255,255,.07)}
+.trl-barra span.feito{background:var(--ouro)}
+.trl-barra span.meta{background:rgba(74,163,184,.45)}
+.trl-eixo{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin-top:8px;font-size:.72rem;color:var(--faint)}
+.trl-eixo b{display:block;color:var(--muted);font-size:.78rem;font-weight:700}
+.trl-nota{margin-top:18px;color:var(--muted);font-size:.95rem}
+@media(max-width:720px){.trl-eixo{display:none}}
+
+/* ---------------- CONFIGURAÇÕES DE PRODUTO ---------------- */
+.configs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:26px;border-top:1px solid var(--line-2)}
+.configs > div{padding:24px 26px 24px 0;border-right:1px solid var(--line)}
+.configs > div:last-child{border-right:0;padding-left:26px}
+.configs h4{margin-bottom:8px}
+.configs p{font-size:.95rem;color:var(--muted)}
+@media(max-width:700px){.configs{grid-template-columns:1fr}.configs > div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}.configs > div:last-child{padding-left:0;border-bottom:0}}
+
+/* ---------------- MAPA-MÚNDI ---------------- */
+.mundo-fig{margin-top:40px;min-width:0;border:1px solid var(--line-2);border-radius:18px;background:var(--bg-soft);padding:18px}
+.mundo .t-outros{stroke:#28323C;stroke-width:3.2}
+.mundo .t-br{stroke:var(--ouro);stroke-width:3.4}
+.mundo .t-cn{stroke:var(--azul);stroke-width:3.4}
+.mundo .arco{fill:none;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.55,.1,.25,1)}
+.mundo .arco-w{stroke:var(--tinta);stroke-width:1.7}
+.mundo .arco-z{stroke:var(--ouro-claro);stroke-width:1.4;opacity:.85;transition-delay:.35s}
+.mundo.visivel .arco{stroke-dashoffset:0}
+.mundo .pino .nucleo{fill:var(--white)}
+.mundo .pino-br .nucleo{fill:var(--ouro-claro)}
+.mundo .pino-cn .nucleo{fill:var(--tinta)}
+.mundo .pino .halo{fill:none;stroke:currentColor;stroke-width:1.2;opacity:0}
+.mundo .pino-br{color:var(--ouro-claro)}
+.mundo .pino-cn{color:var(--tinta)}
+.mundo.visivel .pino .halo{transform-box:fill-box;transform-origin:center;animation:pulso 2.6s ease-out 3}
+@keyframes pulso{0%{transform:scale(.5);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+.mundo .rot text{font-family:var(--sans);font-size:12.5px;fill:var(--muted);paint-order:stroke;stroke:var(--bg-soft);stroke-width:4px;stroke-linejoin:round}
+.mundo .rot .r1{fill:var(--ink);font-weight:700}
+.mundo-dados{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.mundo-dados .v{font-family:var(--serif);font-size:1.7rem;color:var(--tinta);line-height:1.1}
+.mundo-dados p{font-size:.88rem;color:var(--muted);margin-top:6px}
+@media(max-width:820px){
+  .mundo-fig{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:14px}
+  .mundo{min-width:700px}
+  .mundo-dados{grid-template-columns:1fr;gap:16px;min-width:0}
+}
+
+/* ---------------- PARCEIROS ---------------- */
+.parceiros{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px}
+.parceiros > article{padding:0 28px;border-left:1px solid var(--line)}
+.parceiros > article:first-child{padding-left:0;border-left:0}
+.parceiros > article:last-child{padding-right:0}
+.parceiros .onde{font-size:.78rem;color:var(--ouro);letter-spacing:.1em;margin-bottom:8px}
+.parceiros h3{font-size:1.2rem;margin-bottom:4px}
+.parceiros .papel{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:.95rem;margin-bottom:16px}
+.parceiros ul{list-style:none;display:grid;gap:10px;margin-bottom:18px}
+.parceiros li{font-size:.92rem;color:var(--muted);padding-left:15px;position:relative}
+.parceiros li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--azul)}
+.parceiros .bloco{border-top:1px solid var(--line);padding-top:14px}
+.parceiros .bloco dt{font-size:.74rem;color:var(--muted);margin-bottom:5px}
+.parceiros .bloco dd{font-size:.92rem;color:var(--ink)}
+.parceiros .bloco + .bloco{margin-top:14px}
+@media(max-width:900px){.parceiros{grid-template-columns:1fr;gap:34px}.parceiros > article{padding:0;border-left:0;border-top:1px solid var(--line);padding-top:26px}.parceiros > article:first-child{border-top:0;padding-top:0}}
+
+/* ---------------- CAMADAS DE COOPERAÇÃO ---------------- */
+.camadas-coop{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.camadas-coop > div{border-top:2px solid var(--azul);padding-top:16px}
+.camadas-coop > div:nth-child(3){border-top-color:var(--ouro)}
+.camadas-coop h4{font-size:1rem;margin-bottom:4px}
+.camadas-coop .quem{font-size:.8rem;color:var(--muted);margin-bottom:10px}
+.camadas-coop ul{list-style:none;display:grid;gap:7px}
+.camadas-coop li{font-size:.9rem;color:var(--muted);padding-left:14px;position:relative}
+.camadas-coop li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--line-2)}
+.converge{margin-top:26px;border:1px solid var(--line-2);border-radius:14px;padding:22px 24px;background:linear-gradient(180deg,rgba(74,163,184,.07),rgba(179,154,104,.05))}
+.converge h4{margin-bottom:6px}
+.converge p{font-size:.96rem;color:var(--ink)}
+@media(max-width:820px){.camadas-coop{grid-template-columns:1fr}}
+
+/* ---------------- FICA NO BRASIL ---------------- */
+.fica{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:20px}
+.fica li{font-size:.95rem;color:var(--ink);padding-left:22px;position:relative}
+.fica li::before{content:"";position:absolute;left:0;top:11px;width:11px;height:1px;background:var(--ouro)}
+@media(max-width:700px){.fica{grid-template-columns:1fr}}
+
+/* ---------------- TROPICALIZAÇÃO ---------------- */
+.tropic{margin-top:40px;border-top:1px solid var(--line-2)}
+.tropic > div{display:grid;grid-template-columns:minmax(0,.95fr) 34px minmax(0,1.05fr);gap:0 18px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.tropic .cond b{display:block;color:var(--white);font-size:1rem;margin-bottom:3px}
+.tropic .cond span{font-size:.9rem;color:var(--muted)}
+.tropic .seta{padding-top:6px;color:var(--faint)}
+.tropic .seta svg{width:22px;height:12px;stroke:currentColor;fill:none;stroke-width:1.4}
+.tropic .resp{font-size:.96rem;color:var(--ink)}
+@media(max-width:760px){
+  .tropic > div{grid-template-columns:1fr;gap:10px}
+  .tropic .seta{display:none}
+  .tropic .resp{padding-left:16px;border-left:2px solid var(--azul)}
+}
+
+/* ---------------- APLICAÇÕES ---------------- */
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 22px}
+.filtros button{font-family:var(--sans);font-size:.85rem;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line-2);border-radius:999px;padding:8px 15px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.filtros button[aria-pressed="true"]{color:var(--bg);background:var(--ouro-claro);border-color:var(--ouro-claro)}
+.apps{border-top:1px solid var(--line-2)}
+.app{border-bottom:1px solid var(--line)}
+.app[hidden]{display:none}
+.app > summary{display:grid;grid-template-columns:30px minmax(0,1.1fr) minmax(0,1.4fr) 24px;gap:18px;align-items:center;padding:20px 0;cursor:pointer;list-style:none}
+.app > summary::-webkit-details-marker{display:none}
+.app .ico{width:22px;height:22px;stroke:var(--azul);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.app .tit{font-family:var(--serif);font-size:1.12rem;color:var(--white)}
+.app .res{font-size:.93rem;color:var(--muted)}
+.app .mais{width:18px;height:18px;position:relative;justify-self:end}
+.app .mais::before,.app .mais::after{content:"";position:absolute;background:var(--ouro);transition:transform .25s ease}
+.app .mais::before{left:0;top:8px;width:18px;height:1.5px}
+.app .mais::after{left:8px;top:0;width:1.5px;height:18px}
+.app[open] .mais::after{transform:rotate(90deg)}
+.app[open] .tit{color:var(--ouro-claro)}
+.app-corpo{padding:0 0 26px 48px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 34px}
+.app-corpo > div{border-top:1px solid var(--line);padding-top:10px}
+.app-corpo dt{font-size:.74rem;color:var(--muted);margin-bottom:4px}
+.app-corpo dd{font-size:.93rem;color:var(--ink)}
+@media(max-width:860px){
+  .app > summary{grid-template-columns:26px minmax(0,1fr) 20px;gap:14px}
+  .app .res{grid-column:2;grid-row:2;margin-top:4px}
+  .app-corpo{padding-left:40px;grid-template-columns:1fr}
+}
+@media(max-width:520px){.app-corpo{padding-left:0}}
+
+/* ---------------- ROTA / TRL LADDER ---------------- */
+.escada{margin-top:40px;--lab:236px}
+.escada .eixo{display:grid;grid-template-columns:var(--lab) repeat(9,1fr);font-size:.72rem;color:var(--faint);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.escada .eixo span{text-align:center}
+.escada .eixo span:first-child{text-align:left;color:var(--muted)}
+.escada .linhas{position:relative;margin-top:10px}
+.escada .hoje{position:absolute;top:-10px;bottom:-6px;width:1px;background:rgba(179,154,104,.5);left:calc(var(--lab) + (100% - var(--lab)) * .1667)}
+.escada .hoje span{position:absolute;top:-8px;left:8px;font-size:.7rem;color:var(--ouro-claro);white-space:nowrap}
+.escada .linha{display:grid;grid-template-columns:var(--lab) repeat(9,1fr);align-items:center;gap:0;padding:7px 0}
+.escada .rotulo{font-size:.88rem;color:var(--muted);padding-right:16px}
+.escada .barra{height:34px;border-radius:7px;border:1px solid rgba(74,163,184,.45);background:rgba(74,163,184,.13);color:var(--ink);font-family:var(--sans);font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
+.escada .barra:hover{background:rgba(74,163,184,.26)}
+.escada .barra[aria-pressed="true"]{background:var(--ouro-claro);border-color:var(--ouro-claro);color:var(--bg)}
+.fase-det{margin-top:26px;border:1px solid var(--line-2);border-radius:16px;padding:24px 26px;background:var(--bg-soft)}
+.fase-det h4{margin-bottom:8px}
+.fase-det p{color:var(--muted);font-size:.97rem}
+.fase-det .quem{margin-top:14px;font-size:.86rem;color:var(--ouro-claro)}
+.aviso{font-family:var(--serif);font-style:italic;color:var(--faint);font-size:.88rem;margin-top:16px}
+@media(max-width:820px){
+  .escada{--lab:0px}
+  .escada .eixo span:first-child{display:none}
+  .escada .eixo{grid-template-columns:repeat(9,1fr)}
+  .escada .linha{grid-template-columns:repeat(9,1fr)}
+  .escada .rotulo{grid-column:1/10;padding:0 0 4px}
+  .escada .barra{font-size:.74rem}
+}
+
+/* ---------------- LATAM ---------------- */
+.latam{margin-top:44px;border-left:2px solid var(--ouro);padding:6px 0 6px 26px}
+.latam h3{margin-bottom:10px}
+.latam p{color:var(--ink)}
+
+/* ---------------- PARTICIPE ---------------- */
+.participe{list-style:none;margin-top:36px;border-top:1px solid var(--line-2)}
+.participe li{display:flex;gap:26px;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.participe h3{font-size:1.16rem;margin-bottom:4px}
+.participe p{font-size:.94rem;color:var(--muted);max-width:56ch}
+.contato-direto{margin-top:26px;font-size:.95rem;color:var(--muted)}
+.contato-direto a{color:var(--tinta)}
+
+/* ---------------- REFERÊNCIAS ---------------- */
+.refs{padding:72px 0;border-top:1px solid var(--line);background:var(--bg-soft)}
+.refs h2{font-size:1.5rem;margin-bottom:20px}
+.refs ol{padding-left:20px;display:grid;gap:9px;max-width:92ch}
+.refs li{font-size:.86rem;color:var(--muted)}
+.refs a{color:var(--tinta);word-break:break-word}
+
+/* ---------------- RODAPÉ ---------------- */
+footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--bg)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;margin-bottom:34px}
+footer .brand{margin-bottom:14px}
+footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
+.foot-col h5{font-family:var(--sans);font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);margin-bottom:14px}
+.foot-col a{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;text-decoration:none}
+.foot-col a:hover{color:var(--azul)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom small{color:var(--faint);font-size:.8rem}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:28px}}
+
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:70;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 28px rgba(37,211,102,.34)}
+.wa-float svg{width:29px;height:29px;fill:#fff}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .chip-hero .draw{stroke-dashoffset:0}
+  .chip-hero .fade{opacity:1}
+  .mundo .arco{stroke-dashoffset:0}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./" aria-label="IBLT — página inicial">
+      <span class="mark"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span>
+      <span>IBLT<small>Liderança Tecnológica</small></span>
+    </a>
+    <nav class="nav-links" id="menu" aria-label="Seções desta página">
+      <a href="#problema">O problema</a>
+      <a href="#jornada">A jornada</a>
+      <a href="#tecnologia">A tecnologia</a>
+      <a href="#conexao">Brasil–China</a>
+      <a href="#aplicacoes">Aplicações</a>
+      <a href="#rota">A rota</a>
+    </nav>
+    <a class="nav-cta" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar sobre a plataforma." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Conversar sobre parceria</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="produto">
+      <span class="wordmark">NUCLEA ONE</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="desc">Plataforma microfluídica de extração de DNA para diagnóstico no ponto de cuidado</span>
+    </div>
+    <div class="hero-grid">
+      <h1>Diagnóstico molecular onde o Brasil precisa, com tecnologia que o Brasil domina.</h1>
+      <div>
+        <p class="lead">Um cartucho do tamanho de uma lâmina de microscópio, projetado para levar a amostra até o DNA purificado em menos de 30 minutos, sem centrífuga. A pesquisa nasceu na UFMG e hoje avança em cooperação com dois polos chineses de microfluídica — para virar um produto pensado para o SUS, para o campo e para as distâncias brasileiras.</p>
+        <div class="acoes">
+          <a class="btn btn-primary" href="#jornada">Conhecer a jornada</a>
+          <a class="btn btn-ghost" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar sobre parceria." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Conversar sobre parceria</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="chip-fig">
+      <div class="chip-stage"><svg class="chip chip-hero" viewBox="0 0 900 356" role="img" aria-labelledby="chipHeroT chipHeroD">
+<title id="chipHeroT">Esquema ilustrativo do cartucho NUCLEA ONE</title>
+<desc id="chipHeroD">A amostra entra pela esquerda, passa pela câmara de lise químico-térmica, por um misturador em serpentina e pela câmara de captura magnética; depois da eluição, o DNA purificado sai pela direita.</desc>
+<rect class="body" x="75" y="40" width="750" height="250" rx="16"/><rect class="edge" x="86" y="51" width="728" height="228" rx="9"/>
+<g class="fade f1">
+<rect class="heater" x="180" y="110" width="160" height="110" rx="18"/>
+<path class="heater-trace" d="M198 212 L204 218 L210 212 L216 218 L222 212 L228 218 L234 212 L240 218 L246 212 L252 218 L258 212 L264 218 L270 212 L276 218 L282 212 L288 218 L294 212 L300 218 L306 212 L312 218 L318 212"/>
+</g>
+<path class="ch-outer draw" pathLength="1" d="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/>
+<path class="ch-outer draw" pathLength="1" d="M495 90 V118"/>
+<path class="ch-outer draw" pathLength="1" d="M545 90 V118"/>
+<path class="ch-outer draw" pathLength="1" d="M560 212 V242"/>
+<g class="fade f1">
+<rect class="chamber" x="190" y="120" width="140" height="90" rx="14"/>
+<rect class="chamber" x="460" y="118" width="120" height="94" rx="12"/>
+<rect class="magnet" x="470" y="128" width="100" height="74" rx="8"/>
+</g>
+<path class="ch-inner draw" pathLength="1" d="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/>
+<g class="fade f2">
+<circle class="port" cx="135" cy="165" r="16"/><circle class="port-in" cx="135" cy="165" r="5"/>
+<circle class="port" cx="495" cy="80" r="10"/><circle class="port-in" cx="495" cy="80" r="3"/>
+<circle class="port" cx="545" cy="80" r="10"/><circle class="port-in" cx="545" cy="80" r="3"/>
+<circle class="port" cx="560" cy="252" r="10"/><circle class="port-in" cx="560" cy="252" r="3"/>
+<circle class="port" cx="770" cy="165" r="16"/><circle class="port-in" cx="770" cy="165" r="5"/>
+<g class="np-cluster"><circle cx="505.9" cy="144.1" r="2.5"/><circle cx="532.1" cy="139.3" r="2.5"/><circle cx="522.9" cy="156.9" r="2.5"/><circle cx="484.6" cy="165.4" r="2.5"/><circle cx="483.0" cy="161.0" r="2.5"/><circle cx="514.0" cy="184.6" r="2.5"/><circle cx="489.9" cy="148.4" r="2.5"/><circle cx="530.2" cy="191.9" r="2.5"/><circle cx="526.2" cy="158.8" r="2.5"/><circle cx="548.7" cy="152.4" r="2.5"/><circle cx="491.5" cy="142.1" r="2.5"/><circle cx="504.7" cy="184.0" r="2.5"/><circle cx="494.5" cy="169.9" r="2.5"/><circle cx="531.1" cy="157.3" r="2.5"/><circle cx="523.8" cy="138.8" r="2.5"/><circle cx="534.4" cy="160.7" r="2.5"/><circle cx="505.1" cy="170.1" r="2.5"/><circle cx="516.3" cy="153.0" r="2.5"/><animate attributeName="opacity" values=".45;1;.45" dur="3.2s" repeatCount="indefinite"/></g>
+</g>
+<g class="flow"><g transform="translate(0 -4)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="2.00s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="2.00s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="2.00s" repeatCount="indefinite"/></circle></g><g transform="translate(0 3)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="3.66s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="3.66s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="3.66s" repeatCount="indefinite"/></circle></g><g transform="translate(0 -1)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="5.32s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="5.32s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="5.32s" repeatCount="indefinite"/></circle></g><g transform="translate(0 4)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="6.98s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="6.98s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="6.98s" repeatCount="indefinite"/></circle></g><g transform="translate(0 -3)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="8.64s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="8.64s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="8.64s" repeatCount="indefinite"/></circle></g><g transform="translate(0 1)"><circle r="3.4" fill="#8ECFDD" opacity="0"><animateMotion dur="10s" begin="10.30s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.563;0.563;1" keyTimes="0;0.45;0.63;1" path="M151 165 H330 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/><animate attributeName="fill" values="#8ECFDD;#8ECFDD;#D9C79C;#D9C79C" keyTimes="0;0.07;0.11;1" dur="10s" begin="10.30s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="10s" begin="10.30s" repeatCount="indefinite"/></circle></g></g>
+<g class="lbl fade f3"><g><line x1="260" y1="30" x2="260" y2="108"/><circle cx="260" cy="108" r="2.6"/><text x="260" y="22" text-anchor="middle">Lise químico-térmica</text></g><g><line x1="520" y1="30" x2="520" y2="116"/><circle cx="520" cy="116" r="2.6"/><text x="520" y="22" text-anchor="middle">Captura magnética</text></g><g><line x1="770" y1="30" x2="770" y2="147"/><circle cx="770" cy="147" r="2.6"/><text x="770" y="22" text-anchor="middle">DNA purificado</text></g><g><line x1="135" y1="302" x2="135" y2="183"/><circle cx="135" cy="183" r="2.6"/><text x="135" y="316" text-anchor="middle">Entrada da amostra</text></g><g><line x1="393" y1="302" x2="393" y2="207"/><circle cx="393" cy="207" r="2.6"/><text x="393" y="316" text-anchor="middle">Mistura em serpentina</text></g><g><line x1="655" y1="302" x2="655" y2="197"/><circle cx="655" cy="197" r="2.6"/><text x="655" y="316" text-anchor="middle">Eluição controlada</text></g></g>
+<g class="fade f3"><g class="dim"><line x1="75" y1="340" x2="825" y2="340"/><line x1="75" y1="334" x2="75" y2="346"/><line x1="825" y1="334" x2="825" y2="346"/><rect x="414" y="330" width="72" height="20" class="dim-bg"/><text x="450" y="345" text-anchor="middle">75,0 mm</text><line x1="858" y1="40" x2="858" y2="290"/><line x1="852" y1="40" x2="864" y2="40"/><line x1="852" y1="290" x2="864" y2="290"/><rect x="849" y="130" width="18" height="70" class="dim-bg"/><text transform="translate(862 165) rotate(90)" text-anchor="middle">25,0 mm</text></g></g>
+</svg></div>
+      <figcaption class="chip-cap">
+        <span>Esquema ilustrativo do cartucho: não reproduz a geometria do dispositivo.</span>
+        <button type="button" id="btnAnim" aria-pressed="false">Pausar animação</button>
+      </figcaption>
+      <dl class="ficha">
+        <div><dt>Formato</dt><dd>75,0 × 25,0 × 1,5 mm, o padrão de uma lâmina de microscopia</dd></div>
+        <div><dt>Materiais</dt><dd>PDMS na prototipagem, PMMA na versão para escala</dd></div>
+        <div><dt>Química de captura</dt><dd>Nanopartículas magnéticas Fe₃O₄@SiO₂@PEI</dd></div>
+        <div><dt>Meta de desempenho</dt><dd>Da amostra ao DNA em menos de 30 minutos, em seis matrizes biológicas</dd></div>
+        <div><dt>Saída</dt><dd>DNA de alto peso molecular (acima de 20 kb), apto a sequenciamento de leitura longa</dd></div>
+        <div><dt>Maturidade</dt><dd>TRL 2 hoje (ISO 16290:2013), com meta de TRL 4 no doutorado</dd></div>
+      </dl>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ I · O PROBLEMA ============================ -->
+<section class="cap" id="problema">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">I</div><div class="nome">O problema</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Um país continental que ainda importa a capacidade de diagnosticar.</h2>
+        <p class="lead">Soberania em saúde é conseguir produzir aqui aquilo de que o sistema de saúde depende para funcionar. No diagnóstico molecular, essa conta ainda não fecha. O Brasil tem dimensões continentais, desigualdade de acesso, um agronegócio que responde por um quarto da economia e um perfil epidemiológico próprio — e responde a tudo isso com tecnologia comprada pronta lá fora.</p>
+      </div>
+
+      <div class="press">
+        <ul class="press-list">
+          <li>
+            <div class="n">42%<small>das necessidades nacionais em saúde produzidas no país, em 2025</small></div>
+            <div>
+              <h3>A dependência é estrutural</h3>
+              <p>A meta da Nova Indústria Brasil é chegar a 70% até 2033. A missão da saúde é a única das seis que não deve alcançar o objetivo intermediário de 2026.<sup class="r"><a href="#ref-1">1</a></sup></p>
+            </div>
+          </li>
+          <li>
+            <div class="n">71,5%<small>da população depende exclusivamente do SUS</small></div>
+            <div>
+              <h3>O acesso é desigual</h3>
+              <p>No Norte, 14,7% das pessoas tinham algum plano de saúde; no Nordeste, 16,6%. No Sudeste, 37,5%. O diagnóstico precisa chegar onde o laboratório privado nunca chegou.<sup class="r"><a href="#ref-2">2</a></sup><sup class="r"><a href="#ref-3">3</a></sup></p>
+            </div>
+          </li>
+          <li>
+            <div class="n">1.915<small>municípios sem nenhum serviço médico privado</small></div>
+            <div>
+              <h3>A distância é o obstáculo</h3>
+              <p>São 34% das cidades brasileiras, onde vivem cerca de 15,7 milhões de pessoas; 92% delas têm menos de 20 mil habitantes. Minas Gerais lidera a lista, com 226 municípios.<sup class="r"><a href="#ref-4">4</a></sup></p>
+            </div>
+          </li>
+          <li>
+            <div class="n">6 mi<small>de casos prováveis de dengue em 2024</small></div>
+            <div>
+              <h3>A epidemiologia é nossa</h3>
+              <p>Mais de 6 milhões de casos e mais de 6 mil mortes: o maior número da série histórica iniciada em 2000. Arbovirose se enfrenta com triagem rápida em campo, exatamente onde não há laboratório central.<sup class="r"><a href="#ref-5">5</a></sup></p>
+            </div>
+          </li>
+          <li>
+            <div class="n">25,1%<small>do PIB brasileiro veio do agronegócio em 2025</small></div>
+            <div>
+              <h3>A sanidade agropecuária é economia</h3>
+              <p>R$ 3,20 trilhões dependem de lavouras e rebanhos saudáveis. Detectar um patógeno cedo, na fazenda, vale mais do que confirmá-lo semanas depois, no laboratório.<sup class="r"><a href="#ref-6">6</a></sup></p>
+            </div>
+          </li>
+        </ul>
+
+        <figure class="mapa-br">
+          <svg class="brasil" viewBox="0 0 464 449" role="img" aria-labelledby="brT brD">
+<title id="brT">Cobertura de planos de saúde por região do Brasil</title>
+<desc id="brD">Proporção da população com algum plano de saúde, médico ou odontológico, segundo a PNS 2019: Norte 14,7%; Nordeste 16,6%; Centro-Oeste 28,9%; Sul 32,8%; Sudeste 37,5%.</desc>
+<g fill="none" stroke-linecap="round">
+<path class="rg rg-norte" d="M158.8 14.5h0M110.6 23.5h0M136.9 23.5h0M145.7 23.5h0M154.4 23.5h0M163.2 23.5h0M250.7 23.5h0M115.0 32.6h0M123.8 32.6h0M132.5 32.6h0M141.3 32.6h0M150.0 32.6h0M158.8 32.6h0M246.3 32.6h0M255.1 32.6h0M119.4 41.6h0M128.2 41.6h0M136.9 41.6h0M145.7 41.6h0M154.4 41.6h0M206.9 41.6h0M215.7 41.6h0M241.9 41.6h0M250.7 41.6h0M58.1 50.6h0M66.9 50.6h0M75.6 50.6h0M119.4 50.6h0M128.2 50.6h0M136.9 50.6h0M145.7 50.6h0M154.4 50.6h0M163.2 50.6h0M189.4 50.6h0M198.2 50.6h0M206.9 50.6h0M215.7 50.6h0M224.4 50.6h0M233.2 50.6h0M241.9 50.6h0M250.7 50.6h0M259.4 50.6h0M66.9 59.6h0M75.6 59.6h0M84.4 59.6h0M93.1 59.6h0M101.9 59.6h0M110.6 59.6h0M119.4 59.6h0M128.2 59.6h0M136.9 59.6h0M145.7 59.6h0M154.4 59.6h0M163.2 59.6h0M171.9 59.6h0M180.7 59.6h0M189.4 59.6h0M198.2 59.6h0M206.9 59.6h0M215.7 59.6h0M224.4 59.6h0M233.2 59.6h0M241.9 59.6h0M250.7 59.6h0M259.4 59.6h0M53.8 68.6h0M62.5 68.6h0M71.3 68.6h0M80.0 68.6h0M88.8 68.6h0M97.5 68.6h0M106.3 68.6h0M115.0 68.6h0M123.8 68.6h0M132.5 68.6h0M141.3 68.6h0M150.0 68.6h0M158.8 68.6h0M167.5 68.6h0M176.3 68.6h0M185.0 68.6h0M193.8 68.6h0M202.5 68.6h0M211.3 68.6h0M220.0 68.6h0M228.8 68.6h0M237.6 68.6h0M246.3 68.6h0M255.1 68.6h0M263.8 68.6h0M272.6 68.6h0M58.1 77.6h0M66.9 77.6h0M75.6 77.6h0M84.4 77.6h0M93.1 77.6h0M101.9 77.6h0M110.6 77.6h0M119.4 77.6h0M128.2 77.6h0M136.9 77.6h0M145.7 77.6h0M154.4 77.6h0M163.2 77.6h0M171.9 77.6h0M180.7 77.6h0M189.4 77.6h0M198.2 77.6h0M206.9 77.6h0M215.7 77.6h0M224.4 77.6h0M233.2 77.6h0M241.9 77.6h0M250.7 77.6h0M259.4 77.6h0M268.2 77.6h0M276.9 77.6h0M285.7 77.6h0M294.4 77.6h0M58.1 86.7h0M66.9 86.7h0M75.6 86.7h0M84.4 86.7h0M93.1 86.7h0M101.9 86.7h0M110.6 86.7h0M119.4 86.7h0M128.2 86.7h0M136.9 86.7h0M145.7 86.7h0M154.4 86.7h0M163.2 86.7h0M171.9 86.7h0M180.7 86.7h0M189.4 86.7h0M198.2 86.7h0M206.9 86.7h0M215.7 86.7h0M224.4 86.7h0M233.2 86.7h0M241.9 86.7h0M250.7 86.7h0M259.4 86.7h0M268.2 86.7h0M276.9 86.7h0M285.7 86.7h0M294.4 86.7h0M303.2 86.7h0M58.1 95.7h0M66.9 95.7h0M75.6 95.7h0M84.4 95.7h0M93.1 95.7h0M101.9 95.7h0M110.6 95.7h0M119.4 95.7h0M128.2 95.7h0M136.9 95.7h0M145.7 95.7h0M154.4 95.7h0M163.2 95.7h0M171.9 95.7h0M180.7 95.7h0M189.4 95.7h0M198.2 95.7h0M206.9 95.7h0M215.7 95.7h0M224.4 95.7h0M233.2 95.7h0M241.9 95.7h0M250.7 95.7h0M259.4 95.7h0M268.2 95.7h0M276.9 95.7h0M285.7 95.7h0M294.4 95.7h0M303.2 95.7h0M58.1 104.7h0M66.9 104.7h0M75.6 104.7h0M84.4 104.7h0M93.1 104.7h0M101.9 104.7h0M110.6 104.7h0M119.4 104.7h0M128.2 104.7h0M136.9 104.7h0M145.7 104.7h0M154.4 104.7h0M163.2 104.7h0M171.9 104.7h0M180.7 104.7h0M189.4 104.7h0M198.2 104.7h0M206.9 104.7h0M215.7 104.7h0M224.4 104.7h0M233.2 104.7h0M241.9 104.7h0M250.7 104.7h0M259.4 104.7h0M268.2 104.7h0M276.9 104.7h0M285.7 104.7h0M294.4 104.7h0M58.1 113.7h0M66.9 113.7h0M75.6 113.7h0M84.4 113.7h0M93.1 113.7h0M101.9 113.7h0M110.6 113.7h0M119.4 113.7h0M128.2 113.7h0M136.9 113.7h0M145.7 113.7h0M154.4 113.7h0M163.2 113.7h0M171.9 113.7h0M180.7 113.7h0M189.4 113.7h0M198.2 113.7h0M206.9 113.7h0M215.7 113.7h0M224.4 113.7h0M233.2 113.7h0M241.9 113.7h0M250.7 113.7h0M259.4 113.7h0M268.2 113.7h0M276.9 113.7h0M285.7 113.7h0M31.9 122.8h0M40.6 122.8h0M49.4 122.8h0M58.1 122.8h0M66.9 122.8h0M75.6 122.8h0M84.4 122.8h0M93.1 122.8h0M101.9 122.8h0M110.6 122.8h0M119.4 122.8h0M128.2 122.8h0M136.9 122.8h0M145.7 122.8h0M154.4 122.8h0M163.2 122.8h0M171.9 122.8h0M180.7 122.8h0M189.4 122.8h0M198.2 122.8h0M206.9 122.8h0M215.7 122.8h0M224.4 122.8h0M233.2 122.8h0M241.9 122.8h0M250.7 122.8h0M259.4 122.8h0M268.2 122.8h0M276.9 122.8h0M23.1 131.8h0M31.9 131.8h0M40.6 131.8h0M49.4 131.8h0M58.1 131.8h0M66.9 131.8h0M75.6 131.8h0M84.4 131.8h0M93.1 131.8h0M101.9 131.8h0M110.6 131.8h0M119.4 131.8h0M128.2 131.8h0M136.9 131.8h0M145.7 131.8h0M154.4 131.8h0M163.2 131.8h0M171.9 131.8h0M180.7 131.8h0M189.4 131.8h0M198.2 131.8h0M206.9 131.8h0M215.7 131.8h0M224.4 131.8h0M233.2 131.8h0M241.9 131.8h0M250.7 131.8h0M259.4 131.8h0M268.2 131.8h0M276.9 131.8h0M285.7 131.8h0M18.8 140.8h0M27.5 140.8h0M36.3 140.8h0M45.0 140.8h0M53.8 140.8h0M62.5 140.8h0M71.3 140.8h0M80.0 140.8h0M88.8 140.8h0M97.5 140.8h0M106.3 140.8h0M115.0 140.8h0M123.8 140.8h0M132.5 140.8h0M141.3 140.8h0M150.0 140.8h0M158.8 140.8h0M167.5 140.8h0M176.3 140.8h0M185.0 140.8h0M193.8 140.8h0M202.5 140.8h0M211.3 140.8h0M220.0 140.8h0M228.8 140.8h0M237.6 140.8h0M246.3 140.8h0M255.1 140.8h0M263.8 140.8h0M272.6 140.8h0M281.3 140.8h0M290.1 140.8h0M14.4 149.8h0M23.1 149.8h0M31.9 149.8h0M40.6 149.8h0M49.4 149.8h0M58.1 149.8h0M66.9 149.8h0M75.6 149.8h0M84.4 149.8h0M93.1 149.8h0M101.9 149.8h0M110.6 149.8h0M119.4 149.8h0M128.2 149.8h0M136.9 149.8h0M145.7 149.8h0M154.4 149.8h0M163.2 149.8h0M171.9 149.8h0M180.7 149.8h0M189.4 149.8h0M198.2 149.8h0M206.9 149.8h0M215.7 149.8h0M224.4 149.8h0M233.2 149.8h0M241.9 149.8h0M250.7 149.8h0M259.4 149.8h0M268.2 149.8h0M276.9 149.8h0M285.7 149.8h0M18.8 158.8h0M27.5 158.8h0M36.3 158.8h0M45.0 158.8h0M53.8 158.8h0M62.5 158.8h0M71.3 158.8h0M80.0 158.8h0M88.8 158.8h0M97.5 158.8h0M106.3 158.8h0M115.0 158.8h0M123.8 158.8h0M132.5 158.8h0M141.3 158.8h0M150.0 158.8h0M158.8 158.8h0M167.5 158.8h0M176.3 158.8h0M185.0 158.8h0M193.8 158.8h0M202.5 158.8h0M211.3 158.8h0M220.0 158.8h0M228.8 158.8h0M237.6 158.8h0M246.3 158.8h0M255.1 158.8h0M263.8 158.8h0M272.6 158.8h0M281.3 158.8h0M290.1 158.8h0M298.8 158.8h0M23.1 167.9h0M31.9 167.9h0M40.6 167.9h0M49.4 167.9h0M58.1 167.9h0M66.9 167.9h0M75.6 167.9h0M84.4 167.9h0M93.1 167.9h0M101.9 167.9h0M110.6 167.9h0M119.4 167.9h0M128.2 167.9h0M136.9 167.9h0M198.2 167.9h0M206.9 167.9h0M215.7 167.9h0M224.4 167.9h0M233.2 167.9h0M241.9 167.9h0M250.7 167.9h0M259.4 167.9h0M268.2 167.9h0M276.9 167.9h0M285.7 167.9h0M294.4 167.9h0M36.3 176.9h0M53.8 176.9h0M62.5 176.9h0M71.3 176.9h0M80.0 176.9h0M106.3 176.9h0M115.0 176.9h0M123.8 176.9h0M132.5 176.9h0M141.3 176.9h0M263.8 176.9h0M272.6 176.9h0M281.3 176.9h0M290.1 176.9h0M298.8 176.9h0M49.4 185.9h0M58.1 185.9h0M66.9 185.9h0M110.6 185.9h0M119.4 185.9h0M128.2 185.9h0M136.9 185.9h0M268.2 185.9h0M276.9 185.9h0M285.7 185.9h0M294.4 185.9h0M303.2 185.9h0M106.3 194.9h0M115.0 194.9h0M123.8 194.9h0M132.5 194.9h0M141.3 194.9h0M150.0 194.9h0M263.8 194.9h0M272.6 194.9h0M281.3 194.9h0M290.1 194.9h0M298.8 194.9h0M119.4 203.9h0M128.2 203.9h0M136.9 203.9h0M145.7 203.9h0M154.4 203.9h0M259.4 203.9h0M268.2 203.9h0M276.9 203.9h0M285.7 203.9h0M294.4 203.9h0M303.2 203.9h0M141.3 213.0h0M150.0 213.0h0M272.6 213.0h0M281.3 213.0h0M290.1 213.0h0"/>
+<path class="rg rg-nordeste" d="M311.9 86.7h0M320.7 86.7h0M311.9 95.7h0M320.7 95.7h0M329.5 95.7h0M338.2 95.7h0M303.2 104.7h0M311.9 104.7h0M320.7 104.7h0M329.5 104.7h0M338.2 104.7h0M347.0 104.7h0M355.7 104.7h0M364.5 104.7h0M373.2 104.7h0M294.4 113.7h0M303.2 113.7h0M311.9 113.7h0M320.7 113.7h0M329.5 113.7h0M338.2 113.7h0M347.0 113.7h0M355.7 113.7h0M364.5 113.7h0M373.2 113.7h0M382.0 113.7h0M390.7 113.7h0M285.7 122.8h0M294.4 122.8h0M303.2 122.8h0M311.9 122.8h0M320.7 122.8h0M329.5 122.8h0M338.2 122.8h0M347.0 122.8h0M355.7 122.8h0M364.5 122.8h0M373.2 122.8h0M382.0 122.8h0M390.7 122.8h0M399.5 122.8h0M294.4 131.8h0M303.2 131.8h0M311.9 131.8h0M320.7 131.8h0M329.5 131.8h0M338.2 131.8h0M347.0 131.8h0M355.7 131.8h0M364.5 131.8h0M373.2 131.8h0M382.0 131.8h0M390.7 131.8h0M399.5 131.8h0M408.2 131.8h0M417.0 131.8h0M298.8 140.8h0M307.6 140.8h0M316.3 140.8h0M325.1 140.8h0M333.8 140.8h0M342.6 140.8h0M351.3 140.8h0M360.1 140.8h0M368.8 140.8h0M377.6 140.8h0M386.3 140.8h0M395.1 140.8h0M403.8 140.8h0M412.6 140.8h0M421.3 140.8h0M294.4 149.8h0M303.2 149.8h0M311.9 149.8h0M320.7 149.8h0M329.5 149.8h0M338.2 149.8h0M347.0 149.8h0M355.7 149.8h0M364.5 149.8h0M373.2 149.8h0M382.0 149.8h0M390.7 149.8h0M399.5 149.8h0M408.2 149.8h0M417.0 149.8h0M425.7 149.8h0M307.6 158.8h0M316.3 158.8h0M325.1 158.8h0M333.8 158.8h0M342.6 158.8h0M351.3 158.8h0M360.1 158.8h0M368.8 158.8h0M377.6 158.8h0M386.3 158.8h0M395.1 158.8h0M403.8 158.8h0M412.6 158.8h0M421.3 158.8h0M303.2 167.9h0M311.9 167.9h0M320.7 167.9h0M329.5 167.9h0M338.2 167.9h0M347.0 167.9h0M355.7 167.9h0M364.5 167.9h0M373.2 167.9h0M382.0 167.9h0M390.7 167.9h0M399.5 167.9h0M408.2 167.9h0M417.0 167.9h0M307.6 176.9h0M316.3 176.9h0M325.1 176.9h0M333.8 176.9h0M342.6 176.9h0M351.3 176.9h0M360.1 176.9h0M368.8 176.9h0M377.6 176.9h0M386.3 176.9h0M395.1 176.9h0M403.8 176.9h0M412.6 176.9h0M311.9 185.9h0M320.7 185.9h0M329.5 185.9h0M338.2 185.9h0M347.0 185.9h0M355.7 185.9h0M364.5 185.9h0M373.2 185.9h0M382.0 185.9h0M390.7 185.9h0M399.5 185.9h0M307.6 194.9h0M316.3 194.9h0M325.1 194.9h0M333.8 194.9h0M342.6 194.9h0M351.3 194.9h0M360.1 194.9h0M368.8 194.9h0M377.6 194.9h0M386.3 194.9h0M395.1 194.9h0M311.9 203.9h0M320.7 203.9h0M329.5 203.9h0M338.2 203.9h0M347.0 203.9h0M355.7 203.9h0M364.5 203.9h0M373.2 203.9h0M382.0 203.9h0M390.7 203.9h0M307.6 213.0h0M316.3 213.0h0M325.1 213.0h0M333.8 213.0h0M342.6 213.0h0M351.3 213.0h0M360.1 213.0h0M368.8 213.0h0M377.6 213.0h0M311.9 222.0h0M320.7 222.0h0M329.5 222.0h0M338.2 222.0h0M347.0 222.0h0M355.7 222.0h0M364.5 222.0h0M373.2 222.0h0M382.0 222.0h0M316.3 231.0h0M351.3 231.0h0M360.1 231.0h0M368.8 231.0h0M377.6 231.0h0M364.5 240.0h0M373.2 240.0h0M382.0 240.0h0M377.6 249.0h0M373.2 258.1h0"/>
+<path class="rg rg-centro-oeste" d="M145.7 167.9h0M154.4 167.9h0M163.2 167.9h0M171.9 167.9h0M180.7 167.9h0M189.4 167.9h0M150.0 176.9h0M158.8 176.9h0M167.5 176.9h0M176.3 176.9h0M185.0 176.9h0M193.8 176.9h0M202.5 176.9h0M211.3 176.9h0M220.0 176.9h0M228.8 176.9h0M237.6 176.9h0M246.3 176.9h0M255.1 176.9h0M145.7 185.9h0M154.4 185.9h0M163.2 185.9h0M171.9 185.9h0M180.7 185.9h0M189.4 185.9h0M198.2 185.9h0M206.9 185.9h0M215.7 185.9h0M224.4 185.9h0M233.2 185.9h0M241.9 185.9h0M250.7 185.9h0M259.4 185.9h0M158.8 194.9h0M167.5 194.9h0M176.3 194.9h0M185.0 194.9h0M193.8 194.9h0M202.5 194.9h0M211.3 194.9h0M220.0 194.9h0M228.8 194.9h0M237.6 194.9h0M246.3 194.9h0M255.1 194.9h0M163.2 203.9h0M171.9 203.9h0M180.7 203.9h0M189.4 203.9h0M198.2 203.9h0M206.9 203.9h0M215.7 203.9h0M224.4 203.9h0M233.2 203.9h0M241.9 203.9h0M250.7 203.9h0M158.8 213.0h0M167.5 213.0h0M176.3 213.0h0M185.0 213.0h0M193.8 213.0h0M202.5 213.0h0M211.3 213.0h0M220.0 213.0h0M228.8 213.0h0M237.6 213.0h0M246.3 213.0h0M255.1 213.0h0M263.8 213.0h0M298.8 213.0h0M163.2 222.0h0M171.9 222.0h0M180.7 222.0h0M189.4 222.0h0M198.2 222.0h0M206.9 222.0h0M215.7 222.0h0M224.4 222.0h0M233.2 222.0h0M241.9 222.0h0M250.7 222.0h0M259.4 222.0h0M268.2 222.0h0M276.9 222.0h0M285.7 222.0h0M294.4 222.0h0M303.2 222.0h0M158.8 231.0h0M167.5 231.0h0M176.3 231.0h0M185.0 231.0h0M193.8 231.0h0M202.5 231.0h0M211.3 231.0h0M220.0 231.0h0M228.8 231.0h0M237.6 231.0h0M246.3 231.0h0M255.1 231.0h0M263.8 231.0h0M272.6 231.0h0M281.3 231.0h0M290.1 231.0h0M298.8 231.0h0M307.6 231.0h0M163.2 240.0h0M171.9 240.0h0M180.7 240.0h0M189.4 240.0h0M198.2 240.0h0M206.9 240.0h0M215.7 240.0h0M224.4 240.0h0M233.2 240.0h0M241.9 240.0h0M250.7 240.0h0M259.4 240.0h0M268.2 240.0h0M276.9 240.0h0M285.7 240.0h0M294.4 240.0h0M185.0 249.0h0M193.8 249.0h0M202.5 249.0h0M211.3 249.0h0M220.0 249.0h0M228.8 249.0h0M237.6 249.0h0M246.3 249.0h0M255.1 249.0h0M263.8 249.0h0M272.6 249.0h0M281.3 249.0h0M290.1 249.0h0M180.7 258.1h0M189.4 258.1h0M198.2 258.1h0M206.9 258.1h0M215.7 258.1h0M224.4 258.1h0M233.2 258.1h0M241.9 258.1h0M250.7 258.1h0M259.4 258.1h0M268.2 258.1h0M276.9 258.1h0M285.7 258.1h0M193.8 267.1h0M202.5 267.1h0M211.3 267.1h0M220.0 267.1h0M228.8 267.1h0M237.6 267.1h0M246.3 267.1h0M255.1 267.1h0M263.8 267.1h0M272.6 267.1h0M281.3 267.1h0M290.1 267.1h0M189.4 276.1h0M198.2 276.1h0M206.9 276.1h0M215.7 276.1h0M224.4 276.1h0M233.2 276.1h0M241.9 276.1h0M250.7 276.1h0M259.4 276.1h0M185.0 285.1h0M193.8 285.1h0M202.5 285.1h0M211.3 285.1h0M220.0 285.1h0M228.8 285.1h0M237.6 285.1h0M246.3 285.1h0M180.7 294.1h0M189.4 294.1h0M198.2 294.1h0M206.9 294.1h0M215.7 294.1h0M224.4 294.1h0M233.2 294.1h0M241.9 294.1h0M185.0 303.2h0M193.8 303.2h0M202.5 303.2h0M211.3 303.2h0M220.0 303.2h0M228.8 303.2h0M237.6 303.2h0M189.4 312.2h0M206.9 312.2h0M215.7 312.2h0M224.4 312.2h0M233.2 312.2h0M211.3 321.2h0M220.0 321.2h0M215.7 330.2h0"/>
+<path class="rg rg-sudeste" d="M325.1 231.0h0M333.8 231.0h0M342.6 231.0h0M303.2 240.0h0M311.9 240.0h0M320.7 240.0h0M329.5 240.0h0M338.2 240.0h0M347.0 240.0h0M355.7 240.0h0M298.8 249.0h0M307.6 249.0h0M316.3 249.0h0M325.1 249.0h0M333.8 249.0h0M342.6 249.0h0M351.3 249.0h0M360.1 249.0h0M368.8 249.0h0M294.4 258.1h0M303.2 258.1h0M311.9 258.1h0M320.7 258.1h0M329.5 258.1h0M338.2 258.1h0M347.0 258.1h0M355.7 258.1h0M364.5 258.1h0M298.8 267.1h0M307.6 267.1h0M316.3 267.1h0M325.1 267.1h0M333.8 267.1h0M342.6 267.1h0M351.3 267.1h0M360.1 267.1h0M368.8 267.1h0M268.2 276.1h0M276.9 276.1h0M285.7 276.1h0M294.4 276.1h0M303.2 276.1h0M311.9 276.1h0M320.7 276.1h0M329.5 276.1h0M338.2 276.1h0M347.0 276.1h0M355.7 276.1h0M364.5 276.1h0M373.2 276.1h0M255.1 285.1h0M263.8 285.1h0M272.6 285.1h0M281.3 285.1h0M290.1 285.1h0M298.8 285.1h0M307.6 285.1h0M316.3 285.1h0M325.1 285.1h0M333.8 285.1h0M342.6 285.1h0M351.3 285.1h0M360.1 285.1h0M368.8 285.1h0M250.7 294.1h0M259.4 294.1h0M268.2 294.1h0M276.9 294.1h0M285.7 294.1h0M294.4 294.1h0M303.2 294.1h0M311.9 294.1h0M320.7 294.1h0M329.5 294.1h0M338.2 294.1h0M347.0 294.1h0M355.7 294.1h0M364.5 294.1h0M246.3 303.2h0M255.1 303.2h0M263.8 303.2h0M272.6 303.2h0M281.3 303.2h0M290.1 303.2h0M298.8 303.2h0M307.6 303.2h0M316.3 303.2h0M325.1 303.2h0M333.8 303.2h0M342.6 303.2h0M351.3 303.2h0M360.1 303.2h0M241.9 312.2h0M250.7 312.2h0M259.4 312.2h0M268.2 312.2h0M276.9 312.2h0M285.7 312.2h0M294.4 312.2h0M303.2 312.2h0M311.9 312.2h0M320.7 312.2h0M329.5 312.2h0M338.2 312.2h0M347.0 312.2h0M355.7 312.2h0M272.6 321.2h0M281.3 321.2h0M290.1 321.2h0M298.8 321.2h0M307.6 321.2h0M316.3 321.2h0M276.9 330.2h0M285.7 330.2h0M294.4 330.2h0M303.2 330.2h0M281.3 339.2h0M290.1 339.2h0"/>
+<path class="rg rg-sul" d="M228.8 321.2h0M237.6 321.2h0M246.3 321.2h0M255.1 321.2h0M263.8 321.2h0M224.4 330.2h0M233.2 330.2h0M241.9 330.2h0M250.7 330.2h0M259.4 330.2h0M268.2 330.2h0M220.0 339.2h0M228.8 339.2h0M237.6 339.2h0M246.3 339.2h0M255.1 339.2h0M263.8 339.2h0M272.6 339.2h0M224.4 348.3h0M233.2 348.3h0M241.9 348.3h0M250.7 348.3h0M259.4 348.3h0M268.2 348.3h0M276.9 348.3h0M228.8 357.3h0M237.6 357.3h0M246.3 357.3h0M255.1 357.3h0M263.8 357.3h0M272.6 357.3h0M281.3 357.3h0M233.2 366.3h0M241.9 366.3h0M250.7 366.3h0M259.4 366.3h0M268.2 366.3h0M276.9 366.3h0M211.3 375.3h0M220.0 375.3h0M228.8 375.3h0M237.6 375.3h0M246.3 375.3h0M255.1 375.3h0M263.8 375.3h0M272.6 375.3h0M206.9 384.3h0M215.7 384.3h0M224.4 384.3h0M233.2 384.3h0M241.9 384.3h0M250.7 384.3h0M259.4 384.3h0M268.2 384.3h0M193.8 393.4h0M202.5 393.4h0M211.3 393.4h0M220.0 393.4h0M228.8 393.4h0M237.6 393.4h0M246.3 393.4h0M255.1 393.4h0M263.8 393.4h0M198.2 402.4h0M206.9 402.4h0M215.7 402.4h0M224.4 402.4h0M233.2 402.4h0M241.9 402.4h0M250.7 402.4h0M259.4 402.4h0M211.3 411.4h0M220.0 411.4h0M228.8 411.4h0M237.6 411.4h0M246.3 411.4h0M255.1 411.4h0M233.2 420.4h0M241.9 420.4h0M237.6 429.4h0"/>
+</g>
+<g class="cid "><circle cx="159.1" cy="102.3" r="3.6"/><text x="168.1" y="106.3" text-anchor="start"><tspan x="168.1" dy="0">Manaus</tspan></text></g>
+<g class="cid "><circle cx="367.4" cy="171.3" r="3.6"/><text x="376.4" y="175.3" text-anchor="start"><tspan x="376.4" dy="0">Petrolina</tspan></text></g>
+<g class="cid "><circle cx="205.1" cy="206.0" r="3.6"/><text x="214.1" y="210.0" text-anchor="start"><tspan x="214.1" dy="0">Sorriso</tspan></text></g>
+<g class="cid origem"><circle cx="330.7" cy="287.1" r="5"/><text x="340.7" y="291.1" text-anchor="start"><tspan x="340.7" dy="0">UFMG</tspan><tspan x="340.7" dy="15">Belo Horizonte</tspan></text></g>
+</svg>
+          <ul class="legenda" id="legendaBr">
+            <li data-rg="norte"><span class="sw" style="background:#E4D2A2"></span> Norte <b>14,7%</b></li>
+            <li data-rg="nordeste"><span class="sw" style="background:#D3BC8A"></span> Nordeste <b>16,6%</b></li>
+            <li data-rg="centro-oeste"><span class="sw" style="background:#9C8A63"></span> Centro-Oeste <b>28,9%</b></li>
+            <li data-rg="sul"><span class="sw" style="background:#83745A"></span> Sul <b>32,8%</b></li>
+            <li data-rg="sudeste"><span class="sw" style="background:#6E624E"></span> Sudeste <b>37,5%</b></li>
+          </ul>
+          <figcaption class="fig-nota">População com algum plano de saúde, médico ou odontológico. Quanto mais claro o ponto, maior a dependência do SUS. Fonte: IBGE, PNS 2019.<sup class="r"><a href="#ref-3">3</a></sup></figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <h3>Soberania, na prática</h3>
+        <p class="sub-lead">Cinco compromissos que orientam o projeto — e que nos servem de critério a cada decisão técnica.</p>
+        <dl class="defs">
+          <div><dt>Suficiência</dt><dd>Produzir no país os testes de que o SUS, a vigilância e o agro precisam, sem depender de janelas de importação.</dd></div>
+          <div><dt>Sustentabilidade</dt><dd>Custo por teste compatível com compra pública e uma cadeia de insumos que não pare na alfândega.</dd></div>
+          <div><dt>Qualidade</dt><dd>Desempenho comprovado com amostras, cepas e condições de uso brasileiras.</dd></div>
+          <div><dt>Padrão nacional</dt><dd>Protocolos, dados e requisitos regulatórios construídos a partir da realidade do país.</dd></div>
+          <div><dt>Liderança tecnológica</dt><dd>Deter a propriedade intelectual e o conhecimento de fabricação, não apenas a licença de uso.</dd></div>
+        </dl>
+      </div>
+
+      <figure class="video" data-video="problema">
+        <div class="quadro"></div>
+        <figcaption><b>Por que o Brasil precisa de diagnóstico descentralizado</b><span>Vídeo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ II · A JORNADA ============================ -->
+<section class="cap" id="jornada">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">II</div><div class="nome">A jornada</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Da revisão de literatura a uma ponte com a China.</h2>
+        <p class="lead">A NUCLEA ONE não começou por um produto. Começou por uma pergunta de pesquisa e por um mapa honesto de quem está inventando a microfluídica hoje.</p>
+      </div>
+
+      <ol class="tl">
+        <li class="pesquisa">
+          <div class="quando">Mestrado</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Pesquisa</span>
+            <h3>Revisão sistemática e prospecção patentária</h3>
+            <p>Uma revisão sistemática conduzida com PRISMA 2020, estratégia PICOC e o protocolo de Kitchenham e Charters reuniu 143 estudos sobre extração de ácidos nucleicos e reengenharia de kits: artigos de 2024 e 2025 e patentes depositadas entre 2014 e 2026. A pergunta era simples e incômoda: por que extrair DNA continua caro, lento e dependente de estrutura laboratorial?</p>
+          </div>
+        </li>
+        <li class="pesquisa">
+          <div class="quando">O achado</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Pesquisa</span>
+            <h3>Todas as patentes de maior aderência vinham da China</h3>
+            <p>Na triagem do corpus, as doze patentes com maior aderência técnica ao problema tinham origem chinesa. Cada uma foi classificada por princípio de atuação, química de captura, profundidade de integração funcional e perfil geográfico-institucional. A fronteira da microfluídica está sendo escrita do outro lado do mundo — e ignorar isso seria escolher chegar atrasado.</p>
+            <div class="cn-tiles" aria-hidden="true"><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span><span>CN</span></div>
+            <p class="cn-nota">Doze de doze documentos selecionados na triagem patentária da revisão.</p>
+          </div>
+        </li>
+        <li class="pesquisa">
+          <div class="quando">A arquitetura</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Tecnologia</span>
+            <h3>Nasce o cartucho NUCLEA ONE</h3>
+            <p>Um cartucho monolítico que integra, em um único percurso, lise químico-térmica, captura magnética em fase sólida, lavagem e eluição controlada, usando nanopartículas Fe₃O₄@SiO₂@PEI. O desenvolvimento tem a Síntese Biotecnologia como parceira industrial da pesquisa, e a proteção da propriedade intelectual é estruturada com a CTIT, o escritório de transferência de tecnologia da UFMG.</p>
+          </div>
+        </li>
+        <li class="pesquisa">
+          <div class="quando">Junho de 2026</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Pesquisa</span>
+            <h3>Defesa do mestrado e início do doutorado</h3>
+            <p>Defendida a dissertação sobre extração de DNA em microfluídica, a pesquisa seguiu para o doutorado em Inovação Tecnológica do PPGIT/UFMG, sob orientação do Prof. Aristóteles Góes-Neto, com uma meta clara: levar a plataforma de TRL 2 a TRL 4.</p>
+          </div>
+        </li>
+        <li class="pesquisa">
+          <div class="quando">Estudo de mercado</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Mercado</span>
+            <h3>Nenhum componente nacional, nenhuma patente nacional</h3>
+            <p>No levantamento do mercado brasileiro de extração de DNA não encontramos componente nem patente de origem nacional: a demanda é atendida integralmente por importação. A partir daí, filtramos grupos de pesquisa, produtos e empresas chinesas até chegar a dois parceiros complementares — um científico, outro industrial.</p>
+          </div>
+        </li>
+        <li class="parceria">
+          <div class="quando">Agosto de 2026</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Parceria</span>
+            <h3>HUST, em Wuhan</h3>
+            <p>O Prof. Yiwei Li, diretor do Departamento de Engenharia Biomédica da Huazhong University of Science and Technology, formalizou por carta o acolhimento de uma missão técnica em Wuhan, com acesso à infraestrutura de microfabricação do grupo. A cooperação UFMG–HUST prevê patentes em cotitularidade e abriu caminho para um convite de doutorado sanduíche.</p>
+          </div>
+        </li>
+        <li class="parceria">
+          <div class="quando">Setembro de 2026</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Parceria</span>
+            <h3>Digifluidic e Universidade de Macau, em Zhuhai</h3>
+            <p>A Digifluidic, spin-off da Universidade de Macau especializada em microfluídica digital e em sistemas automáticos de análise de ácidos nucleicos, assinou carta de intenções com a UFMG para pesquisa e desenvolvimento conjuntos e exploração conjunta de propriedade intelectual, incluindo depósitos de patente no Brasil. Um memorando de entendimento com a Universidade de Macau completa a trilha.</p>
+          </div>
+        </li>
+        <li class="proximo">
+          <div class="quando">Agora</div>
+          <div class="ponto" aria-hidden="true"></div>
+          <div class="conteudo">
+            <span class="tag">Em andamento</span>
+            <h3>Missão técnica, imersão industrial e co-desenvolvimento</h3>
+            <p>Os próximos passos são a missão técnica em Wuhan, um período de imersão na fábrica em Zhuhai para absorver a metodologia de industrialização e o início do desenvolvimento conjunto do produto, com a CTIT/UFMG estruturando a proteção e a internacionalização da tecnologia.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ III · A TECNOLOGIA ============================ -->
+<section class="cap" id="tecnologia">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">III</div><div class="nome">A tecnologia</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Um laboratório inteiro no tamanho de uma lâmina.</h2>
+        <p class="lead">Microfluídica é a engenharia de conduzir volumes mínimos de líquido por canais de dimensões micrométricas. Em vez de tubos, pipetas e centrífugas, o protocolo inteiro acontece dentro de um cartucho descartável: menos reagente, menos manipulação, menos chance de contaminação — e o resultado perto de quem precisa dele.</p>
+      </div>
+
+      <div class="sub">
+        <h3>O caminho da amostra</h3>
+        <p class="sub-lead">Escolha uma etapa para ver o que acontece dentro do cartucho.</p>
+        <div class="lab">
+          <div class="palco"><svg class="chip chip-lab" viewBox="60 28 780 276" role="img" aria-labelledby="chipLabT">
+<title id="chipLabT">Cartucho NUCLEA ONE por etapas</title>
+<rect class="body" x="75" y="40" width="750" height="250" rx="16"/><rect class="edge" x="86" y="51" width="728" height="228" rx="9"/>
+<g class="zone zone-lise">
+  <rect class="heater" x="180" y="110" width="160" height="110" rx="18"/>
+  <path class="heater-trace" d="M198 212 L204 218 L210 212 L216 218 L222 212 L228 218 L234 212 L240 218 L246 212 L252 218 L258 212 L264 218 L270 212 L276 218 L282 212 L288 218 L294 212 L300 218 L306 212 L312 218 L318 212"/>
+  <path class="ch-outer" d="M151 165 H330"/>
+  <rect class="chamber" x="190" y="120" width="140" height="90" rx="14"/>
+  <path class="ch-inner" d="M151 165 H330"/>
+  <circle class="port" cx="135" cy="165" r="16"/><circle class="port-in" cx="135" cy="165" r="5"/>
+  <g class="hl hl-cells"><circle cx="212" cy="146" r="6"/><circle cx="236" cy="182" r="7"/><circle cx="262" cy="140" r="5.5"/><circle cx="286" cy="176" r="6.5"/><circle cx="306" cy="148" r="5"/><circle cx="248" cy="160" r="4"/></g>
+  <g class="mk"><circle cx="260" cy="92" r="11"/><text x="260" y="96.5" text-anchor="middle">1</text></g>
+</g>
+<g class="zone zone-captura">
+  <path class="ch-outer" d="M330 165 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580"/>
+  <rect class="chamber" x="460" y="118" width="120" height="94" rx="12"/>
+  <rect class="magnet" x="470" y="128" width="100" height="74" rx="8"/>
+  <path class="ch-inner" d="M330 165 H345 V125 H369 V205 H393 V125 H417 V205 H441 V165 H580"/>
+  <g class="np-cluster"><circle cx="505.9" cy="144.1" r="2.5"/><circle cx="532.1" cy="139.3" r="2.5"/><circle cx="522.9" cy="156.9" r="2.5"/><circle cx="484.6" cy="165.4" r="2.5"/><circle cx="483.0" cy="161.0" r="2.5"/><circle cx="514.0" cy="184.6" r="2.5"/><circle cx="489.9" cy="148.4" r="2.5"/><circle cx="530.2" cy="191.9" r="2.5"/><circle cx="526.2" cy="158.8" r="2.5"/><circle cx="548.7" cy="152.4" r="2.5"/><circle cx="491.5" cy="142.1" r="2.5"/><circle cx="504.7" cy="184.0" r="2.5"/><circle cx="494.5" cy="169.9" r="2.5"/><circle cx="531.1" cy="157.3" r="2.5"/><circle cx="523.8" cy="138.8" r="2.5"/><circle cx="534.4" cy="160.7" r="2.5"/><circle cx="505.1" cy="170.1" r="2.5"/><circle cx="516.3" cy="153.0" r="2.5"/></g>
+  <g class="mk"><circle cx="393" cy="98" r="11"/><text x="393" y="102.5" text-anchor="middle">2</text></g>
+</g>
+<g class="hl hl-bound"><circle cx="505.6" cy="157.8" r="2.2"/><circle cx="524.8" cy="153.8" r="2.2"/><circle cx="536.0" cy="168.2" r="2.2"/><circle cx="512.8" cy="174.6" r="2.2"/><circle cx="529.6" cy="178.6" r="2.2"/><circle cx="499.2" cy="169.0" r="2.2"/><circle cx="541.6" cy="157.0" r="2.2"/></g>
+<g class="zone zone-lavagem">
+  <path class="ch-outer butt" d="M495 90 V118"/><path class="ch-inner butt" d="M495 90 V118"/>
+  <circle class="port" cx="495" cy="80" r="10"/><circle class="port-in" cx="495" cy="80" r="3"/>
+  <path class="ch-outer butt" d="M560 212 V242"/><path class="ch-inner butt" d="M560 212 V242"/>
+  <circle class="port" cx="560" cy="252" r="10"/><circle class="port-in" cx="560" cy="252" r="3"/>
+  <g class="hl hl-waste"><circle cx="560" cy="226" r="2.2"/><circle cx="560" cy="238" r="2.2"/><circle cx="556" cy="252" r="2.2"/><circle cx="564" cy="250" r="2.2"/></g>
+  <g class="mk"><circle cx="467" cy="80" r="11"/><text x="467" y="84.5" text-anchor="middle">3</text></g>
+</g>
+<g class="zone zone-eluicao">
+  <path class="ch-outer butt" d="M545 90 V118"/><path class="ch-inner butt" d="M545 90 V118"/>
+  <circle class="port" cx="545" cy="80" r="10"/><circle class="port-in" cx="545" cy="80" r="3"/>
+  <path class="ch-outer" d="M580 165 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/>
+  <path class="ch-inner" d="M580 165 H600 V135 H622 V195 H644 V135 H666 V195 H688 V135 H710 V165 H754"/>
+  <circle class="port" cx="770" cy="165" r="16"/><circle class="port-in" cx="770" cy="165" r="5"/>
+  <g class="hl hl-out"><circle cx="611" cy="135" r="2.6"/><circle cx="633" cy="195" r="2.6"/><circle cx="655" cy="135" r="2.6"/><circle cx="677" cy="195" r="2.6"/><circle cx="699" cy="135" r="2.6"/><circle cx="732" cy="165" r="2.6"/><circle cx="770" cy="165" r="2.6"/></g>
+  <g class="mk"><circle cx="655" cy="110" r="11"/><text x="655" y="114.5" text-anchor="middle">4</text></g>
+</g>
+</svg></div>
+          <div class="etapas" role="tablist" aria-label="Etapas do cartucho">
+            <button type="button" role="tab" id="tab-lise" aria-selected="true" aria-controls="pn-lise" data-etapa="lise"><span class="n">1</span> Lise</button>
+            <button type="button" role="tab" id="tab-captura" aria-selected="false" aria-controls="pn-captura" data-etapa="captura"><span class="n">2</span> Captura magnética</button>
+            <button type="button" role="tab" id="tab-lavagem" aria-selected="false" aria-controls="pn-lavagem" data-etapa="lavagem"><span class="n">3</span> Lavagem</button>
+            <button type="button" role="tab" id="tab-eluicao" aria-selected="false" aria-controls="pn-eluicao" data-etapa="eluicao"><span class="n">4</span> Eluição</button>
+          </div>
+          <div class="etapa-painel" id="pn-lise" role="tabpanel" aria-labelledby="tab-lise" data-painel="lise">
+            <h4>Lise químico-térmica</h4>
+            <p>A amostra entra pelo canal principal e encontra o tampão de lise sob aquecimento controlado. Membranas e envoltórios se rompem e o DNA fica livre em solução, sem vórtex e sem centrífuga: o cartucho faz, em um percurso contínuo, o que a bancada faz em vários tubos.</p>
+          </div>
+          <div class="etapa-painel" id="pn-captura" role="tabpanel" aria-labelledby="tab-captura" data-painel="captura">
+            <h4>Captura magnética em fase sólida</h4>
+            <p>O lisado atravessa um misturador em serpentina, que aumenta o contato entre líquido e partículas, e chega à câmara de captura. O DNA adere à superfície das nanopartículas, retidas ali por um campo magnético externo, enquanto o restante da amostra segue o fluxo.</p>
+          </div>
+          <div class="etapa-painel" id="pn-lavagem" role="tabpanel" aria-labelledby="tab-lavagem" data-painel="lavagem">
+            <h4>Lavagem</h4>
+            <p>Com as partículas imobilizadas pelo ímã, um tampão de lavagem arrasta proteínas, sais e inibidores para a saída de descarte. É a etapa que define a pureza: inibidor que passa aqui atrapalha a amplificação ou o sequenciamento lá na frente.</p>
+          </div>
+          <div class="etapa-painel" id="pn-eluicao" role="tabpanel" aria-labelledby="tab-eluicao" data-painel="eluicao">
+            <h4>Eluição controlada</h4>
+            <p>Uma mudança controlada das condições químicas desfaz a ligação e libera o DNA já purificado, que percorre o canal de eluição — desenhado para preservar fragmentos longos — até a saída, pronto para amplificação ou sequenciamento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>A química por trás da captura</h3>
+        <p class="sub-lead">Três camadas, três funções. Alterne entre captura e liberação para ver o mecanismo.</p>
+        <div class="np-grid">
+          <figure class="np-fig"><svg class="np" viewBox="0 0 400 360" role="img" aria-labelledby="npT npD">
+<title id="npT">Nanopartícula Fe₃O₄@SiO₂@PEI</title>
+<desc id="npD">Núcleo de magnetita, casca de sílica e cobertura de polietilenoimina com cargas positivas que atraem o DNA.</desc>
+<circle class="np-shell" cx="170" cy="196" r="66"/>
+<circle class="np-core" cx="170" cy="196" r="44"/>
+<text class="np-t1" x="170" y="202" text-anchor="middle">Fe₃O₄</text>
+<text class="np-t2" x="170" y="146" text-anchor="middle">SiO₂</text>
+<path class="np-pei" d="M237.0 196.0L250.0 196.0M250.0 196.0L258.7 189.3M250.0 196.0L258.7 202.7M235.7 209.1L248.5 211.6M248.5 211.6L258.3 206.8M248.5 211.6L255.7 219.9M231.9 221.6L243.9 226.6M243.9 226.6L254.5 223.8M243.9 226.6L249.4 236.1M225.7 233.2L236.5 240.4M236.5 240.4L247.5 239.8M236.5 240.4L240.1 250.9M217.4 243.4L226.6 252.6M226.6 252.6L237.5 254.0M226.6 252.6L228.0 263.5M207.2 251.7L214.4 262.5M214.4 262.5L224.9 266.1M214.4 262.5L213.8 273.5M195.6 257.9L200.6 269.9M200.6 269.9L210.1 275.4M200.6 269.9L197.8 280.5M183.1 261.7L185.6 274.5M185.6 274.5L193.9 281.7M185.6 274.5L180.8 284.3M170.0 263.0L170.0 276.0M170.0 276.0L176.7 284.7M170.0 276.0L163.3 284.7M156.9 261.7L154.4 274.5M154.4 274.5L159.2 284.3M154.4 274.5L146.1 281.7M144.4 257.9L139.4 269.9M139.4 269.9L142.2 280.5M139.4 269.9L129.9 275.4M132.8 251.7L125.6 262.5M125.6 262.5L126.2 273.5M125.6 262.5L115.1 266.1M122.6 243.4L113.4 252.6M113.4 252.6L112.0 263.5M113.4 252.6L102.5 254.0M114.3 233.2L103.5 240.4M103.5 240.4L99.9 250.9M103.5 240.4L92.5 239.8M108.1 221.6L96.1 226.6M96.1 226.6L90.6 236.1M96.1 226.6L85.5 223.8M104.3 209.1L91.5 211.6M91.5 211.6L84.3 219.9M91.5 211.6L81.7 206.8M103.0 196.0L90.0 196.0M90.0 196.0L81.3 202.7M90.0 196.0L81.3 189.3M104.3 182.9L91.5 180.4M91.5 180.4L81.7 185.2M91.5 180.4L84.3 172.1M108.1 170.4L96.1 165.4M96.1 165.4L85.5 168.2M96.1 165.4L90.6 155.9M114.3 158.8L103.5 151.6M103.5 151.6L92.5 152.2M103.5 151.6L99.9 141.1M122.6 148.6L113.4 139.4M113.4 139.4L102.5 138.0M113.4 139.4L112.0 128.5M132.8 140.3L125.6 129.5M125.6 129.5L115.1 125.9M125.6 129.5L126.2 118.5M144.4 134.1L139.4 122.1M139.4 122.1L129.9 116.6M139.4 122.1L142.2 111.5M156.9 130.3L154.4 117.5M154.4 117.5L146.1 110.3M154.4 117.5L159.2 107.7M170.0 129.0L170.0 116.0M170.0 116.0L163.3 107.3M170.0 116.0L176.7 107.3M183.1 130.3L185.6 117.5M185.6 117.5L180.8 107.7M185.6 117.5L193.9 110.3M195.6 134.1L200.6 122.1M200.6 122.1L197.8 111.5M200.6 122.1L210.1 116.6M207.2 140.3L214.4 129.5M214.4 129.5L213.8 118.5M214.4 129.5L224.9 125.9M217.4 148.6L226.6 139.4M226.6 139.4L228.0 128.5M226.6 139.4L237.5 138.0M225.7 158.8L236.5 151.6M236.5 151.6L240.1 141.1M236.5 151.6L247.5 152.2M231.9 170.4L243.9 165.4M243.9 165.4L249.4 155.9M243.9 165.4L254.5 168.2M235.7 182.9L248.5 180.4M248.5 180.4L255.7 172.1M248.5 180.4L258.3 185.2"/>
+<path class="np-plus" d="M263.9 205.7h5.2M266.5 203.1v5.2M252.9 241.9h5.2M255.5 239.3v5.2M228.8 271.1h5.2M231.4 268.5v5.2M195.4 288.9h5.2M198.0 286.3v5.2M157.7 292.5h5.2M160.3 289.9v5.2M121.5 281.5h5.2M124.1 278.9v5.2M92.3 257.4h5.2M94.9 254.8v5.2M74.5 224.0h5.2M77.1 221.4v5.2M70.9 186.3h5.2M73.5 183.7v5.2M81.9 150.1h5.2M84.5 147.5v5.2M106.0 120.9h5.2M108.6 118.3v5.2M139.4 103.1h5.2M142.0 100.5v5.2M177.1 99.5h5.2M179.7 96.9v5.2M213.3 110.5h5.2M215.9 107.9v5.2M242.5 134.6h5.2M245.1 132.0v5.2M260.3 168.0h5.2M262.9 165.4v5.2"/>
+<g class="np-dna">
+  <path class="np-s1" d="M65.7 158.0 L65.0 155.9 L64.4 153.9 L64.0 151.8 L64.0 149.9 L64.2 148.1 L64.9 146.4 L66.0 145.0 L67.3 143.7 L69.0 142.6 L70.9 141.7 L73.0 140.8 L75.1 140.1 L77.1 139.3 L79.0 138.6 L80.7 137.7 L82.1 136.7 L83.2 135.5 L84.0 134.1 L84.6 132.5 L84.9 130.7 L85.0 128.7 L85.0 126.5 L85.0 124.3 L85.0 122.1 L85.2 120.0 L85.6 118.0 L86.2 116.2 L87.2 114.6 L88.4 113.3 L89.9 112.3 L91.7 111.7 L93.7 111.2 L95.8 111.0 L98.0 111.0 L100.2 111.0 L102.4 111.0 L104.4 110.9 L106.2 110.6 L107.9 110.1 L109.3 109.3 L110.5 108.3 L111.6 106.9 L112.5 105.2 L113.2 103.4 L114.0 101.4 L114.7 99.3 L115.5 97.2 L116.5 95.3 L117.5 93.6 L118.8 92.1 L120.2 91.0 L121.8 90.3 L123.6 90.0 L125.5 90.0 L127.6 90.3 L129.6 90.9 L131.7 91.6 L133.8 92.4 L135.8 93.1 L137.7 93.6 L139.5 94.0 L141.2 94.0 L142.8 93.7 L144.3 93.1 L145.8 92.1 L147.2 90.8 L148.5 89.3 L149.9 87.7 L151.3 86.0 L152.8 84.3 L154.4 82.9 L156.0 81.7 L157.6 80.8 L159.4 80.3 L161.1 80.2 L162.9 80.6 L164.7 81.3 L166.5 82.3 L168.3 83.6 L170.0 85.0 L171.7 86.4 L173.3 87.8 L174.9 88.9 L176.5 89.8 L178.1 90.4 L179.7 90.6 L181.3 90.5 L183.0 90.0 L184.8 89.2 L186.6 88.3 L188.5 87.2 L190.4 86.1 L192.3 85.0 L194.3 84.2 L196.2 83.7 L198.0 83.5 L199.8 83.7 L201.5 84.3 L203.1 85.3 L204.5 86.6 L205.8 88.2 L207.0 90.1 L208.1 92.0 L209.2 93.9 L210.3 95.7 L211.4 97.3 L212.6 98.6 L213.9 99.7 L215.4 100.4 L217.0 100.8 L218.7 100.8 L220.7 100.7 L222.7 100.4 L224.9 100.0 L227.1 99.6 L229.2 99.3 L231.3 99.3 L233.3 99.5 L235.1 100.0 L236.6 100.8 L238.0 102.0 L239.1 103.5 L239.9 105.3 L240.6 107.3 L241.1 109.4 L241.5 111.6 L241.8 113.7 L242.2 115.8 L242.7 117.6 L243.4 119.3 L244.3 120.7 L245.5 121.8 L246.9 122.7 L248.6 123.3 L250.5 123.8 L252.6 124.2 L254.7 124.6 L256.9 125.0 L259.0 125.5 L261.0 126.2 L262.7 127.1 L264.2 128.2 L265.3 129.6 L266.1 131.2 L266.6 133.0 L266.7 135.0 L266.6 137.1 L266.3 139.3 L266.0 141.4 L265.6 143.6 L265.3 145.6 L265.2 147.5 L265.3 149.3 L265.7 150.9 L266.5 152.3 L267.5 153.6 L268.9 154.8 L270.6 155.9 L272.4 157.0 L274.3 158.0"/>
+  <path class="np-s2" d="M65.7 158.0 L67.6 157.0 L69.4 155.9 L71.1 154.8 L72.5 153.6 L73.5 152.3 L74.3 150.9 L74.7 149.3 L74.8 147.5 L74.7 145.6 L74.4 143.6 L74.0 141.4 L73.7 139.3 L73.4 137.1 L73.3 135.0 L73.4 133.0 L73.9 131.2 L74.7 129.6 L75.8 128.2 L77.3 127.1 L79.0 126.2 L81.0 125.5 L83.1 125.0 L85.3 124.6 L87.4 124.2 L89.5 123.8 L91.4 123.3 L93.1 122.7 L94.5 121.8 L95.7 120.7 L96.6 119.3 L97.3 117.6 L97.8 115.8 L98.2 113.7 L98.5 111.6 L98.9 109.4 L99.4 107.3 L100.1 105.3 L100.9 103.5 L102.0 102.0 L103.4 100.8 L104.9 100.0 L106.7 99.5 L108.7 99.3 L110.8 99.3 L112.9 99.6 L115.1 100.0 L117.3 100.4 L119.3 100.7 L121.3 100.8 L123.0 100.8 L124.6 100.4 L126.1 99.7 L127.4 98.6 L128.6 97.3 L129.7 95.7 L130.8 93.9 L131.9 92.0 L133.0 90.1 L134.2 88.2 L135.5 86.6 L136.9 85.3 L138.5 84.3 L140.2 83.7 L142.0 83.5 L143.8 83.7 L145.7 84.2 L147.7 85.0 L149.6 86.1 L151.5 87.2 L153.4 88.3 L155.2 89.2 L157.0 90.0 L158.7 90.5 L160.3 90.6 L161.9 90.4 L163.5 89.8 L165.1 88.9 L166.7 87.8 L168.3 86.4 L170.0 85.0 L171.7 83.6 L173.5 82.3 L175.3 81.3 L177.1 80.6 L178.9 80.2 L180.6 80.3 L182.4 80.8 L184.0 81.7 L185.6 82.9 L187.2 84.3 L188.7 86.0 L190.1 87.7 L191.5 89.3 L192.8 90.8 L194.2 92.1 L195.7 93.1 L197.2 93.7 L198.8 94.0 L200.5 94.0 L202.3 93.6 L204.2 93.1 L206.2 92.4 L208.3 91.6 L210.4 90.9 L212.4 90.3 L214.5 90.0 L216.4 90.0 L218.2 90.3 L219.8 91.0 L221.2 92.1 L222.5 93.6 L223.5 95.3 L224.5 97.2 L225.3 99.3 L226.0 101.4 L226.8 103.4 L227.5 105.2 L228.4 106.9 L229.5 108.3 L230.7 109.3 L232.1 110.1 L233.8 110.6 L235.6 110.9 L237.6 111.0 L239.8 111.0 L242.0 111.0 L244.2 111.0 L246.3 111.2 L248.3 111.7 L250.1 112.3 L251.6 113.3 L252.8 114.6 L253.8 116.2 L254.4 118.0 L254.8 120.0 L255.0 122.1 L255.0 124.3 L255.0 126.5 L255.0 128.7 L255.1 130.7 L255.4 132.5 L256.0 134.1 L256.8 135.5 L257.9 136.7 L259.3 137.7 L261.0 138.6 L262.9 139.3 L264.9 140.1 L267.0 140.8 L269.1 141.7 L271.0 142.6 L272.7 143.7 L274.0 145.0 L275.1 146.4 L275.8 148.1 L276.0 149.9 L276.0 151.8 L275.6 153.9 L275.0 155.9 L274.3 158.0"/>
+  <path class="np-rung" d="M64.1 152.1L70.8 154.9M68.3 143.0L74.8 146.4M79.5 138.3L73.3 134.4M84.9 130.7L79.0 126.2M85.5 118.5L90.9 123.5M92.5 111.5L97.5 116.9M104.7 110.9L100.2 105.0M112.3 105.5L108.4 99.3M117.0 94.3L120.4 100.8M126.1 90.1L128.9 96.8M137.7 93.6L135.5 86.6M146.8 91.2L145.2 84.0M155.0 82.3L156.0 89.6M165.0 81.4L165.3 88.8M174.7 88.8L175.0 81.4M184.0 89.6L185.0 82.3M194.8 84.0L193.2 91.2M204.5 86.6L202.3 93.6M211.1 96.8L213.9 90.1M219.6 100.8L223.0 94.3M231.6 99.3L227.7 105.5M239.8 105.0L235.3 110.9M242.5 116.9L247.5 111.5M249.1 123.5L254.5 118.5M261.0 126.2L255.1 130.7M266.7 134.4L260.5 138.3M265.2 146.4L271.7 143.0M269.2 154.9L275.9 152.1"/>
+  <text class="np-t3" x="292.3" y="158.3">DNA</text>
+</g>
+</svg></figure>
+          <div>
+            <div class="np-estado" role="group" aria-label="Estado da nanopartícula">
+              <button type="button" id="npCaptura" aria-pressed="true">Captura</button>
+              <button type="button" id="npSolto" aria-pressed="false">Liberação</button>
+            </div>
+            <ul class="camadas">
+              <li><span class="pt" style="background:#5C6C7A"></span><div><b>Fe₃O₄ — núcleo magnético</b><p>A magnetita responde ao ímã externo: é o que permite prender as partículas dentro da câmara enquanto o líquido continua passando.</p></div></li>
+              <li><span class="pt" style="background:var(--tinta)"></span><div><b>SiO₂ — casca de sílica</b><p>Protege o núcleo da oxidação e da agregação e oferece uma superfície estável para receber a camada seguinte.</p></div></li>
+              <li><span class="pt" style="background:var(--azul)"></span><div><b>PEI — polímero catiônico</b><p>A polietilenoimina é rica em grupos amina. Protonadas, essas aminas ficam positivas e atraem o esqueleto de fosfato do DNA, que é negativo.</p></div></li>
+              <li><span class="pt" style="background:var(--ouro-claro)"></span><div><b>DNA — capturado e devolvido</b><p>A ligação é eletrostática, e não covalente: uma mudança controlada de pH e de força iônica enfraquece a atração e devolve o DNA íntegro à solução.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Como estamos construindo</h3>
+        <p class="sub-lead">Cinco etapas de desenvolvimento, do pó de nanopartícula ao cartucho fabricável.</p>
+        <ol class="metodo">
+          <li><h4>Síntese das nanopartículas</h4><p>Produção e caracterização das partículas Fe₃O₄@SiO₂@PEI, camada por camada.</p></li>
+          <li><h4>Projeto por simulação</h4><p>Canais, câmaras e misturadores dimensionados em dinâmica de fluidos computacional antes de qualquer protótipo físico.</p></li>
+          <li><h4>Prototipagem em PDMS</h4><p>Iteração rápida no silicone moldável que é padrão de laboratório, para testar geometrias em dias, não em meses.</p></li>
+          <li><h4>Validação funcional</h4><p>Rendimento, pureza e integridade do DNA medidos em diferentes matrizes biológicas.</p></li>
+          <li><h4>Migração para PMMA</h4><p>Transição para o acrílico, compatível com fabricação em escala e com um custo por cartucho que cabe em compra pública.</p></li>
+        </ol>
+      </div>
+
+      <div class="sub">
+        <h3>Onde estamos, sem maquiagem</h3>
+        <div class="trl">
+          <div class="trl-barra" aria-hidden="true">
+            <span class="feito"></span><span class="feito"></span><span class="meta"></span><span class="meta"></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="trl-eixo" aria-hidden="true">
+            <span><b>1</b>Princípios básicos</span>
+            <span><b>2</b>Conceito formulado</span>
+            <span><b>3</b>Prova de conceito</span>
+            <span><b>4</b>Validação em laboratório</span>
+            <span><b>5</b>Função crítica em ambiente relevante</span>
+            <span><b>6</b>Demonstração em ambiente relevante</span>
+            <span><b>7</b>Demonstração em ambiente operacional</span>
+            <span><b>8</b>Sistema qualificado</span>
+            <span><b>9</b>Sistema comprovado em operação</span>
+          </div>
+          <p class="trl-nota">A NUCLEA ONE está em TRL 2 pela escala da ISO 16290:2013 — conceito tecnológico formulado, com arquitetura definida e rota experimental desenhada. A meta do doutorado é TRL 4: componentes validados em laboratório. Dizer isso com clareza é parte do método: avaliador de fomento, investidor e parceiro industrial precisam saber exatamente o que já existe e o que ainda será construído.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Uma plataforma, duas configurações</h3>
+        <div class="configs">
+          <div>
+            <h4>Kit point-of-care</h4>
+            <p>Para unidades básicas, equipes de campo e vigilância: cartucho descartável de baixo custo, poucos passos manuais e leitura rápida no local da coleta.</p>
+          </div>
+          <div>
+            <h4>Plataforma de laboratório</h4>
+            <p>Para laboratórios de referência e centros de pesquisa: maior automação e rendimento, com DNA de alto peso molecular para sequenciamento de leitura longa.</p>
+          </div>
+        </div>
+        <p class="trl-nota">O modelo de negócio é equipamento mais cartuchos descartáveis, com a propriedade intelectual em mãos brasileiras e a fabricação feita em parceria — o mesmo arranjo que permitiu a empresas de diagnóstico crescerem sem imobilizar capital em fábrica própria.</p>
+      </div>
+
+      <figure class="video" data-video="tecnologia">
+        <div class="quadro"></div>
+        <figcaption><b>Como a NUCLEA ONE funciona</b><span>Vídeo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ IV · BRASIL–CHINA ============================ -->
+<section class="cap" id="conexao">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">IV</div><div class="nome">Brasil–China</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Fomos buscar parceria onde a microfluídica está sendo inventada.</h2>
+        <p class="lead">A prospecção mostrou que a nova geração de patentes em microfluídica vem da China. Havia dois caminhos: seguir comprando produto pronto, como o Brasil sempre fez, ou desenvolver tecnologia junto de quem está na fronteira e trazer esse conhecimento para cá. Escolhemos o segundo — e os dois grupos que procuramos responderam com cartas, não com catálogos.</p>
+      </div>
+
+      <figure class="mundo-fig">
+        <svg class="mundo" viewBox="0 0 800 354" role="img" aria-labelledby="mundoT mundoD">
+<title id="mundoT">A conexão Brasil–China</title>
+<desc id="mundoD">Arcos de círculo máximo ligam a UFMG, em Belo Horizonte, à HUST, em Wuhan, e à Digifluidic e à Universidade de Macau, em Zhuhai.</desc>
+<g fill="none" stroke-linecap="round">
+<path class="t-outros" d="M17 3h0M24 3h0M31 3h0M37 3h0M44 3h0M51 3h0M78 3h0M85 3h0M99 3h0M106 3h0M112 3h0M119 3h0M126 3h0M133 3h0M140 3h0M147 3h0M208 3h0M215 3h0M221 3h0M228 3h0M235 3h0M242 3h0M249 3h0M256 3h0M262 3h0M269 3h0M276 3h0M290 3h0M426 3h0M433 3h0M440 3h0M515 3h0M549 3h0M555 3h0M562 3h0M569 3h0M576 3h0M583 3h0M589 3h0M596 3h0M603 3h0M610 3h0M617 3h0M624 3h0M630 3h0M637 3h0M644 3h0M651 3h0M658 3h0M664 3h0M671 3h0M678 3h0M685 3h0M692 3h0M699 3h0M705 3h0M712 3h0M719 3h0M726 3h0M733 3h0M739 3h0M746 3h0M753 3h0M760 3h0M767 3h0M774 3h0M780 3h0M787 3h0M794 3h0M3 10h0M10 10h0M17 10h0M44 10h0M72 10h0M85 10h0M92 10h0M106 10h0M112 10h0M140 10h0M147 10h0M153 10h0M208 10h0M215 10h0M221 10h0M228 10h0M235 10h0M242 10h0M249 10h0M256 10h0M262 10h0M269 10h0M405 10h0M412 10h0M419 10h0M426 10h0M433 10h0M440 10h0M446 10h0M453 10h0M460 10h0M480 10h0M508 10h0M521 10h0M535 10h0M542 10h0M549 10h0M555 10h0M562 10h0M576 10h0M583 10h0M589 10h0M596 10h0M603 10h0M610 10h0M617 10h0M624 10h0M630 10h0M637 10h0M644 10h0M651 10h0M658 10h0M664 10h0M671 10h0M678 10h0M685 10h0M692 10h0M699 10h0M705 10h0M712 10h0M719 10h0M726 10h0M733 10h0M739 10h0M746 10h0M753 10h0M760 10h0M767 10h0M774 10h0M780 10h0M787 10h0M794 10h0M3 17h0M10 17h0M17 17h0M24 17h0M31 17h0M37 17h0M44 17h0M51 17h0M58 17h0M65 17h0M72 17h0M78 17h0M85 17h0M92 17h0M99 17h0M140 17h0M147 17h0M153 17h0M167 17h0M201 17h0M208 17h0M215 17h0M221 17h0M228 17h0M235 17h0M242 17h0M249 17h0M290 17h0M310 17h0M392 17h0M399 17h0M405 17h0M412 17h0M419 17h0M426 17h0M433 17h0M440 17h0M446 17h0M453 17h0M467 17h0M474 17h0M480 17h0M487 17h0M494 17h0M501 17h0M508 17h0M515 17h0M521 17h0M528 17h0M535 17h0M542 17h0M549 17h0M555 17h0M562 17h0M569 17h0M576 17h0M583 17h0M589 17h0M596 17h0M603 17h0M610 17h0M617 17h0M624 17h0M630 17h0M637 17h0M644 17h0M651 17h0M658 17h0M664 17h0M671 17h0M678 17h0M685 17h0M692 17h0M699 17h0M705 17h0M712 17h0M719 17h0M726 17h0M733 17h0M739 17h0M746 17h0M753 17h0M760 17h0M767 17h0M774 17h0M780 17h0M787 17h0M794 17h0M3 24h0M10 24h0M17 24h0M24 24h0M31 24h0M37 24h0M44 24h0M51 24h0M58 24h0M65 24h0M72 24h0M78 24h0M85 24h0M106 24h0M119 24h0M147 24h0M153 24h0M160 24h0M208 24h0M215 24h0M221 24h0M228 24h0M296 24h0M303 24h0M385 24h0M392 24h0M399 24h0M405 24h0M419 24h0M426 24h0M433 24h0M440 24h0M446 24h0M453 24h0M460 24h0M467 24h0M474 24h0M480 24h0M487 24h0M494 24h0M501 24h0M508 24h0M515 24h0M521 24h0M528 24h0M535 24h0M542 24h0M549 24h0M555 24h0M562 24h0M569 24h0M576 24h0M583 24h0M589 24h0M596 24h0M603 24h0M610 24h0M617 24h0M624 24h0M630 24h0M637 24h0M644 24h0M651 24h0M658 24h0M664 24h0M671 24h0M678 24h0M685 24h0M692 24h0M699 24h0M705 24h0M712 24h0M719 24h0M726 24h0M733 24h0M739 24h0M746 24h0M753 24h0M760 24h0M767 24h0M774 24h0M780 24h0M787 24h0M794 24h0M3 31h0M10 31h0M17 31h0M24 31h0M31 31h0M37 31h0M44 31h0M51 31h0M58 31h0M65 31h0M72 31h0M78 31h0M133 31h0M140 31h0M215 31h0M221 31h0M228 31h0M371 31h0M378 31h0M385 31h0M392 31h0M399 31h0M419 31h0M426 31h0M433 31h0M440 31h0M446 31h0M453 31h0M460 31h0M467 31h0M474 31h0M480 31h0M487 31h0M494 31h0M501 31h0M508 31h0M515 31h0M521 31h0M528 31h0M535 31h0M542 31h0M549 31h0M555 31h0M562 31h0M569 31h0M576 31h0M583 31h0M589 31h0M596 31h0M603 31h0M610 31h0M617 31h0M624 31h0M630 31h0M637 31h0M644 31h0M651 31h0M658 31h0M664 31h0M671 31h0M678 31h0M685 31h0M692 31h0M699 31h0M705 31h0M712 31h0M719 31h0M726 31h0M733 31h0M739 31h0M746 31h0M753 31h0M760 31h0M767 31h0M774 31h0M780 31h0M787 31h0M794 31h0M3 37h0M10 37h0M17 37h0M24 37h0M31 37h0M37 37h0M44 37h0M51 37h0M58 37h0M65 37h0M72 37h0M78 37h0M133 37h0M140 37h0M147 37h0M167 37h0M371 37h0M378 37h0M392 37h0M399 37h0M405 37h0M426 37h0M433 37h0M440 37h0M446 37h0M453 37h0M460 37h0M467 37h0M474 37h0M480 37h0M487 37h0M494 37h0M501 37h0M508 37h0M515 37h0M521 37h0M528 37h0M535 37h0M542 37h0M549 37h0M555 37h0M562 37h0M569 37h0M576 37h0M583 37h0M589 37h0M596 37h0M603 37h0M610 37h0M617 37h0M624 37h0M630 37h0M637 37h0M644 37h0M651 37h0M658 37h0M664 37h0M671 37h0M678 37h0M685 37h0M692 37h0M699 37h0M705 37h0M712 37h0M719 37h0M726 37h0M733 37h0M739 37h0M746 37h0M753 37h0M760 37h0M767 37h0M794 37h0M3 44h0M10 44h0M17 44h0M24 44h0M31 44h0M37 44h0M44 44h0M51 44h0M58 44h0M65 44h0M72 44h0M78 44h0M85 44h0M92 44h0M133 44h0M140 44h0M147 44h0M153 44h0M160 44h0M167 44h0M174 44h0M337 44h0M344 44h0M378 44h0M392 44h0M399 44h0M419 44h0M426 44h0M433 44h0M440 44h0M446 44h0M453 44h0M460 44h0M467 44h0M474 44h0M480 44h0M487 44h0M494 44h0M501 44h0M508 44h0M515 44h0M521 44h0M528 44h0M535 44h0M542 44h0M549 44h0M555 44h0M562 44h0M569 44h0M576 44h0M583 44h0M589 44h0M596 44h0M603 44h0M610 44h0M617 44h0M624 44h0M630 44h0M637 44h0M644 44h0M651 44h0M658 44h0M664 44h0M671 44h0M678 44h0M685 44h0M692 44h0M699 44h0M705 44h0M712 44h0M719 44h0M726 44h0M733 44h0M739 44h0M746 44h0M753 44h0M3 51h0M10 51h0M17 51h0M24 51h0M31 51h0M37 51h0M44 51h0M51 51h0M58 51h0M65 51h0M72 51h0M78 51h0M85 51h0M92 51h0M99 51h0M106 51h0M112 51h0M126 51h0M133 51h0M140 51h0M147 51h0M153 51h0M160 51h0M167 51h0M174 51h0M181 51h0M187 51h0M331 51h0M344 51h0M351 51h0M385 51h0M405 51h0M412 51h0M419 51h0M426 51h0M433 51h0M440 51h0M446 51h0M453 51h0M460 51h0M467 51h0M474 51h0M480 51h0M487 51h0M494 51h0M501 51h0M508 51h0M515 51h0M521 51h0M528 51h0M535 51h0M542 51h0M549 51h0M555 51h0M562 51h0M569 51h0M576 51h0M583 51h0M589 51h0M596 51h0M603 51h0M610 51h0M617 51h0M624 51h0M630 51h0M637 51h0M644 51h0M651 51h0M658 51h0M664 51h0M671 51h0M678 51h0M685 51h0M692 51h0M699 51h0M705 51h0M712 51h0M719 51h0M726 51h0M733 51h0M739 51h0M746 51h0M3 58h0M10 58h0M17 58h0M24 58h0M31 58h0M37 58h0M44 58h0M51 58h0M58 58h0M65 58h0M72 58h0M78 58h0M85 58h0M92 58h0M99 58h0M106 58h0M112 58h0M126 58h0M133 58h0M140 58h0M147 58h0M153 58h0M160 58h0M167 58h0M174 58h0M181 58h0M187 58h0M331 58h0M344 58h0M351 58h0M358 58h0M371 58h0M378 58h0M385 58h0M392 58h0M399 58h0M405 58h0M412 58h0M419 58h0M426 58h0M433 58h0M440 58h0M446 58h0M453 58h0M460 58h0M467 58h0M474 58h0M480 58h0M487 58h0M494 58h0M501 58h0M508 58h0M515 58h0M521 58h0M528 58h0M535 58h0M542 58h0M549 58h0M555 58h0M562 58h0M569 58h0M576 58h0M583 58h0M589 58h0M596 58h0M603 58h0M610 58h0M617 58h0M624 58h0M630 58h0M637 58h0M644 58h0M651 58h0M658 58h0M664 58h0M671 58h0M678 58h0M685 58h0M692 58h0M699 58h0M726 58h0M733 58h0M739 58h0M746 58h0M753 58h0M760 58h0M767 58h0M3 65h0M10 65h0M17 65h0M24 65h0M31 65h0M37 65h0M44 65h0M51 65h0M58 65h0M65 65h0M72 65h0M78 65h0M85 65h0M92 65h0M99 65h0M106 65h0M112 65h0M119 65h0M126 65h0M133 65h0M140 65h0M147 65h0M153 65h0M187 65h0M358 65h0M365 65h0M371 65h0M378 65h0M385 65h0M392 65h0M399 65h0M405 65h0M412 65h0M419 65h0M426 65h0M433 65h0M440 65h0M446 65h0M453 65h0M460 65h0M467 65h0M474 65h0M480 65h0M487 65h0M494 65h0M501 65h0M508 65h0M515 65h0M521 65h0M528 65h0M535 65h0M542 65h0M549 65h0M555 65h0M562 65h0M569 65h0M576 65h0M583 65h0M589 65h0M596 65h0M603 65h0M610 65h0M617 65h0M624 65h0M630 65h0M637 65h0M644 65h0M651 65h0M658 65h0M664 65h0M671 65h0M678 65h0M685 65h0M692 65h0M726 65h0M733 65h0M739 65h0M746 65h0M753 65h0M760 65h0M767 65h0M3 72h0M10 72h0M17 72h0M24 72h0M31 72h0M37 72h0M44 72h0M51 72h0M58 72h0M65 72h0M72 72h0M78 72h0M85 72h0M92 72h0M99 72h0M106 72h0M112 72h0M119 72h0M126 72h0M133 72h0M140 72h0M147 72h0M153 72h0M160 72h0M194 72h0M351 72h0M358 72h0M365 72h0M371 72h0M378 72h0M385 72h0M392 72h0M399 72h0M405 72h0M412 72h0M419 72h0M426 72h0M433 72h0M440 72h0M446 72h0M453 72h0M460 72h0M467 72h0M474 72h0M480 72h0M487 72h0M494 72h0M501 72h0M508 72h0M515 72h0M521 72h0M528 72h0M535 72h0M542 72h0M549 72h0M555 72h0M562 72h0M569 72h0M576 72h0M583 72h0M589 72h0M596 72h0M617 72h0M624 72h0M630 72h0M637 72h0M644 72h0M651 72h0M658 72h0M664 72h0M671 72h0M678 72h0M685 72h0M692 72h0M699 72h0M746 72h0M753 72h0M767 72h0M3 78h0M10 78h0M17 78h0M24 78h0M31 78h0M37 78h0M44 78h0M51 78h0M58 78h0M65 78h0M72 78h0M78 78h0M85 78h0M92 78h0M99 78h0M106 78h0M112 78h0M119 78h0M126 78h0M133 78h0M140 78h0M147 78h0M153 78h0M167 78h0M351 78h0M358 78h0M365 78h0M371 78h0M378 78h0M385 78h0M399 78h0M405 78h0M412 78h0M419 78h0M426 78h0M433 78h0M453 78h0M467 78h0M474 78h0M480 78h0M487 78h0M508 78h0M515 78h0M521 78h0M528 78h0M535 78h0M542 78h0M549 78h0M555 78h0M562 78h0M569 78h0M576 78h0M583 78h0M630 78h0M637 78h0M644 78h0M651 78h0M658 78h0M664 78h0M671 78h0M739 78h0M746 78h0M767 78h0M3 85h0M10 85h0M17 85h0M24 85h0M31 85h0M37 85h0M44 85h0M51 85h0M58 85h0M65 85h0M72 85h0M78 85h0M85 85h0M92 85h0M99 85h0M106 85h0M112 85h0M119 85h0M126 85h0M133 85h0M140 85h0M147 85h0M331 85h0M337 85h0M344 85h0M351 85h0M358 85h0M392 85h0M412 85h0M419 85h0M426 85h0M433 85h0M480 85h0M487 85h0M508 85h0M515 85h0M521 85h0M528 85h0M535 85h0M542 85h0M549 85h0M555 85h0M562 85h0M569 85h0M576 85h0M583 85h0M644 85h0M651 85h0M658 85h0M664 85h0M671 85h0M760 85h0M767 85h0M3 92h0M10 92h0M17 92h0M24 92h0M31 92h0M37 92h0M44 92h0M51 92h0M58 92h0M65 92h0M72 92h0M78 92h0M85 92h0M92 92h0M99 92h0M106 92h0M112 92h0M119 92h0M126 92h0M133 92h0M331 92h0M337 92h0M344 92h0M351 92h0M378 92h0M399 92h0M405 92h0M412 92h0M419 92h0M433 92h0M440 92h0M446 92h0M453 92h0M460 92h0M467 92h0M474 92h0M480 92h0M487 92h0M494 92h0M508 92h0M515 92h0M521 92h0M528 92h0M535 92h0M542 92h0M549 92h0M555 92h0M562 92h0M569 92h0M719 92h0M726 92h0M760 92h0M3 99h0M10 99h0M17 99h0M24 99h0M31 99h0M37 99h0M44 99h0M51 99h0M58 99h0M65 99h0M72 99h0M78 99h0M85 99h0M92 99h0M99 99h0M106 99h0M112 99h0M119 99h0M126 99h0M331 99h0M337 99h0M344 99h0M351 99h0M392 99h0M419 99h0M433 99h0M440 99h0M446 99h0M453 99h0M460 99h0M467 99h0M474 99h0M480 99h0M487 99h0M494 99h0M515 99h0M521 99h0M528 99h0M535 99h0M542 99h0M549 99h0M555 99h0M562 99h0M569 99h0M719 99h0M726 99h0M760 99h0M3 106h0M10 106h0M17 106h0M24 106h0M31 106h0M37 106h0M44 106h0M51 106h0M58 106h0M65 106h0M72 106h0M78 106h0M85 106h0M92 106h0M99 106h0M106 106h0M112 106h0M119 106h0M126 106h0M133 106h0M337 106h0M351 106h0M358 106h0M365 106h0M371 106h0M378 106h0M385 106h0M460 106h0M467 106h0M474 106h0M480 106h0M487 106h0M494 106h0M501 106h0M508 106h0M515 106h0M521 106h0M528 106h0M535 106h0M542 106h0M549 106h0M555 106h0M562 106h0M569 106h0M576 106h0M726 106h0M746 106h0M753 106h0M760 106h0M17 112h0M24 112h0M31 112h0M37 112h0M44 112h0M51 112h0M58 112h0M65 112h0M72 112h0M78 112h0M85 112h0M92 112h0M99 112h0M106 112h0M112 112h0M119 112h0M331 112h0M337 112h0M344 112h0M351 112h0M358 112h0M365 112h0M371 112h0M378 112h0M385 112h0M460 112h0M467 112h0M474 112h0M480 112h0M487 112h0M494 112h0M501 112h0M508 112h0M515 112h0M521 112h0M528 112h0M535 112h0M542 112h0M549 112h0M555 112h0M562 112h0M569 112h0M576 112h0M583 112h0M733 112h0M739 112h0M17 119h0M31 119h0M37 119h0M44 119h0M51 119h0M58 119h0M65 119h0M72 119h0M78 119h0M85 119h0M92 119h0M99 119h0M106 119h0M112 119h0M331 119h0M337 119h0M344 119h0M351 119h0M358 119h0M365 119h0M371 119h0M378 119h0M385 119h0M392 119h0M399 119h0M412 119h0M419 119h0M426 119h0M433 119h0M440 119h0M446 119h0M453 119h0M460 119h0M467 119h0M474 119h0M480 119h0M487 119h0M494 119h0M501 119h0M508 119h0M515 119h0M521 119h0M528 119h0M535 119h0M542 119h0M549 119h0M555 119h0M562 119h0M569 119h0M576 119h0M583 119h0M24 126h0M31 126h0M37 126h0M44 126h0M51 126h0M58 126h0M65 126h0M72 126h0M119 126h0M324 126h0M331 126h0M337 126h0M344 126h0M351 126h0M358 126h0M365 126h0M371 126h0M378 126h0M385 126h0M392 126h0M399 126h0M405 126h0M412 126h0M419 126h0M426 126h0M433 126h0M440 126h0M446 126h0M453 126h0M460 126h0M467 126h0M474 126h0M480 126h0M487 126h0M494 126h0M508 126h0M515 126h0M521 126h0M528 126h0M535 126h0M542 126h0M549 126h0M555 126h0M562 126h0M569 126h0M576 126h0M583 126h0M589 126h0M596 126h0M630 126h0M37 133h0M44 133h0M51 133h0M58 133h0M65 133h0M72 133h0M119 133h0M317 133h0M324 133h0M331 133h0M337 133h0M344 133h0M351 133h0M358 133h0M365 133h0M371 133h0M378 133h0M385 133h0M392 133h0M399 133h0M405 133h0M412 133h0M419 133h0M426 133h0M433 133h0M440 133h0M446 133h0M460 133h0M467 133h0M474 133h0M480 133h0M487 133h0M494 133h0M521 133h0M528 133h0M535 133h0M542 133h0M549 133h0M555 133h0M562 133h0M569 133h0M576 133h0M583 133h0M589 133h0M596 133h0M603 133h0M610 133h0M617 133h0M624 133h0M630 133h0M637 133h0M44 140h0M51 140h0M58 140h0M65 140h0M310 140h0M317 140h0M324 140h0M331 140h0M337 140h0M344 140h0M351 140h0M358 140h0M365 140h0M371 140h0M378 140h0M385 140h0M392 140h0M399 140h0M405 140h0M412 140h0M419 140h0M426 140h0M433 140h0M440 140h0M446 140h0M453 140h0M467 140h0M474 140h0M480 140h0M487 140h0M494 140h0M501 140h0M508 140h0M515 140h0M555 140h0M562 140h0M569 140h0M576 140h0M583 140h0M589 140h0M596 140h0M603 140h0M610 140h0M617 140h0M624 140h0M630 140h0M637 140h0M705 140h0M51 147h0M58 147h0M65 147h0M126 147h0M310 147h0M317 147h0M324 147h0M331 147h0M337 147h0M344 147h0M351 147h0M358 147h0M365 147h0M371 147h0M378 147h0M385 147h0M392 147h0M399 147h0M405 147h0M412 147h0M419 147h0M426 147h0M433 147h0M440 147h0M446 147h0M453 147h0M460 147h0M474 147h0M480 147h0M487 147h0M494 147h0M501 147h0M508 147h0M515 147h0M521 147h0M562 147h0M569 147h0M576 147h0M583 147h0M589 147h0M596 147h0M603 147h0M624 147h0M630 147h0M637 147h0M644 147h0M651 147h0M658 147h0M664 147h0M51 153h0M58 153h0M65 153h0M72 153h0M92 153h0M99 153h0M147 153h0M310 153h0M317 153h0M324 153h0M331 153h0M337 153h0M344 153h0M351 153h0M358 153h0M365 153h0M371 153h0M378 153h0M385 153h0M392 153h0M399 153h0M405 153h0M412 153h0M419 153h0M426 153h0M433 153h0M440 153h0M446 153h0M453 153h0M460 153h0M474 153h0M480 153h0M487 153h0M494 153h0M501 153h0M508 153h0M515 153h0M521 153h0M569 153h0M576 153h0M583 153h0M589 153h0M596 153h0M630 153h0M637 153h0M644 153h0M651 153h0M658 153h0M65 160h0M72 160h0M78 160h0M85 160h0M92 160h0M310 160h0M317 160h0M324 160h0M331 160h0M337 160h0M344 160h0M351 160h0M358 160h0M365 160h0M371 160h0M378 160h0M385 160h0M392 160h0M399 160h0M405 160h0M412 160h0M419 160h0M426 160h0M433 160h0M440 160h0M446 160h0M453 160h0M460 160h0M467 160h0M480 160h0M487 160h0M494 160h0M501 160h0M508 160h0M569 160h0M576 160h0M583 160h0M589 160h0M630 160h0M637 160h0M644 160h0M651 160h0M658 160h0M664 160h0M705 160h0M92 167h0M99 167h0M106 167h0M112 167h0M310 167h0M317 167h0M324 167h0M331 167h0M337 167h0M344 167h0M351 167h0M358 167h0M365 167h0M371 167h0M378 167h0M385 167h0M392 167h0M399 167h0M405 167h0M412 167h0M419 167h0M426 167h0M433 167h0M440 167h0M446 167h0M453 167h0M460 167h0M467 167h0M480 167h0M487 167h0M494 167h0M576 167h0M583 167h0M644 167h0M651 167h0M658 167h0M664 167h0M705 167h0M106 174h0M147 174h0M310 174h0M317 174h0M324 174h0M331 174h0M337 174h0M344 174h0M351 174h0M358 174h0M365 174h0M371 174h0M378 174h0M385 174h0M392 174h0M399 174h0M405 174h0M412 174h0M419 174h0M426 174h0M433 174h0M440 174h0M446 174h0M453 174h0M460 174h0M467 174h0M474 174h0M576 174h0M583 174h0M658 174h0M664 174h0M112 181h0M140 181h0M153 181h0M160 181h0M167 181h0M174 181h0M317 181h0M324 181h0M331 181h0M337 181h0M344 181h0M351 181h0M358 181h0M365 181h0M371 181h0M378 181h0M385 181h0M392 181h0M399 181h0M405 181h0M412 181h0M419 181h0M426 181h0M433 181h0M440 181h0M446 181h0M453 181h0M460 181h0M467 181h0M474 181h0M480 181h0M487 181h0M494 181h0M576 181h0M583 181h0M119 187h0M133 187h0M140 187h0M147 187h0M153 187h0M160 187h0M167 187h0M174 187h0M181 187h0M324 187h0M331 187h0M337 187h0M344 187h0M351 187h0M358 187h0M365 187h0M371 187h0M378 187h0M385 187h0M392 187h0M399 187h0M405 187h0M412 187h0M419 187h0M426 187h0M433 187h0M440 187h0M446 187h0M453 187h0M460 187h0M467 187h0M474 187h0M480 187h0M487 187h0M494 187h0M589 187h0M644 187h0M719 187h0M133 194h0M140 194h0M147 194h0M153 194h0M160 194h0M167 194h0M174 194h0M181 194h0M187 194h0M194 194h0M201 194h0M331 194h0M337 194h0M344 194h0M371 194h0M378 194h0M385 194h0M392 194h0M399 194h0M405 194h0M412 194h0M419 194h0M426 194h0M433 194h0M440 194h0M446 194h0M453 194h0M460 194h0M467 194h0M474 194h0M480 194h0M487 194h0M630 194h0M651 194h0M692 194h0M699 194h0M133 201h0M140 201h0M147 201h0M153 201h0M160 201h0M167 201h0M181 201h0M187 201h0M194 201h0M201 201h0M385 201h0M392 201h0M399 201h0M405 201h0M412 201h0M419 201h0M426 201h0M433 201h0M440 201h0M446 201h0M453 201h0M460 201h0M467 201h0M474 201h0M480 201h0M487 201h0M637 201h0M644 201h0M651 201h0M678 201h0M685 201h0M692 201h0M126 208h0M133 208h0M140 208h0M147 208h0M385 208h0M392 208h0M399 208h0M405 208h0M412 208h0M419 208h0M426 208h0M433 208h0M440 208h0M446 208h0M453 208h0M460 208h0M467 208h0M474 208h0M644 208h0M651 208h0M671 208h0M678 208h0M685 208h0M692 208h0M712 208h0M126 215h0M133 215h0M140 215h0M147 215h0M385 215h0M392 215h0M399 215h0M405 215h0M412 215h0M419 215h0M426 215h0M433 215h0M440 215h0M446 215h0M453 215h0M460 215h0M467 215h0M651 215h0M678 215h0M685 215h0M692 215h0M705 215h0M739 215h0M753 215h0M119 221h0M126 221h0M133 221h0M140 221h0M147 221h0M392 221h0M399 221h0M405 221h0M412 221h0M419 221h0M426 221h0M433 221h0M440 221h0M446 221h0M453 221h0M460 221h0M467 221h0M658 221h0M746 221h0M753 221h0M760 221h0M767 221h0M774 221h0M794 221h0M126 228h0M133 228h0M140 228h0M392 228h0M399 228h0M405 228h0M412 228h0M419 228h0M426 228h0M433 228h0M440 228h0M446 228h0M453 228h0M460 228h0M467 228h0M664 228h0M760 228h0M767 228h0M774 228h0M126 235h0M133 235h0M140 235h0M392 235h0M399 235h0M405 235h0M412 235h0M419 235h0M426 235h0M433 235h0M440 235h0M446 235h0M453 235h0M460 235h0M467 235h0M719 235h0M767 235h0M780 235h0M133 242h0M140 242h0M147 242h0M153 242h0M160 242h0M399 242h0M405 242h0M412 242h0M419 242h0M426 242h0M433 242h0M440 242h0M446 242h0M453 242h0M460 242h0M467 242h0M739 242h0M767 242h0M133 249h0M140 249h0M147 249h0M153 249h0M160 249h0M167 249h0M174 249h0M392 249h0M399 249h0M405 249h0M412 249h0M419 249h0M426 249h0M433 249h0M440 249h0M446 249h0M453 249h0M460 249h0M467 249h0M494 249h0M733 249h0M739 249h0M746 249h0M767 249h0M140 256h0M147 256h0M153 256h0M160 256h0M167 256h0M174 256h0M392 256h0M399 256h0M405 256h0M412 256h0M419 256h0M426 256h0M433 256h0M440 256h0M446 256h0M453 256h0M460 256h0M467 256h0M487 256h0M494 256h0M719 256h0M726 256h0M733 256h0M739 256h0M746 256h0M767 256h0M774 256h0M153 262h0M160 262h0M167 262h0M174 262h0M181 262h0M392 262h0M399 262h0M405 262h0M412 262h0M419 262h0M426 262h0M433 262h0M440 262h0M446 262h0M453 262h0M487 262h0M494 262h0M712 262h0M719 262h0M726 262h0M733 262h0M739 262h0M746 262h0M753 262h0M760 262h0M767 262h0M774 262h0M153 269h0M160 269h0M167 269h0M174 269h0M181 269h0M399 269h0M405 269h0M412 269h0M419 269h0M426 269h0M433 269h0M440 269h0M446 269h0M453 269h0M487 269h0M494 269h0M692 269h0M699 269h0M705 269h0M712 269h0M719 269h0M726 269h0M733 269h0M739 269h0M746 269h0M753 269h0M760 269h0M767 269h0M774 269h0M780 269h0M153 276h0M160 276h0M167 276h0M174 276h0M181 276h0M187 276h0M399 276h0M405 276h0M412 276h0M419 276h0M426 276h0M433 276h0M440 276h0M446 276h0M453 276h0M480 276h0M487 276h0M685 276h0M692 276h0M699 276h0M705 276h0M712 276h0M719 276h0M726 276h0M733 276h0M739 276h0M746 276h0M753 276h0M760 276h0M767 276h0M774 276h0M780 276h0M787 276h0M153 283h0M160 283h0M167 283h0M174 283h0M181 283h0M187 283h0M194 283h0M399 283h0M405 283h0M412 283h0M419 283h0M426 283h0M433 283h0M440 283h0M446 283h0M685 283h0M692 283h0M699 283h0M705 283h0M712 283h0M719 283h0M726 283h0M733 283h0M739 283h0M746 283h0M753 283h0M760 283h0M767 283h0M774 283h0M780 283h0M787 283h0M794 283h0M153 290h0M160 290h0M167 290h0M174 290h0M181 290h0M187 290h0M405 290h0M412 290h0M419 290h0M426 290h0M433 290h0M440 290h0M446 290h0M685 290h0M692 290h0M699 290h0M705 290h0M712 290h0M719 290h0M726 290h0M733 290h0M739 290h0M746 290h0M753 290h0M760 290h0M767 290h0M774 290h0M780 290h0M787 290h0M794 290h0M153 296h0M160 296h0M167 296h0M174 296h0M181 296h0M187 296h0M405 296h0M412 296h0M419 296h0M426 296h0M433 296h0M440 296h0M692 296h0M699 296h0M705 296h0M712 296h0M719 296h0M726 296h0M733 296h0M739 296h0M746 296h0M753 296h0M760 296h0M767 296h0M774 296h0M780 296h0M787 296h0M794 296h0M147 303h0M153 303h0M160 303h0M167 303h0M174 303h0M181 303h0M187 303h0M194 303h0M412 303h0M419 303h0M426 303h0M433 303h0M692 303h0M699 303h0M705 303h0M712 303h0M746 303h0M753 303h0M760 303h0M767 303h0M774 303h0M780 303h0M787 303h0M794 303h0M147 310h0M153 310h0M160 310h0M167 310h0M174 310h0M181 310h0M194 310h0M692 310h0M753 310h0M760 310h0M767 310h0M774 310h0M780 310h0M787 310h0M147 317h0M153 317h0M160 317h0M167 317h0M174 317h0M181 317h0M187 317h0M760 317h0M767 317h0M774 317h0M780 317h0M787 317h0M147 324h0M153 324h0M160 324h0M167 324h0M140 331h0M147 331h0M153 331h0M160 331h0M780 331h0M140 337h0M147 337h0M153 337h0M160 337h0M140 344h0M147 344h0M153 344h0M140 351h0M147 351h0M153 351h0M555 351h0"/>
+<path class="t-br" d="M174 201h0M153 208h0M160 208h0M167 208h0M174 208h0M181 208h0M187 208h0M194 208h0M201 208h0M153 215h0M160 215h0M167 215h0M174 215h0M181 215h0M187 215h0M194 215h0M201 215h0M208 215h0M215 215h0M221 215h0M153 221h0M160 221h0M167 221h0M174 221h0M181 221h0M187 221h0M194 221h0M201 221h0M208 221h0M215 221h0M221 221h0M228 221h0M235 221h0M242 221h0M147 228h0M153 228h0M160 228h0M167 228h0M174 228h0M181 228h0M187 228h0M194 228h0M201 228h0M208 228h0M215 228h0M221 228h0M228 228h0M235 228h0M242 228h0M249 228h0M147 235h0M153 235h0M160 235h0M167 235h0M174 235h0M181 235h0M187 235h0M194 235h0M201 235h0M208 235h0M215 235h0M221 235h0M228 235h0M235 235h0M242 235h0M249 235h0M167 242h0M174 242h0M181 242h0M187 242h0M194 242h0M201 242h0M208 242h0M215 242h0M221 242h0M228 242h0M235 242h0M242 242h0M181 249h0M187 249h0M194 249h0M201 249h0M208 249h0M215 249h0M221 249h0M228 249h0M235 249h0M181 256h0M187 256h0M194 256h0M201 256h0M208 256h0M215 256h0M221 256h0M228 256h0M235 256h0M187 262h0M194 262h0M201 262h0M208 262h0M215 262h0M221 262h0M228 262h0M235 262h0M187 269h0M194 269h0M201 269h0M208 269h0M215 269h0M221 269h0M228 269h0M235 269h0M194 276h0M201 276h0M208 276h0M215 276h0M221 276h0M201 283h0M208 283h0M194 290h0M201 290h0M208 290h0M194 296h0M201 296h0M208 296h0M201 303h0"/>
+<path class="t-cn" d="M705 58h0M712 58h0M719 58h0M699 65h0M705 65h0M712 65h0M719 65h0M603 72h0M610 72h0M705 72h0M712 72h0M719 72h0M726 72h0M733 72h0M739 72h0M589 78h0M596 78h0M603 78h0M610 78h0M617 78h0M624 78h0M678 78h0M685 78h0M692 78h0M699 78h0M705 78h0M712 78h0M719 78h0M726 78h0M733 78h0M589 85h0M596 85h0M603 85h0M610 85h0M617 85h0M624 85h0M630 85h0M637 85h0M678 85h0M685 85h0M692 85h0M699 85h0M705 85h0M712 85h0M719 85h0M726 85h0M733 85h0M576 92h0M583 92h0M589 92h0M596 92h0M603 92h0M610 92h0M617 92h0M624 92h0M630 92h0M637 92h0M644 92h0M651 92h0M658 92h0M664 92h0M671 92h0M678 92h0M685 92h0M692 92h0M699 92h0M712 92h0M576 99h0M583 99h0M589 99h0M596 99h0M603 99h0M610 99h0M617 99h0M624 99h0M630 99h0M637 99h0M644 99h0M651 99h0M658 99h0M664 99h0M671 99h0M678 99h0M685 99h0M692 99h0M583 106h0M589 106h0M596 106h0M603 106h0M610 106h0M617 106h0M624 106h0M630 106h0M637 106h0M644 106h0M651 106h0M658 106h0M664 106h0M671 106h0M678 106h0M685 106h0M692 106h0M699 106h0M589 112h0M596 112h0M603 112h0M610 112h0M617 112h0M624 112h0M630 112h0M637 112h0M644 112h0M651 112h0M658 112h0M664 112h0M671 112h0M678 112h0M685 112h0M692 112h0M699 112h0M589 119h0M596 119h0M603 119h0M610 119h0M617 119h0M624 119h0M630 119h0M637 119h0M644 119h0M651 119h0M658 119h0M664 119h0M671 119h0M678 119h0M685 119h0M692 119h0M699 119h0M705 119h0M603 126h0M610 126h0M617 126h0M624 126h0M637 126h0M644 126h0M651 126h0M658 126h0M664 126h0M671 126h0M678 126h0M685 126h0M692 126h0M699 126h0M705 126h0M644 133h0M651 133h0M658 133h0M664 133h0M671 133h0M678 133h0M685 133h0M692 133h0M699 133h0M644 140h0M651 140h0M658 140h0M664 140h0M671 140h0M678 140h0M685 140h0M692 140h0M671 153h0"/>
+</g>
+<path class="arco arco-w" pathLength="1" d="M226.4 266.6 L230.9 263.8 L235.3 261.0 L239.8 258.1 L244.1 255.2 L248.4 252.3 L252.7 249.4 L257.0 246.4 L261.2 243.4 L265.4 240.4 L269.5 237.4 L273.6 234.4 L277.7 231.3 L281.8 228.2 L285.9 225.1 L289.9 222.0 L293.9 218.9 L298.0 215.8 L302.0 212.7 L306.0 209.6 L310.0 206.5 L314.0 203.4 L318.0 200.3 L322.1 197.2 L326.1 194.1 L330.2 191.0 L334.2 187.9 L338.3 184.8 L342.4 181.8 L346.6 178.7 L350.7 175.7 L354.9 172.7 L359.1 169.7 L363.4 166.8 L367.7 163.8 L372.0 161.0 L376.4 158.1 L380.9 155.3 L385.3 152.5 L389.9 149.7 L394.5 147.0 L399.1 144.3 L403.9 141.7 L408.6 139.1 L413.5 136.6 L418.4 134.1 L423.4 131.7 L428.4 129.3 L433.5 127.1 L438.8 124.8 L444.0 122.7 L449.4 120.6 L454.8 118.6 L460.3 116.7 L465.9 114.8 L471.6 113.1 L477.3 111.4 L483.2 109.9 L489.0 108.4 L495.0 107.0 L501.0 105.7 L507.1 104.6 L513.3 103.5 L519.5 102.5 L525.7 101.7 L532.0 101.0 L538.4 100.4 L544.8 99.9 L551.2 99.5 L557.6 99.2 L564.0 99.1 L570.4 99.1 L576.9 99.2 L583.3 99.4 L589.7 99.8 L596.1 100.2 L602.4 100.8 L608.7 101.5 L615.0 102.3 L621.2 103.2 L627.4 104.3 L633.5 105.4 L639.5 106.7 L645.5 108.0 L651.4 109.5 L657.3 111.0 L663.0 112.7 L668.7 114.4 L674.3 116.2 L679.8 118.1 L685.3 120.1"/>
+<path class="arco arco-z" pathLength="1" d="M226.4 266.6 L231.7 265.6 L237.0 264.6 L242.3 263.6 L247.6 262.4 L252.9 261.3 L258.1 260.1 L263.3 258.8 L268.5 257.5 L273.6 256.2 L278.8 254.8 L283.9 253.3 L289.0 251.9 L294.0 250.4 L299.0 248.8 L304.1 247.2 L309.0 245.6 L314.0 244.0 L318.9 242.3 L323.9 240.6 L328.8 238.9 L333.7 237.1 L338.5 235.3 L343.4 233.5 L348.2 231.7 L353.0 229.8 L357.8 228.0 L362.6 226.1 L367.4 224.2 L372.2 222.3 L376.9 220.4 L381.7 218.5 L386.4 216.5 L391.2 214.6 L395.9 212.6 L400.7 210.7 L405.4 208.7 L410.1 206.8 L414.9 204.8 L419.6 202.9 L424.3 201.0 L429.1 199.0 L433.8 197.1 L438.6 195.2 L443.4 193.3 L448.2 191.4 L453.0 189.5 L457.8 187.7 L462.6 185.8 L467.4 184.0 L472.3 182.2 L477.1 180.4 L482.0 178.6 L486.9 176.9 L491.9 175.2 L496.8 173.5 L501.8 171.9 L506.7 170.3 L511.8 168.7 L516.8 167.2 L521.9 165.6 L526.9 164.2 L532.0 162.7 L537.2 161.4 L542.3 160.0 L547.5 158.7 L552.7 157.5 L557.9 156.3 L563.2 155.1 L568.5 154.0 L573.8 152.9 L579.1 151.9 L584.4 151.0 L589.8 150.1 L595.2 149.2 L600.6 148.5 L606.0 147.7 L611.5 147.1 L616.9 146.5 L622.4 145.9 L627.9 145.5 L633.4 145.1 L638.9 144.7 L644.4 144.4 L650.0 144.2 L655.5 144.0 L661.0 143.9 L666.6 143.9 L672.1 143.9 L677.7 144.1 L683.2 144.2"/>
+<g class="pino pino-br" transform="translate(226.4 266.6)"><circle class="halo" r="7"/><circle class="nucleo" r="4.2"/></g><g class="pino pino-cn" transform="translate(685.3 120.1)"><circle class="halo" r="7"/><circle class="nucleo" r="4.2"/></g><g class="pino pino-cn" transform="translate(683.2 144.2)"><circle class="halo" r="7"/><circle class="nucleo" r="4.2"/></g>
+<g class="rot">
+<text x="212.4" y="288.6" text-anchor="end"><tspan class="r1">UFMG</tspan><tspan x="212.4" dy="16">Belo Horizonte</tspan></text>
+<text x="697.3" y="104.1"><tspan class="r1">HUST</tspan><tspan x="697.3" dy="16">Wuhan</tspan></text>
+<text x="669.2" y="170.2" text-anchor="end"><tspan class="r1">Digifluidic e Universidade de Macau</tspan><tspan x="669.2" dy="16">Zhuhai</tspan></text>
+</g>
+</svg>
+        <div class="mundo-dados">
+          <div><div class="v">17,5 mil km</div><p>separam Belo Horizonte de Wuhan, quase o máximo possível entre dois pontos do planeta.</p></div>
+          <div><div class="v">11 horas</div><p>de fuso: quando um laboratório encerra o dia, o outro está começando o seu.</p></div>
+          <div><div class="v">Duas frentes</div><p>complementares: uma universidade de pesquisa e uma empresa com fábrica e patentes.</p></div>
+        </div>
+      </figure>
+
+      <div class="parceiros">
+        <article>
+          <div class="onde">Belo Horizonte, Brasil</div>
+          <h3>UFMG e IBLT</h3>
+          <p class="papel">Onde a pesquisa nasceu</p>
+          <ul>
+            <li>Doutorado em Inovação Tecnológica no PPGIT/UFMG, com orientação do Prof. Aristóteles Góes-Neto.</li>
+            <li>Síntese Biotecnologia como parceira industrial da pesquisa.</li>
+            <li>CTIT/UFMG na proteção e na internacionalização da propriedade intelectual.</li>
+            <li>IBLT na estruturação do projeto, na captação de fomento e na articulação entre universidade, indústria e governo.</li>
+          </ul>
+          <dl class="bloco">
+            <dt>O que traz</dt>
+            <dd>A química de captura, o conhecimento da demanda brasileira, a rota regulatória, a validação em campo e a porta de entrada da América Latina.</dd>
+          </dl>
+        </article>
+
+        <article>
+          <div class="onde">Wuhan, China</div>
+          <h3>HUST</h3>
+          <p class="papel">Ciência e microfabricação</p>
+          <ul>
+            <li>Huazhong University of Science and Technology, uma das principais universidades técnicas chinesas.</li>
+            <li>Prof. Yiwei Li, diretor do Departamento de Engenharia Biomédica, com passagens pelo MIT e por Harvard, pesquisa microfluídica, célula única, organoides e mecanobiologia.<sup class="r"><a href="#ref-7">7</a></sup></li>
+            <li>O grupo assina trabalhos como uma plataforma microfluídica, sem cultura prévia, para teste ultrarrápido de suscetibilidade a antimicrobianos com apoio de inteligência artificial em cenários de recursos limitados.<sup class="r"><a href="#ref-8">8</a></sup></li>
+          </ul>
+          <dl class="bloco">
+            <dt>O que traz</dt>
+            <dd>Infraestrutura de microfabricação, método experimental e co-orientação científica.</dd>
+          </dl>
+          <dl class="bloco">
+            <dt>Status</dt>
+            <dd>Carta de acolhimento para missão técnica (agosto de 2026), cooperação com previsão de patentes em cotitularidade e convite para doutorado sanduíche.</dd>
+          </dl>
+        </article>
+
+        <article>
+          <div class="onde">Zhuhai e Macau, China</div>
+          <h3>Digifluidic e Universidade de Macau</h3>
+          <p class="papel">Indústria e escala</p>
+          <ul>
+            <li>Spin-off incubada pela Universidade de Macau e registrada em Zhuhai em 2018, fundada por doutores formados na própria universidade.<sup class="r"><a href="#ref-9">9</a></sup><sup class="r"><a href="#ref-10">10</a></sup></li>
+            <li>Tecnologia central em microfluídica digital por eletromolhamento e sistemas automáticos de análise de ácidos nucleicos.<sup class="r"><a href="#ref-11">11</a></sup></li>
+            <li>Converteu quatro patentes de microfluídica da universidade em ativos da empresa; seus equipamentos são usados por instituições como o centro de controle de doenças de Zhuhai e a alfândega de Gongbei.<sup class="r"><a href="#ref-10">10</a></sup><sup class="r"><a href="#ref-12">12</a></sup></li>
+            <li>Atua em diagnóstico humano, sanidade animal e vegetal, inspeção e quarentena e segurança de alimentos — as mesmas frentes que pressionam o Brasil.<sup class="r"><a href="#ref-12">12</a></sup></li>
+          </ul>
+          <dl class="bloco">
+            <dt>O que traz</dt>
+            <dd>Metodologia de industrialização, automação por microfluídica digital, controle de qualidade e capacidade de manufatura.</dd>
+          </dl>
+          <dl class="bloco">
+            <dt>Status</dt>
+            <dd>Carta de intenções com a UFMG (setembro de 2026) para P&amp;D conjunto e exploração conjunta de PI, com depósitos no Brasil; memorando de entendimento com a Universidade de Macau.</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="sub">
+        <h3>Como a construção vai acontecer</h3>
+        <p class="sub-lead">Três camadas simultâneas, cada uma com entregas próprias — e todas convergindo para o mesmo produto.</p>
+        <div class="camadas-coop">
+          <div>
+            <h4>Camada científica</h4>
+            <div class="quem">UFMG e HUST</div>
+            <ul>
+              <li>Missão técnica em Wuhan com acesso à microfabricação</li>
+              <li>Co-orientação e doutorado sanduíche</li>
+              <li>Publicações conjuntas</li>
+              <li>Depósitos de patente em cotitularidade</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Camada industrial</h4>
+            <div class="quem">UFMG e IBLT com Digifluidic e Universidade de Macau</div>
+            <ul>
+              <li>Imersão técnica na fábrica em Zhuhai</li>
+              <li>Metodologia de industrialização e controle de qualidade</li>
+              <li>Automação por microfluídica digital</li>
+              <li>Manufatura em escala do cartucho e do equipamento</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Camada nacional</h4>
+            <div class="quem">Brasil</div>
+            <ul>
+              <li>Projeto do produto e titularidade da PI</li>
+              <li>Química de captura e cadeia de insumos</li>
+              <li>Painéis para patógenos brasileiros e validação em campo</li>
+              <li>Registro na ANVISA e no MAPA, conforme a aplicação</li>
+            </ul>
+          </div>
+        </div>
+        <div class="converge">
+          <h4>Extração mais detecção: a rota de integração em estudo</h4>
+          <p>A NUCLEA ONE resolve a etapa que mais trava o diagnóstico molecular fora do laboratório: preparar a amostra. A microfluídica digital da Digifluidic automatiza a manipulação de gotas para amplificar e detectar ácidos nucleicos. Somadas, as duas tecnologias apontam para um fluxo completo, da amostra ao resultado, em um único equipamento portátil — e é essa integração que o desenvolvimento conjunto vai testar.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Soberania não é isolamento</h3>
+        <p>Cooperar com quem está na fronteira é o caminho mais curto para dominar uma tecnologia, desde que o conhecimento fique. Por isso a estratégia mantém no Brasil:</p>
+        <ul class="fica">
+          <li>a titularidade da propriedade intelectual e o projeto do produto;</li>
+          <li>a química de captura e a cadeia de insumos;</li>
+          <li>os dados genéticos, tratados e guardados no país;</li>
+          <li>o dossiê regulatório e a validação com amostras brasileiras;</li>
+          <li>o conhecimento de fabricação trazido pela imersão industrial;</li>
+          <li>a decisão sobre para onde a plataforma cresce.</li>
+        </ul>
+      </div>
+
+      <figure class="video" data-video="parceria">
+        <div class="quadro"></div>
+        <figcaption><b>A ponte Brasil–China, por dentro</b><span>Vídeo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ V · TROPICALIZAÇÃO ============================ -->
+<section class="cap" id="tropicalizacao">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">V</div><div class="nome">Tropicalização</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Tropicalizar não é traduzir a embalagem.</h2>
+        <p class="lead">Um equipamento que funciona em Zhuhai não funciona automaticamente em Tefé, em Cabrobó ou numa fazenda de Sorriso. Tropicalizar é reprojetar o produto para as condições reais de uso no Brasil — e cada linha abaixo é um requisito de engenharia que entra no desenvolvimento conjunto, não uma promessa de marketing.</p>
+      </div>
+
+      <div class="tropic">
+        <div>
+          <div class="cond"><b>Calor e umidade</b><span>Amazônia, litoral, sertão e galpões sem climatização.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Reagentes secos pré-carregados no cartucho, embalagem com barreira à umidade e ensaios de estabilidade em condições tropicais reais, não só em câmara de 25 °C.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Cadeia fria frágil</b><span>Transporte longo, energia intermitente, estoque improvisado.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Formulações estáveis em temperatura ambiente, que eliminam a refrigeração entre a fábrica e o ponto de uso — o item que mais encarece e mais inviabiliza teste molecular no interior.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Energia instável ou ausente</b><span>Postos com gerador, barcos, veículos de vigilância.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Eletrônica de baixo consumo, operação por bateria e compatibilidade com fontes solares portáteis, com o aquecimento da lise dimensionado para esse orçamento de energia.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Conectividade intermitente</b><span>Sem sinal na hora do exame, com sinal horas depois.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Operação offline por padrão, com registro local e sincronização posterior com os sistemas de informação do SUS e da vigilância.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Quem opera não é especialista</b><span>Técnicos de UBS, agentes comunitários, equipes de campo.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Fluxo de amostra que entra e resultado que sai, com poucos passos manuais, interface em português e cartucho que não permite montagem errada.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Perfil epidemiológico brasileiro</b><span>Arboviroses, malária, Chagas, leishmanioses.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Painéis desenhados para os agentes que circulam aqui e validados com amostras e cepas nacionais, incluindo a extensão da química de captura para vírus de RNA.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Escala e preço do SUS</b><span>Compra pública, milhões de testes, orçamento apertado.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Cartucho descartável em polímero de baixo custo, produção em escala e insumos nacionais, com custo por teste calculado desde o projeto e não descoberto no fim.</div>
+        </div>
+        <div>
+          <div class="cond"><b>Dado genético é dado sensível</b><span>Resultado que identifica pessoa, família e comunidade.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">A LGPD classifica dado genético como dado pessoal sensível: tratamento e guarda no país, minimização na coleta e privacidade desde a concepção do equipamento.<sup class="r"><a href="#ref-13">13</a></sup></div>
+        </div>
+        <div>
+          <div class="cond"><b>Duas rotas regulatórias</b><span>Saúde humana de um lado; agro, alimentos e ambiente do outro.</span></div>
+          <div class="seta" aria-hidden="true"><svg viewBox="0 0 22 12"><path d="M0 6h20M15 1l5 5-5 5"/></svg></div>
+          <div class="resp">Uso humano segue a RDC 830/2023 da ANVISA, com classe de risco definida pela finalidade declarada. Amostras não humanas ficam fora dessa definição e seguem a rota do MAPA e das demais autoridades, conforme o produto.<sup class="r"><a href="#ref-14">14</a></sup></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VI · APLICAÇÕES ============================ -->
+<section class="cap" id="aplicacoes">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">VI</div><div class="nome">Aplicações</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Dez frentes em que um diagnóstico rápido muda o resultado.</h2>
+        <p class="lead">A mesma arquitetura — preparar a amostra no cartucho e entregar ácido nucleico pronto para análise — atende problemas muito diferentes. Cada frente exige painel, validação e rota regulatória próprios; juntas, elas formam o horizonte de aplicação da plataforma. Abra uma delas para ver alvo, contexto de uso, desafio técnico e regulação.</p>
+      </div>
+
+      <div class="filtros" role="group" aria-label="Filtrar aplicações por área">
+        <button type="button" aria-pressed="true" data-f="todas">Todas</button>
+        <button type="button" aria-pressed="false" data-f="saude">Saúde humana</button>
+        <button type="button" aria-pressed="false" data-f="vigilancia">Vigilância</button>
+        <button type="button" aria-pressed="false" data-f="forense">Forense</button>
+        <button type="button" aria-pressed="false" data-f="agro">Agro</button>
+        <button type="button" aria-pressed="false" data-f="ambiente">Ambiente</button>
+        <button type="button" aria-pressed="false" data-f="industria">Indústria</button>
+        <button type="button" aria-pressed="false" data-f="pesquisa">Pesquisa</button>
+      </div>
+
+      <div class="apps">
+        <details class="app" data-cat="saude">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-saude"></use></svg>
+            <span class="tit">Diagnóstico descentralizado em áreas remotas</span>
+            <span class="res">Do resultado em dias para o resultado no mesmo atendimento, onde não existe laboratório central.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>Ácidos nucleicos de agentes infecciosos de maior circulação local, definidos por painel regional.</dd></div>
+            <div><dt>Onde</dt><dd>Unidades básicas, UBS fluviais, polos base de saúde indígena e postos avançados sem estrutura laboratorial.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Estabilidade dos reagentes sem cadeia fria e operação por equipe não especializada.</dd></div>
+            <div><dt>Regulação</dt><dd>ANVISA, RDC 830/2023, com classe de risco conforme a finalidade declarada.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="vigilancia">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-vigilancia"></use></svg>
+            <span class="tit">Vigilância epidemiológica e doenças tropicais negligenciadas</span>
+            <span class="res">Dengue, zika, chikungunya, malária, doença de Chagas e leishmanioses, com triagem em campo durante surtos.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>DNA de parasitas como <i>Plasmodium</i>, <i>Trypanosoma cruzi</i> e <i>Leishmania</i>; e, com a extensão da química para RNA, os vírus das arboviroses.</dd></div>
+            <div><dt>Onde</dt><dd>Equipes de vigilância em surto, laboratórios centrais estaduais, municípios de fronteira e áreas endêmicas.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Multiplexar alvos no mesmo cartucho sem perder sensibilidade e capturar RNA viral, mais instável que o DNA.</dd></div>
+            <div><dt>Por que importa</dt><dd>2024 registrou o maior número de casos prováveis de dengue da série histórica.<sup class="r"><a href="#ref-5">5</a></sup></dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="saude">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-saude"></use></svg>
+            <span class="tit">HIV e outras infecções sexualmente transmissíveis na atenção básica</span>
+            <span class="res">Teste molecular na própria unidade de saúde, sem depender do laboratório central do município vizinho.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>HIV (RNA viral ou DNA proviral, inclusive no diagnóstico de bebês expostos, em que os testes de anticorpos não resolvem), clamídia, gonorreia e HPV.</dd></div>
+            <div><dt>Onde</dt><dd>UBS, centros de testagem e aconselhamento e serviços de pré-natal em municípios pequenos.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Alta sensibilidade em cartucho fechado e cuidado extremo com contaminação cruzada.</dd></div>
+            <div><dt>Regulação</dt><dd>ANVISA, com exigência maior de evidência clínica por se tratar de agente transmissível.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="forense">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-forense"></use></svg>
+            <span class="tit">Genômica forense e identificação humana</span>
+            <span class="res">Extração de DNA em campo para perícia criminal, identificação de vítimas de desastres e bancos de perfis genéticos.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>DNA humano genômico, incluindo amostras degradadas, em baixa quantidade ou misturadas.</dd></div>
+            <div><dt>Onde</dt><dd>Institutos de criminalística e de identificação, locais de crime e cenários de desastre.</dd></div>
+            <div><dt>Ligação direta</dt><dd>É a aplicação mais próxima do núcleo da nossa pesquisa: captura magnética eficiente é justamente o que permite trabalhar com pouco material.</dd></div>
+            <div><dt>Regulação e normas</dt><dd>Cadeia de custódia prevista no Código de Processo Penal (artigos 158-A a 158-F) e integração com a rede de bancos de perfis genéticos.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="agro">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-agro"></use></svg>
+            <span class="tit">Agricultura de precisão e biossegurança agropecuária</span>
+            <span class="res">Detecção de patógenos em lavouras e rebanhos antes que o prejuízo se espalhe pela região.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>Ferrugem-asiática da soja (<i>Phakopsora pachyrhizi</i>), greening dos citros (<i>Candidatus</i> Liberibacter spp.), brucelose e tuberculose bovina, entre outros.</dd></div>
+            <div><dt>Onde</dt><dd>Fazendas, cooperativas, laboratórios de defesa agropecuária e barreiras sanitárias.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Matriz vegetal exige lise adaptada à parede celular e remoção de polissacarídeos e polifenóis que inibem a amplificação.</dd></div>
+            <div><dt>Regulação</dt><dd>MAPA, na rota de produtos de uso veterinário e de defesa agropecuária.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="ambiente">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-ambiente"></use></svg>
+            <span class="tit">Monitoramento da qualidade da água</span>
+            <span class="res">Contaminação microbiológica em comunidades sem saneamento e em bacias afetadas por mineração.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>Indicadores de contaminação fecal, como <i>Escherichia coli</i>, patógenos de veiculação hídrica e genes marcadores de cianobactérias tóxicas.</dd></div>
+            <div><dt>Onde</dt><dd>Comunidades ribeirinhas e rurais, vigilância municipal da água e bacias atingidas pelos rompimentos de barragens de Mariana (2015) e Brumadinho (2019).</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Concentrar volumes grandes de água em uma amostra pequena o suficiente para o cartucho; parâmetros químicos exigem módulos microfluídicos próprios.</dd></div>
+            <div><dt>Regulação</dt><dd>Padrão de potabilidade da Portaria GM/MS 888/2021, que exige ausência de <i>E. coli</i> e de coliformes totais em 100 mL.<sup class="r"><a href="#ref-15">15</a></sup></dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="saude">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-saude"></use></svg>
+            <span class="tit">Oncologia e biópsia líquida</span>
+            <span class="res">Biomarcadores tumorais circulantes no sangue, como apoio ao diagnóstico precoce e ao acompanhamento.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>DNA tumoral circulante, presente em fragmentos curtos e em concentração muito baixa.</dd></div>
+            <div><dt>Onde</dt><dd>Centros de oncologia, laboratórios de referência e programas de acompanhamento de pacientes.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>É o oposto do nosso alvo principal: aqui a captura precisa ser otimizada para fragmentos curtos, não para DNA de alto peso molecular.</dd></div>
+            <div><dt>Por que importa</dt><dd>Coleta simples e potencial de custo menor do que o de exames de imagem repetidos.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="saude">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-saude"></use></svg>
+            <span class="tit">Farmacogenômica e medicina personalizada</span>
+            <span class="res">Variantes genéticas lidas no atendimento para ajustar dose e escolha de medicamento.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd>Variantes com uso clínico consolidado, como CYP2C19 para clopidogrel, CYP2C9 e VKORC1 para varfarina e HLA-B*57:01 para abacavir.</dd></div>
+            <div><dt>Onde</dt><dd>Hospitais, ambulatórios de especialidade e programas do SUS com alto volume desses medicamentos.</dd></div>
+            <div><dt>Desafio técnico</dt><dd>Genotipagem confiável a partir de amostra simples, como sangue capilar ou saliva, em cartucho único.</dd></div>
+            <div><dt>Por que importa</dt><dd>A população brasileira é altamente miscigenada, e frequências alélicas daqui diferem das populações em que muitos testes foram validados.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="industria">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-industria"></use></svg>
+            <span class="tit">Segurança de alimentos e controle de qualidade industrial</span>
+            <span class="res">Patógenos e fraudes detectados na linha de produção, não semanas depois, no laboratório terceirizado.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Alvos</dt><dd><i>Salmonella</i>, <i>Escherichia coli</i>, <i>Listeria monocytogenes</i> e identificação de espécie por DNA, contra adulteração e substituição de matéria-prima.</dd></div>
+            <div><dt>Onde</dt><dd>Frigoríficos, laticínios, indústria de bebidas e cadeias de exportação.</dd></div>
+            <div><dt>Convergência com o parceiro</dt><dd>A Digifluidic já mantém, em Zhuhai, um centro de testes de segurança de alimentos com microfluídica digital para <i>Salmonella</i>, <i>E. coli</i> e norovírus.<sup class="r"><a href="#ref-9">9</a></sup></dd></div>
+            <div><dt>Regulação</dt><dd>MAPA e vigilância sanitária, conforme o produto e a etapa da cadeia.</dd></div>
+          </dl>
+        </details>
+
+        <details class="app" data-cat="pesquisa">
+          <summary>
+            <svg class="ico" aria-hidden="true"><use href="#i-pesquisa"></use></svg>
+            <span class="tit">Pesquisa translacional e parcerias indústria-universidade</span>
+            <span class="res">Uma plataforma aberta para que novos ensaios nasçam no Brasil, com propriedade intelectual brasileira.</span>
+            <span class="mais" aria-hidden="true"></span>
+          </summary>
+          <dl class="app-corpo">
+            <div><dt>Como funciona</dt><dd>Grupos de pesquisa e empresas desenvolvem seus próprios painéis sobre a plataforma, aproveitando a etapa de preparo de amostra já resolvida.</dd></div>
+            <div><dt>Com quem</dt><dd>Empresas nacionais de biotecnologia, como a Síntese Biotecnologia, parceira industrial da pesquisa, além de ICTs e núcleos de inovação.</dd></div>
+            <div><dt>Instrumentos</dt><dd>Acordos de parceria em PD&amp;I sob o Marco Legal de CT&amp;I (Lei 10.973/2004, alterada pela Lei 13.243/2016).</dd></div>
+            <div><dt>Regulação</dt><dd>Dispositivos destinados a investigação clínica são dispensados de notificação e registro, conforme a RDC 830/2023.<sup class="r"><a href="#ref-14">14</a></sup></dd></div>
+          </dl>
+        </details>
+      </div>
+
+      <figure class="video" data-video="aplicacoes">
+        <div class="quadro"></div>
+        <figcaption><b>A plataforma em uso: aplicações no Brasil</b><span>Vídeo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VII · A ROTA ============================ -->
+<section class="cap" id="rota">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">VII</div><div class="nome">A rota</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Uma rota de nacionalização progressiva.</h2>
+        <p class="lead">Cooperação internacional não substitui capacidade nacional: encurta o caminho até ela. A escada abaixo mostra como o conhecimento chinês de fabricação entra no projeto e como, fase a fase, uma parte maior do produto passa a ser feita no Brasil. Clique em uma fase para ver o detalhe.</p>
+      </div>
+
+      <div class="escada">
+        <div class="eixo" aria-hidden="true">
+          <span>Maturidade (TRL)</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div class="linhas">
+          <div class="hoje" aria-hidden="true"><span>hoje</span></div>
+          <div class="linha">
+            <div class="rotulo">Fase 1 — Cooperação e prova de conceito</div>
+            <button type="button" class="barra" data-fase="1" aria-pressed="true" style="grid-column:3/6">TRL 2 a 4</button>
+          </div>
+          <div class="linha">
+            <div class="rotulo">Fase 2 — Co-desenvolvimento do produto</div>
+            <button type="button" class="barra" data-fase="2" aria-pressed="false" style="grid-column:5/8">TRL 4 a 6</button>
+          </div>
+          <div class="linha">
+            <div class="rotulo">Fase 3 — Validação e regulação</div>
+            <button type="button" class="barra" data-fase="3" aria-pressed="false" style="grid-column:7/10">TRL 6 a 8</button>
+          </div>
+          <div class="linha">
+            <div class="rotulo">Fase 4 — Industrialização</div>
+            <button type="button" class="barra" data-fase="4" aria-pressed="false" style="grid-column:9/11">TRL 8 a 9</button>
+          </div>
+          <div class="linha">
+            <div class="rotulo">Fase 5 — Escala regional</div>
+            <button type="button" class="barra" data-fase="5" aria-pressed="false" style="grid-column:10/11">9</button>
+          </div>
+        </div>
+
+        <div class="fase-det" id="faseDet" data-fase="1">
+          <h4>Fase 1 — Cooperação e prova de conceito</h4>
+          <p>Missão técnica em Wuhan e imersão industrial em Zhuhai, em paralelo com a síntese e a caracterização das nanopartículas, o projeto dos canais por simulação, os protótipos em PDMS e a validação funcional em bancada. É a fase em que o doutorado e a cooperação caminham no mesmo passo.</p>
+          <div class="quem">Conduzem: UFMG e HUST, com o IBLT na articulação e no fomento.</div>
+        </div>
+        <div class="fase-det" id="faseDet2" data-fase="2" hidden>
+          <h4>Fase 2 — Co-desenvolvimento do produto</h4>
+          <p>Migração do protótipo para PMMA, integração entre extração e detecção, reagentes secos no cartucho, primeiros painéis brasileiros e ensaios de estabilidade em condições tropicais. É aqui que o doutorado sanduíche e o trabalho conjunto com a equipe industrial produzem o primeiro produto reconhecível.</p>
+          <div class="quem">Conduzem: UFMG, HUST e Digifluidic.</div>
+        </div>
+        <div class="fase-det" id="faseDet3" data-fase="3" hidden>
+          <h4>Fase 3 — Validação e regulação</h4>
+          <p>Estudos com amostras reais em parceria com serviços de saúde e de defesa agropecuária, montagem do dossiê técnico para ANVISA e MAPA conforme a aplicação, e depósitos de propriedade intelectual no Brasil e no exterior. Validar no ambiente de uso é o que separa um protótipo bonito de um produto que entra em compra pública.</p>
+          <div class="quem">Conduzem: UFMG e CTIT, com parceiros de saúde pública e do agro.</div>
+        </div>
+        <div class="fase-det" id="faseDet4" data-fase="4" hidden>
+          <h4>Fase 4 — Industrialização</h4>
+          <p>Produção em escala com o parceiro industrial, seguida da transferência progressiva de etapas para o Brasil: montagem final, controle de qualidade e fornecimento nacional de nanopartículas e reagentes. O conhecimento de fabricação absorvido na imersão em Zhuhai é o ativo que torna essa transferência possível.</p>
+          <div class="quem">Conduzem: IBLT e Digifluidic, com fornecedores nacionais.</div>
+        </div>
+        <div class="fase-det" id="faseDet5" data-fase="5" hidden>
+          <h4>Fase 5 — Escala regional</h4>
+          <p>Com registro e produção estabelecidos, o Brasil passa a ser a base para a América Latina. Um produto validado para calor, distância e arboviroses chega pronto para boa parte da região, e os parceiros chineses manifestaram disposição para apoiar essa expansão.</p>
+          <div class="quem">Conduzem: IBLT e parceiros comerciais regionais.</div>
+        </div>
+        <p class="aviso">Fases, faixas de maturidade e marcos são planejamento: dependem de financiamento aprovado, de resultados de pesquisa e dos acordos formais entre as instituições envolvidas.</p>
+      </div>
+
+      <div class="latam">
+        <h3>O Brasil como porta de entrada da América Latina</h3>
+        <p>A região compartilha o essencial do nosso problema: arboviroses endêmicas, territórios extensos, redes públicas de saúde com laboratórios concentrados nas capitais e agronegócio exportador sob pressão sanitária. Um equipamento aprovado no Brasil chega ao vizinho com a parte mais difícil já resolvida — e com um parceiro industrial que já opera em escala global do outro lado da cadeia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VIII · PARTICIPE ============================ -->
+<section class="cap" id="participe">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">VIII</div><div class="nome">Participe</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Construa essa rota com a gente.</h2>
+        <p class="lead">A NUCLEA ONE está no ponto em que uma decisão de fomento, uma parceria de validação ou um contrato de desenvolvimento muda a velocidade do projeto. Escolha o caminho mais próximo do seu e fale diretamente com quem conduz a pesquisa.</p>
+      </div>
+
+      <ul class="participe">
+        <li>
+          <div>
+            <h3>Fomento e investimento</h3>
+            <p>Agências, fundos e investidores que queiram acelerar a travessia de TRL 2 a produto registrado, com uma tese de soberania tecnológica que dialoga com a política industrial brasileira.</p>
+          </div>
+          <a class="btn btn-ghost btn-sm" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar sobre fomento e investimento no projeto." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Falar sobre fomento</a>
+        </li>
+        <li>
+          <div>
+            <h3>Saúde pública</h3>
+            <p>Gestores do SUS, laboratórios centrais, secretarias e serviços que queiram participar da definição de painéis e da validação em campo, nas condições reais de uso.</p>
+          </div>
+          <a class="btn btn-ghost btn-sm" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar sobre validação em serviços de saúde." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Propor validação</a>
+        </li>
+        <li>
+          <div>
+            <h3>Agro e indústria</h3>
+            <p>Cooperativas, frigoríficos, laticínios e empresas que precisam de detecção rápida de patógenos na própria cadeia produtiva, sem esperar pelo laboratório terceirizado.</p>
+          </div>
+          <a class="btn btn-ghost btn-sm" data-wa="Olá! Vi a página da NUCLEA ONE e quero discutir uma aplicação no agro ou na indústria." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Discutir uma aplicação</a>
+        </li>
+        <li>
+          <div>
+            <h3>Academia e biotecnologia</h3>
+            <p>Grupos de pesquisa, ICTs e empresas de base tecnológica interessados em desenvolver ensaios sobre a plataforma ou em cooperar nas frentes de química, microfabricação e dados.</p>
+          </div>
+          <a class="btn btn-ghost btn-sm" data-wa="Olá! Vi a página da NUCLEA ONE e quero propor uma cooperação científica ou tecnológica." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Propor cooperação</a>
+        </li>
+      </ul>
+      <p class="contato-direto">Prefere e-mail? Escreva para <a data-mail="NUCLEA ONE — contato pelo site" data-mostrar href="mailto:advogadolucasmorais@gmail.com">advogadolucasmorais@gmail.com</a>. A pesquisa é conduzida por Lucas Thadeu S. F. Morais, doutorando em Inovação Tecnológica no PPGIT/UFMG e fundador do IBLT.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ REFERÊNCIAS ============================ -->
+<section class="refs" id="referencias">
+  <div class="wrap">
+    <h2>Referências</h2>
+    <ol>
+      <li id="ref-1">Futuro da Saúde. <i>Missão de saúde da Nova Indústria Brasil não deve atingir meta de 2026</i>, 2026. <a href="https://futurodasaude.com.br/?p=47454" target="_blank" rel="noopener">futurodasaude.com.br</a></li>
+      <li id="ref-2">IBGE, Agência de Notícias. <i>PNS 2019: sete em cada dez pessoas que procuram o mesmo serviço de saúde vão à rede pública</i>, 2020. <a href="https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/28793-pns-2019-sete-em-cada-dez-pessoas-que-procuram-o-mesmo-servico-de-saude-vao-a-rede-publica.html" target="_blank" rel="noopener">agenciadenoticias.ibge.gov.br</a></li>
+      <li id="ref-3">Bahia Notícias, com dados da PNS 2019/IBGE. <i>Levantamento do IBGE mostra que 71,5% da população brasileira depende do SUS</i>, 2020. <a href="https://www.bahianoticias.com.br/saude/noticia/24808-levantamento-do-ibge-mostra-que-715-da-populacao-brasileira-depende-do-sus" target="_blank" rel="noopener">bahianoticias.com.br</a></li>
+      <li id="ref-4">Ministério da Saúde, dados do CNES, 2023. <i>Mais de mil municípios do país não possuem serviços médicos privados e dependem exclusivamente do SUS</i>. <a href="https://jornalcontabil.com.br/noticia/mais-de-mil-municipios-do-pais-nao-possuem-servicos-medicos-privados-e-dependem-exclusivamente-do-sus/" target="_blank" rel="noopener">jornalcontabil.com.br</a></li>
+      <li id="ref-5">Ministério da Saúde, Painel de Monitoramento de Arboviroses, dados de 2024. <a href="https://www.revistaoeste.com/saude/recorde-brasil-tem-66-milhoes-de-casos-de-dengue-em-2024-e-mais-de-6-mil-mortes/" target="_blank" rel="noopener">revistaoeste.com</a></li>
+      <li id="ref-6">Cepea/Esalq-USP e CNA. <i>PIB do agronegócio cresce 12,20% em 2025</i>, 2026. <a href="https://cepea.org.br/br/releases/pib-agro-cepea-pib-do-agronegocio-cresce-expressivos-12-em-2025.aspx" target="_blank" rel="noopener">cepea.org.br</a></li>
+      <li id="ref-7">Perfil acadêmico do Prof. Yiwei Li, Huazhong University of Science and Technology. <a href="https://scholar.google.com/citations?user=mihILDoAAAAJ" target="_blank" rel="noopener">scholar.google.com</a></li>
+      <li id="ref-8">WAN, C. et al. <i>Culture-Free Microfluidics for Ultra-Rapid Antimicrobial Susceptibility Testing with AI in Resource-Limited Settings</i>. Analytical Chemistry, v. 98, n. 11, 2026. <a href="https://pubs.acs.org/ancham/article-abstract/98/11/8349/5075751/Culture-Free-Microfluidics-for-Ultra-Rapid" target="_blank" rel="noopener">pubs.acs.org</a></li>
+      <li id="ref-9">Universidade de Macau. <i>UM spin-off partners with Zhuhai No.1 High School to establish food safety testing centre</i>, 2026. <a href="https://www.um.edu.mo/news-and-press-releases/campus-news/detail/64483/" target="_blank" rel="noopener">um.edu.mo</a></li>
+      <li id="ref-10">Macau Business. <i>Paying off</i>, 2025. <a href="https://www.macaubusiness.com/paying-off/" target="_blank" rel="noopener">macaubusiness.com</a></li>
+      <li id="ref-11">Digifluidic Bio-tech Co., Ltd. Perfil institucional. <a href="https://www.linkedin.com/company/digifluidic-biotech-ltd" target="_blank" rel="noopener">linkedin.com</a></li>
+      <li id="ref-12">Digifluidic. <i>Relying on digital microfluidic technology, innovative portable automatic testing equipment</i>. <a href="https://digifluidic.com/news/33" target="_blank" rel="noopener">digifluidic.com</a></li>
+      <li id="ref-13">Brasil. Lei nº 13.709/2018 (LGPD), art. 5º, II. <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">planalto.gov.br</a></li>
+      <li id="ref-14">ANVISA. RDC nº 830, de 6 de dezembro de 2023, e documento de perguntas e respostas. <a href="https://www.gov.br/anvisa/pt-br/centraisdeconteudo/publicacoes/produtos-para-a-saude/manuais/perguntas-respostas-rdc-830-de-2023" target="_blank" rel="noopener">gov.br/anvisa</a></li>
+      <li id="ref-15">Brasil. Portaria GM/MS nº 888, de 4 de maio de 2021, padrão de potabilidade da água para consumo humano. <a href="https://ses.sp.bvs.br/wp-content/uploads/2021/05/U_PT-MS-GM-888_040521.pdf" target="_blank" rel="noopener">ses.sp.bvs.br</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ RODAPÉ ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./" aria-label="IBLT — página inicial">
+          <span class="mark"><svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round"><line x1="60.5" y1="16" x2="66.5" y2="104" stroke-width="3.5"/><line x1="19.5" y1="56.8" x2="101.5" y2="43.2" stroke-width="3.5"/><line x1="66.5" y1="104" x2="77.2" y2="70.4" stroke-width="2"/><line x1="77.2" y1="70.4" x2="101.5" y2="43.2" stroke-width="2"/></g><g fill="currentColor"><circle cx="66.5" cy="104" r="7.5"/><circle cx="19.5" cy="56.8" r="6.6"/><circle cx="60.5" cy="16" r="6"/><circle cx="101.5" cy="43.2" r="5.2"/><circle cx="77.2" cy="70.4" r="4"/></g></svg></span>
+          <span>IBLT<small>Liderança Tecnológica</small></span>
+        </a>
+        <p class="sobre">O Instituto Brasileiro de Liderança Tecnológica atua na convergência entre universidade, indústria e governo: estrutura projetos de inovação, capta recursos de fomento e leva tecnologia de pesquisa para o mercado.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Nesta página</h5>
+        <a href="#problema">O problema</a>
+        <a href="#jornada">A jornada</a>
+        <a href="#tecnologia">A tecnologia</a>
+        <a href="#conexao">Brasil–China</a>
+        <a href="#aplicacoes">Aplicações</a>
+        <a href="#rota">A rota</a>
+      </div>
+      <div class="foot-col">
+        <h5>IBLT</h5>
+        <a href="./">Início</a>
+        <a href="./como-funciona.html">Como funciona</a>
+        <a href="./mpe.html">Micro e pequenas empresas</a>
+        <a data-wa="Olá! Quero falar com o IBLT." href="https://wa.me/5531998675400" target="_blank" rel="noopener">WhatsApp</a>
+        <a data-mail="Contato pelo site do IBLT" href="mailto:advogadolucasmorais@gmail.com">E-mail</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="ano">2026</span> IBLT — Instituto Brasileiro de Liderança Tecnológica. NUCLEA ONE é um projeto de pesquisa em desenvolvimento; as informações desta página têm caráter informativo e não constituem oferta de produto para diagnóstico.</small>
+      <small>Belo Horizonte, Minas Gerais</small>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar." href="https://wa.me/5531998675400" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.69 5.514l-.999 3.648 3.808-.999zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-saude" viewBox="0 0 24 24"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></symbol>
+  <symbol id="i-vigilancia" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6.4-6.4"/></symbol>
+  <symbol id="i-forense" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.8"/><path d="M15.4 15.4L21 21M10.5 6.6a3.9 3.9 0 013.9 3.9M10.5 9.2a1.3 1.3 0 011.3 1.3"/></symbol>
+  <symbol id="i-agro" viewBox="0 0 24 24"><path d="M4.5 20c0-8.5 5.2-15 15-15 0 9.8-6.2 15.2-14 15.2"/><path d="M4.5 20l8.7-8.7"/></symbol>
+  <symbol id="i-ambiente" viewBox="0 0 24 24"><path d="M12 3.2c3.6 4.6 6.1 8.1 6.1 11.1a6.1 6.1 0 01-12.2 0c0-3 2.5-6.5 6.1-11.1z"/></symbol>
+  <symbol id="i-industria" viewBox="0 0 24 24"><path d="M3 21V10.2l6 3.8V10.2l6 3.8V6h6v15z"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-pesquisa" viewBox="0 0 24 24"><path d="M9.2 3h5.6M10.4 3v6.4l-5 9.1A2 2 0 007.2 21.5h9.6a2 2 0 001.8-3l-5-9.1V3"/><path d="M7.6 15.4h8.8"/></symbol>
+</svg>
+
+<script src="./iblt-config.js"></script>
+<script>
+/* =====================================================================
+   1) VÍDEOS DA PÁGINA — edite SÓ este bloco quando os vídeos chegarem.
+   ---------------------------------------------------------------------
+   src aceita três formatos:
+     • arquivo no repositório .... "videos/nucleaone/problema.mp4"
+       (MP4 H.264; pelo navegador o GitHub aceita até 25 MB por arquivo)
+     • link do YouTube ........... "https://youtu.be/XXXXXXXXXXX"
+     • link do Vimeo ............. "https://vimeo.com/123456789"
+   poster (opcional): imagem de capa, ex. "videos/nucleaone/problema.jpg"
+   ===================================================================== */
+var VIDEOS = {
+  problema:   { src: "", poster: "" },
+  tecnologia: { src: "", poster: "" },
+  parceria:   { src: "", poster: "" },
+  aplicacoes: { src: "", poster: "" }
+};
+/* true mostra o espaço reservado do vídeo; false esconde o bloco inteiro */
+var MOSTRAR_ESPACOS_VAZIOS = true;
+
+(function () {
+  'use strict';
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- contato (usa iblt-config.js quando existir) ---------- */
+  var CFG = window.IBLT_CONFIG || {};
+  var WA = String(CFG.whatsapp || '5531998675400').replace(/\D/g, '');
+  var EMAIL = CFG.email || 'advogadolucasmorais@gmail.com';
+  $$('[data-wa]').forEach(function (a) {
+    a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(a.dataset.wa);
+  });
+  $$('[data-mail]').forEach(function (a) {
+    a.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(a.dataset.mail);
+    if (a.hasAttribute('data-mostrar')) a.textContent = EMAIL;
+  });
+  var ano = $('#ano'); if (ano) ano.textContent = new Date().getFullYear();
+
+  /* ---------- menu ---------- */
+  var toggle = $('#navToggle'), menu = $('#menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var aberto = menu.classList.toggle('aberto');
+      toggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    });
+    $$('a', menu).forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('aberto');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ---------- link ativo na nav ---------- */
+  var secoes = $$('main section[id]');
+  var links = {};
+  $$('.nav-links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window && secoes.length) {
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        var a = links[e.target.id];
+        if (!a) return;
+        if (e.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove('ativo'); });
+          a.classList.add('ativo');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secoes.forEach(function (s) { io.observe(s); });
+  }
+
+  /* ---------- animação do cartucho no topo ---------- */
+  var svgHero = $('.chip-hero'), btnAnim = $('#btnAnim');
+  if (svgHero && btnAnim && svgHero.pauseAnimations) {
+    if (semMovimento) {
+      svgHero.setCurrentTime(7);
+      svgHero.pauseAnimations();
+      btnAnim.setAttribute('aria-pressed', 'true');
+      btnAnim.textContent = 'Retomar animação';
+    }
+    btnAnim.addEventListener('click', function () {
+      var pausado = btnAnim.getAttribute('aria-pressed') === 'true';
+      if (pausado) { svgHero.unpauseAnimations(); btnAnim.textContent = 'Pausar animação'; }
+      else { svgHero.pauseAnimations(); btnAnim.textContent = 'Retomar animação'; }
+      btnAnim.setAttribute('aria-pressed', pausado ? 'false' : 'true');
+    });
+  } else if (btnAnim) {
+    btnAnim.hidden = true;
+  }
+
+  /* ---------- recorte do cartucho do topo em telas estreitas ---------- */
+  if (svgHero) {
+    var ajustaChip = function () {
+      svgHero.setAttribute('viewBox', window.innerWidth <= 680 ? '62 30 776 272' : '0 0 900 356');
+    };
+    ajustaChip();
+    var t = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(t); t = setTimeout(ajustaChip, 150);
+    });
+  }
+
+  /* ---------- etapas do cartucho ---------- */
+  var chipLab = $('.chip-lab');
+  var abas = $$('.etapas button');
+  var paineis = $$('.etapa-painel');
+  function selecionar(etapa) {
+    if (chipLab) chipLab.setAttribute('data-sel', etapa);
+    abas.forEach(function (b) { b.setAttribute('aria-selected', b.dataset.etapa === etapa ? 'true' : 'false'); });
+    paineis.forEach(function (p) { p.hidden = p.dataset.painel !== etapa; });
+  }
+  if (abas.length) {
+    abas.forEach(function (b, i) {
+      b.addEventListener('click', function () { selecionar(b.dataset.etapa); });
+      b.addEventListener('keydown', function (ev) {
+        var d = ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        ev.preventDefault();
+        var alvo = abas[(i + d + abas.length) % abas.length];
+        alvo.focus(); selecionar(alvo.dataset.etapa);
+      });
+    });
+    selecionar('lise');
+  }
+
+  /* ---------- nanopartícula: captura / liberação ---------- */
+  var np = $('.np'), bCap = $('#npCaptura'), bSolto = $('#npSolto');
+  if (np && bCap && bSolto) {
+    var estado = function (solto) {
+      np.classList.toggle('solto', solto);
+      bCap.setAttribute('aria-pressed', solto ? 'false' : 'true');
+      bSolto.setAttribute('aria-pressed', solto ? 'true' : 'false');
+    };
+    bCap.addEventListener('click', function () { estado(false); });
+    bSolto.addEventListener('click', function () { estado(true); });
+  }
+
+  /* ---------- mapa-múndi: desenhar os arcos ao aparecer ---------- */
+  var mundo = $('.mundo');
+  if (mundo) {
+    if (!('IntersectionObserver' in window) || semMovimento) {
+      mundo.classList.add('visivel');
+    } else {
+      var ioM = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { mundo.classList.add('visivel'); ioM.disconnect(); } });
+      }, { threshold: 0.25 });
+      ioM.observe(mundo);
+    }
+  }
+
+  /* ---------- legenda do mapa do Brasil ---------- */
+  var brasil = $('.brasil'), legenda = $('#legendaBr');
+  if (brasil && legenda) {
+    $$('li', legenda).forEach(function (li) {
+      var foco = function () { brasil.setAttribute('data-foco', li.dataset.rg); };
+      var limpar = function () { brasil.removeAttribute('data-foco'); };
+      li.addEventListener('mouseenter', foco);
+      li.addEventListener('mouseleave', limpar);
+      li.setAttribute('tabindex', '0');
+      li.addEventListener('focus', foco);
+      li.addEventListener('blur', limpar);
+    });
+  }
+
+  /* ---------- filtros das aplicações ---------- */
+  var filtros = $$('.filtros button'), apps = $$('.app');
+  filtros.forEach(function (b) {
+    b.addEventListener('click', function () {
+      filtros.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      var f = b.dataset.f;
+      apps.forEach(function (a) {
+        var mostra = f === 'todas' || a.dataset.cat === f;
+        a.hidden = !mostra;
+        if (!mostra) a.open = false;
+      });
+    });
+  });
+
+  /* ---------- fases da rota ---------- */
+  var barras = $$('.escada .barra'), detalhes = $$('.fase-det');
+  barras.forEach(function (b) {
+    b.addEventListener('click', function () {
+      barras.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      detalhes.forEach(function (d) { d.hidden = d.dataset.fase !== b.dataset.fase; });
+    });
+  });
+
+  /* ---------- vídeos ---------- */
+  function idYouTube(url) {
+    var m = url.match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : null;
+  }
+  function idVimeo(url) {
+    var m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    return m ? m[1] : null;
+  }
+  $$('.video').forEach(function (fig) {
+    var chave = fig.dataset.video;
+    var cfg = VIDEOS[chave] || {};
+    var src = (cfg.src || '').trim();
+    var quadro = $('.quadro', fig);
+    var titulo = ($('figcaption b', fig) || {}).textContent || 'Vídeo';
+    if (!src) {
+      if (!MOSTRAR_ESPACOS_VAZIOS) { fig.hidden = true; return; }
+      quadro.className = 'quadro vazio';
+      quadro.innerHTML = '<div><div class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l12 7-12 7z"/></svg></div>' +
+        '<p style="margin-top:12px">' + titulo + '</p><p>Vídeo em produção</p></div>';
+      return;
+    }
+    var yt = idYouTube(src), vm = idVimeo(src);
+    if (yt) {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + yt + '?rel=0';
+      f.title = titulo;
+      f.loading = 'lazy';
+      f.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      quadro.appendChild(f);
+    } else if (vm) {
+      var fv = document.createElement('iframe');
+      fv.src = 'https://player.vimeo.com/video/' + vm;
+      fv.title = titulo;
+      fv.loading = 'lazy';
+      fv.allow = 'autoplay; fullscreen; picture-in-picture';
+      fv.allowFullscreen = true;
+      quadro.appendChild(fv);
+    } else {
+      var v = document.createElement('video');
+      v.controls = true;
+      v.preload = 'metadata';
+      v.playsInline = true;
+      if (cfg.poster) v.poster = cfg.poster;
+      var s = document.createElement('source');
+      s.src = src;
+      s.type = /\.webm($|\?)/i.test(src) ? 'video/webm' : 'video/mp4';
+      v.appendChild(s);
+      v.appendChild(document.createTextNode('Seu navegador não reproduz este vídeo.'));
+      quadro.appendChild(v);
+    }
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "NUCLEA ONE — plataforma microfluídica brasileira de extração de DNA",
+  "url": "https://iblt.com.br/nucleaone",
+  "inLanguage": "pt-BR",
+  "description": "Plataforma microfluídica de extração de DNA para diagnóstico no ponto de cuidado, nascida de pesquisa na UFMG e desenvolvida em cooperação com a HUST e com a Digifluidic/Universidade de Macau.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "IBLT — Instituto Brasileiro de Liderança Tecnológica",
+    "url": "https://iblt.com.br/"
+  },
+  "about": {
+    "@type": "ResearchProject",
+    "name": "NUCLEA ONE",
+    "description": "Cartucho microfluídico monolítico que integra lise químico-térmica, captura magnética em fase sólida com nanopartículas Fe₃O₄@SiO₂@PEI, lavagem e eluição controlada para extração de DNA genômico de alto peso molecular."
+  }
+}
+</script>
+</body>
+</html>
