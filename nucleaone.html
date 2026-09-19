@@ -468,6 +468,69 @@ header.nav{position:sticky;top:0;z-index:60;background:rgba(15,20,25,.88);backdr
   .escada .barra{font-size:.74rem}
 }
 
+/* ---------------- MÉTODO DE TRANSFERÊNCIA ---------------- */
+.evid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:42px;border-top:1px solid var(--line-2)}
+.evid > div{padding:24px 26px 24px 0;border-right:1px solid var(--line)}
+.evid > div + div{padding-left:26px}
+.evid > div:last-child{border-right:0}
+.evid .tag{display:block;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ouro);margin-bottom:11px}
+.evid h4{margin-bottom:8px;font-size:1.02rem}
+.evid p{font-size:.93rem;color:var(--muted)}
+@media(max-width:880px){
+  .evid{grid-template-columns:1fr}
+  .evid > div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .evid > div + div{padding-left:0}
+  .evid > div:last-child{border-bottom:0}
+}
+
+.assim{margin-top:60px;border-top:1px solid var(--line-2)}
+.assim .cab,.assim .par{display:grid;grid-template-columns:168px minmax(0,1fr) minmax(0,1fr);gap:0 26px}
+.assim .cab{padding:14px 0 11px;border-bottom:1px solid var(--line-2)}
+.assim .cab span{font-size:.69rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.assim .cab span:last-child{color:var(--ouro)}
+.assim .par{padding:19px 0;border-bottom:1px solid var(--line);align-items:start}
+.assim .rot{font-size:.86rem;color:var(--white);font-weight:700}
+.assim .antes{font-size:.93rem;color:var(--faint)}
+.assim .depois{font-size:.95rem;color:var(--ink);border-left:2px solid var(--ouro);padding-left:20px}
+@media(max-width:820px){
+  .assim .cab{display:none}
+  .assim .par{grid-template-columns:1fr;gap:9px;padding:22px 0}
+  .assim .antes::before{content:"Padrão documentado — ";color:var(--faint);font-weight:700;font-size:.78rem;letter-spacing:.04em}
+  .assim .depois{padding-left:16px}
+}
+
+.proto{margin-top:36px;border-top:1px solid var(--line-2);counter-reset:pr}
+.proto details{border-bottom:1px solid var(--line)}
+.proto summary{display:grid;grid-template-columns:46px minmax(0,1fr) 24px;gap:16px;align-items:start;padding:21px 0;cursor:pointer;list-style:none}
+.proto summary::-webkit-details-marker{display:none}
+.proto .np{counter-increment:pr;font-family:var(--serif);font-size:1.55rem;line-height:1.05;color:var(--ouro)}
+.proto .np::before{content:counter(pr)}
+.proto .tit{font-family:var(--serif);font-size:1.16rem;color:var(--white);display:block;line-height:1.25}
+.proto .gist{display:block;font-size:.92rem;color:var(--muted);margin-top:6px;max-width:66ch}
+.proto .mais{width:18px;height:18px;position:relative;justify-self:end;margin-top:7px}
+.proto .mais::before,.proto .mais::after{content:"";position:absolute;background:var(--ouro);transition:transform .25s ease}
+.proto .mais::before{left:0;top:8px;width:18px;height:1.5px}
+.proto .mais::after{left:8px;top:0;width:1.5px;height:18px}
+.proto details[open] .mais::after{transform:rotate(90deg)}
+.proto details[open] .tit{color:var(--ouro-claro)}
+.proto-corpo{padding:2px 0 28px 62px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 34px}
+.proto-corpo > div{border-top:1px solid var(--line);padding-top:10px}
+.proto-corpo .larga{grid-column:1/-1}
+.proto-corpo dt{font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.proto-corpo dd{font-size:.93rem;color:var(--ink)}
+.proto-corpo .janela dd{color:var(--ouro-claro)}
+@media(max-width:860px){
+  .proto summary{grid-template-columns:34px minmax(0,1fr) 20px;gap:12px}
+  .proto .np{font-size:1.25rem}
+  .proto-corpo{padding-left:46px;grid-template-columns:1fr}
+}
+@media(max-width:520px){.proto-corpo{padding-left:0}}
+
+.destaque{margin-top:48px;border-left:2px solid var(--ouro);padding:6px 0 6px 26px}
+.destaque h3{margin-bottom:10px}
+.destaque p{color:var(--ink)}
+.destaque p + p{margin-top:14px}
+
 /* ---------------- LATAM ---------------- */
 .latam{margin-top:44px;border-left:2px solid var(--ouro);padding:6px 0 6px 26px}
 .latam h3{margin-bottom:10px}
@@ -530,6 +593,7 @@ footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
       <a href="#conexao">Brasil–China</a>
       <a href="#aplicacoes">Aplicações</a>
       <a href="#rota">A rota</a>
+      <a href="#metodo">O método</a>
     </nav>
     <a class="nav-cta" data-wa="Olá! Vi a página da NUCLEA ONE e quero conversar sobre a plataforma." href="https://wa.me/5531998675400" target="_blank" rel="noopener">Conversar sobre parceria</a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
@@ -1430,10 +1494,183 @@ footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
   </div>
 </section>
 
-<!-- ============================ VIII · PARTICIPE ============================ -->
+<!-- ============================ VIII · O MÉTODO ============================ -->
+<section class="cap" id="metodo">
+  <div class="wrap cap-grid">
+    <div class="cap-mark"><div class="num">VIII</div><div class="nome">O método</div></div>
+    <div>
+      <div class="cap-head">
+        <h2>Transferir tecnologia tem um manual, e ele foi escrito a partir de fracassos.</h2>
+        <p class="lead">Existe uma literatura inteira sobre o que acontece quando uma tecnologia de saúde desenvolvida num país rico é levada para um país de renda média ou baixa. Ela documenta, caso a caso, por que a maior parte dessas transferências morre no piloto. A NUCLEA ONE foi desenhada para responder a essas condições antes de existir como produto: o que abaixo se chama protocolo é a conversão dessas evidências em etapas com entregável e prazo.</p>
+      </div>
+
+      <div class="evid">
+        <div>
+          <span class="tag">Achado 1</span>
+          <h4>O que quebra não é a ciência.</h4>
+          <p>As revisões de adaptação mostram que o que precisa mudar na chegada é a entrega, a interface, o treinamento, a infraestrutura e a governança, quase nunca a ideia técnica central. Tecnologia importada funciona quando gente local a remodela em torno do fluxo de trabalho, da conectividade, de quem opera e do perfil de doenças do lugar.<sup class="r"><a href="#ref-16">16</a></sup></p>
+        </div>
+        <div>
+          <span class="tag">Achado 2</span>
+          <h4>Diagnóstico molecular exige mais que tradução.</h4>
+          <p>O estudo específico sobre plataformas que vão da amostra ao resultado conclui que levá-las a países de renda média depende de rever custo, distribuição, sustentabilidade e o menu de testes: os painéis desenhados para mercados ricos cobrem mal as doenças que circulam aqui.<sup class="r"><a href="#ref-17">17</a></sup></p>
+        </div>
+        <div>
+          <span class="tag">Achado 3</span>
+          <h4>Adaptar depois custa caro demais.</h4>
+          <p>Nos casos documentados, a adaptação chegou como conserto de um produto pronto, e falhou quando o sistema aumentava a carga de trabalho, o suporte demorava e a energia ou a rede não acompanhavam. A NUCLEA ONE está entre TRL 2 e 4: aqui o contexto brasileiro ainda cabe como especificação de entrada.<sup class="r"><a href="#ref-18">18</a></sup><sup class="r"><a href="#ref-20">20</a></sup></p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Quatro assimetrias a favor deste arranjo</h3>
+        <p class="sub-lead">A literatura descreve importação de produto acabado de país de alta renda. Não é o que está em curso aqui, e a diferença muda o risco.</p>
+
+        <div class="assim">
+          <div class="cab"><span></span><span>Padrão documentado na literatura</span><span>NUCLEA ONE</span></div>
+          <div class="par">
+            <div class="rot">Origem</div>
+            <div class="antes">País de alta renda, com custo, escala e cadeia de suprimento incompatíveis com o destino.</div>
+            <div class="depois">Parceiro que já projeta sob restrição de custo e produz em volume. A distância entre origem e destino é menor desde o primeiro desenho.</div>
+          </div>
+          <div class="par">
+            <div class="rot">Forma de chegada</div>
+            <div class="antes">Produto acabado, importado e adaptado depois; a propriedade intelectual permanece na origem.</div>
+            <div class="depois">Co-desenvolvimento, com propriedade intelectual em cotitularidade e depósito também no Brasil.</div>
+          </div>
+          <div class="par">
+            <div class="rot">Momento da adaptação</div>
+            <div class="antes">TRL 9 na chegada: sem margem para reprojetar o que não coube.</div>
+            <div class="depois">TRL 2 a 4: calor, energia, cadeia fria, operador e perfil epidemiológico entram como requisito de engenharia, não como correção.</div>
+          </div>
+          <div class="par">
+            <div class="rot">Quem define sucesso</div>
+            <div class="antes">Fornecedor estrangeiro, com métricas do mercado de origem.</div>
+            <div class="depois">Comprador brasileiro: saúde pública, vigilância, defesa agropecuária e perícia, ouvidos antes de o produto congelar.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>O protocolo, em sete etapas</h3>
+        <p class="sub-lead">Cada etapa tem evidência que a sustenta, entregável verificável e janela. Abra uma delas para ver o detalhe.</p>
+
+        <div class="proto">
+          <details open>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Definir o menu de alvos antes de embarcar</span><span class="gist">Extração é meio; o mercado compra alvo. A lista de doenças e de matrizes vem antes da engenharia, não depois dela.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>Painéis desenhados fora cobrem mal o perfil de doenças local; rever o menu de testes é condição de adoção, não refinamento.<sup class="r"><a href="#ref-17">17</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Antes da missão técnica.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Cruzar carga de doença e volume de exames a partir de fontes públicas — notificação compulsória, painéis de arboviroses, séries históricas de compra pública — com demandas não humanas de alto volume e barreira regulatória menor: sanidade animal, fitopatologia, qualidade da água e perícia criminal. De cada frente sai alvo, volume anual estimado, preço hoje pago na importação e órgão comprador nomeado.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Matriz de três a cinco alvos prioritários, cada um com comprador identificado e ordem de grandeza de mercado.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Traduzir o contexto brasileiro em requisito de engenharia</span><span class="gist">Calor, energia instável, cadeia fria frágil e operador não especialista viram número em especificação, não adjetivo em apresentação.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>Instabilidade de rede, queda de energia e letramento digital variável foram causa direta de falha nos casos documentados em Gana e na Tanzânia.<sup class="r"><a href="#ref-19">19</a></sup><sup class="r"><a href="#ref-20">20</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Fase 1 da rota, TRL 2 a 4.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Levar aos parceiros um caderno de requisitos com valores, não com intenções: operação por bateria com tolerância a queda de energia no meio da corrida; resultado que sai sem depender de nuvem, com sincronização posterior; reagentes estáveis em temperatura ambiente; tempo de manuseio declarado em minutos e separado do tempo total de processamento; cartucho que não permite montagem errada. O capítulo de tropicalização desta página é a versão longa dessa lista.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Caderno de requisitos acordado com HUST e Digifluidic, anexo ao plano de trabalho da cooperação.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Blindar a cotitularidade antes da imersão industrial</span><span class="gist">O risco maior de um arranjo internacional como este não é técnico. É contratual, e ele se resolve cedo ou não se resolve.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>Os frameworks de adoção e difusão de dispositivos médicos em ambientes de baixo recurso tratam governança e sustentabilidade como variáveis de projeto, e não como consequência do sucesso técnico.<sup class="r"><a href="#ref-22">22</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Dentro da validade da carta de intenções já assinada.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Com a CTIT/UFMG, converter a carta de intenções em acordo definitivo com quatro cláusulas mínimas: campo de uso e território, com Brasil e Mercosul do lado brasileiro; separação explícita entre o conhecimento pré-existente — nanopartículas Fe₃O₄@SiO₂@PEI e projeto de canais — e o conhecimento gerado em conjunto; preço de transferência, volume mínimo e direito de fabricação local caso o fornecimento falhe; e rota de proteção internacional com entrada nacional no INPI.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Acordo de cooperação e de cotitularidade assinado, com os primeiros pedidos de patente depositados.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Missão técnica com objetivo de industrialização</span><span class="gist">O que se traz da China não é protocolo de bancada. É engenharia de produção, que não se aprende por artigo nem se compra por contrato.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>As transferências que se sustentaram foram as que deixaram capacidade instalada no destino, e não apenas equipamento em operação.<sup class="r"><a href="#ref-16">16</a></sup><sup class="r"><a href="#ref-22">22</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Missão na HUST, em Wuhan, e imersão na planta em Zhuhai.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Objetivos de aprendizagem declarados por escrito antes de viajar: migração de PDMS para PMMA em escala, com moldes, tolerâncias, selagem, rendimento por lote e taxa de refugo; escolhas de projeto que encarecem ou barateiam molde; controle de qualidade de lote documentado em formato auditável por autoridade sanitária; e custo unitário real do cartucho em três cenários de volume.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Dossiê de transferência de processo, e não relatório de visita. É esse documento que sustenta pedido de fomento, dossiê regulatório e negociação industrial depois.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Co-projetar com o usuário brasileiro desde o TRL 4</span><span class="gist">Quem vai operar entra no projeto antes de o protótipo congelar, não depois de o piloto fracassar.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>A adaptação mais bem-sucedida da literatura foi construída com entrevistas, grupos focais e participação de interessados locais. A que falhou aumentou a carga de trabalho de quem já estava sobrecarregado.<sup class="r"><a href="#ref-16">16</a></sup><sup class="r"><a href="#ref-18">18</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Fase 2 da rota, TRL 4 a 6.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Três sítios-piloto de perfis deliberadamente distintos: um laboratório central estadual, uma unidade de baixa complexidade e um usuário não clínico, do agro ou da perícia. Observação do fluxo real, da chegada da amostra até o laudo, antes de fechar interface e cartucho. O que se procura ali não é aprovação: é o ponto exato em que o equipamento cria trabalho em vez de tirar.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Relatório de encaixe de fluxo por sítio, com interface e cartucho revisados a partir dele.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Construir a régua com que a plataforma será comparada</span><span class="gist">O campo não tem padrão de relato de desempenho. Quem propõe a régua participa da definição do critério de compra.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>A revisão sistemática de 143 estudos conduzida no doutorado mostrou que rendimento, tempo e custo são relatados de formas não equivalentes, o que impede comparação objetiva entre tecnologias de extração. <a href="#jornada">Ver o capítulo da jornada.</a></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Em paralelo à Fase 2.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Propor e adotar um formato mínimo de relato: rendimento absoluto em nanogramas, pureza por A260/A280 e A260/A230, integridade do material extraído, tempo total e tempo de manuseio separados, custo por amostra e indicadores de sustentabilidade. É o equivalente extrativo ao que o MIQE representa para qPCR e o MIxS para metagenômica, que hoje não existe.<sup class="r"><a href="#ref-24">24</a></sup><sup class="r"><a href="#ref-25">25</a></sup> O mesmo formato passa a ser usado no dossiê técnico da plataforma e proposto em especificações de compra pública.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Artigo de posicionamento publicado e formato de relato adotado como padrão interno de validação.</dd></div>
+            </dl>
+          </details>
+
+          <details>
+            <summary>
+              <span class="np" aria-hidden="true"></span>
+              <span><span class="tit">Ancorar a demanda pública antes de existir produto</span><span class="gist">Descobrir qual evidência o comprador exige depois do protótipo pronto é o erro mais caro que este projeto pode cometer.</span></span>
+              <span class="mais" aria-hidden="true"></span>
+            </summary>
+            <dl class="proto-corpo">
+              <div><dt>Evidência</dt><dd>A adoção depende de encaixe com a política e o ambiente regulatório locais tanto quanto de desempenho técnico.<sup class="r"><a href="#ref-22">22</a></sup><sup class="r"><a href="#ref-23">23</a></sup></dd></div>
+              <div class="janela"><dt>Janela</dt><dd>Contínua, começando agora.</dd></div>
+              <div class="larga"><dt>Como fazemos</dt><dd>Três instrumentos em paralelo: a encomenda tecnológica prevista no marco legal de ciência, tecnologia e inovação, desenhada justamente para contratar desenvolvimento com risco tecnológico; a margem de preferência para produto com desenvolvimento tecnológico no país, que reforça a exigência de direito de fabricação nacional fixada na etapa 3; e diálogo antecipado com as áreas de avaliação e incorporação de tecnologia para saber qual evidência será exigida antes de produzi-la.</dd></div>
+              <div class="larga"><dt>Entregável</dt><dd>Receita escalonada: perícia e agro primeiro, pela barreira regulatória menor e pelo ciclo de compra mais curto; laboratórios e redes estaduais em seguida; incorporação ao sistema público por último, já com base instalada e desempenho medido em campo brasileiro.</dd></div>
+            </dl>
+          </details>
+        </div>
+      </div>
+
+      <div class="destaque">
+        <h3>Onde o recurso entra nesta engrenagem</h3>
+        <p>As etapas 2, 3 e 4 convergem em um único ponto: colocar a equipe brasileira dentro da planta chinesa com objetivo de aprendizagem definido e voltar com processo documentado. É o item de maior retorno por real investido em todo o projeto, porque é o único que não se resolve por leitura, por contrato nem por compra de equipamento. Conhecimento de fabricação se transfere por presença.</p>
+        <p>As etapas 5, 6 e 7 dependem de tempo de equipe no Brasil: campo, publicação e articulação institucional. São elas que transformam uma cooperação científica bem-sucedida em um produto com comprador identificado, que é a diferença entre um artigo e uma indústria.</p>
+      </div>
+
+      <p class="aviso">Etapas, entregáveis e janelas são planejamento: dependem de financiamento aprovado, de resultados de pesquisa e dos acordos formais entre as instituições envolvidas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ IX · PARTICIPE ============================ -->
 <section class="cap" id="participe">
   <div class="wrap cap-grid">
-    <div class="cap-mark"><div class="num">VIII</div><div class="nome">Participe</div></div>
+    <div class="cap-mark"><div class="num">IX</div><div class="nome">Participe</div></div>
     <div>
       <div class="cap-head">
         <h2>Construa essa rota com a gente.</h2>
@@ -1497,6 +1734,16 @@ footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
       <li id="ref-13">Brasil. Lei nº 13.709/2018 (LGPD), art. 5º, II. <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">planalto.gov.br</a></li>
       <li id="ref-14">ANVISA. RDC nº 830, de 6 de dezembro de 2023, e documento de perguntas e respostas. <a href="https://www.gov.br/anvisa/pt-br/centraisdeconteudo/publicacoes/produtos-para-a-saude/manuais/perguntas-respostas-rdc-830-de-2023" target="_blank" rel="noopener">gov.br/anvisa</a></li>
       <li id="ref-15">Brasil. Portaria GM/MS nº 888, de 4 de maio de 2021, padrão de potabilidade da água para consumo humano. <a href="https://ses.sp.bvs.br/wp-content/uploads/2021/05/U_PT-MS-GM-888_040521.pdf" target="_blank" rel="noopener">ses.sp.bvs.br</a></li>
+      <li id="ref-16">NADERBAGI, A. et al. <i>Cultural and Contextual Adaptation of Digital Health Interventions: Narrative Review</i>. Journal of Medical Internet Research, 2024.</li>
+      <li id="ref-17">HAUNER, A. et al. <i>Sample-to-result molecular diagnostic platforms and their suitability for infectious disease testing in low- and middle-income countries</i>. Expert Review of Molecular Diagnostics, 2024.</li>
+      <li id="ref-18">HORWOOD, C. et al. <i>Challenges of using e-health technologies to support clinical care in rural Africa: a longitudinal mixed methods study exploring primary health care nurses’ experiences of using an electronic clinical decision support system (CDSS) in South Africa</i>. BMC Health Services Research, 2023.</li>
+      <li id="ref-19">MWOGOSI, A. <i>Revolutionizing primary health care in Tanzania: unravelling the contextual factors on electronic health record systems implementation for effective decision support</i>. Journal of Science and Technology Policy Management, 2024.</li>
+      <li id="ref-20">AOVARE, P. et al. <i>The acceptability, adoption and feasibility of mobile health interventions for diabetes and hypertension care among Ghanaian healthcare workers</i>. PEC Innovation, 2026.</li>
+      <li id="ref-21">CIECIERSKI-HOLMES, T. et al. <i>Artificial intelligence for strengthening healthcare systems in low- and middle-income countries: a systematic scoping review</i>. npj Digital Medicine, 2022.</li>
+      <li id="ref-22">ADLUNG, C. et al. <i>Existing and emerging frameworks for the adoption and diffusion of medical devices and equipment in low-resource settings: a scoping review</i>. Health and Technology, 2025.</li>
+      <li id="ref-23">SHAHID, A. et al. <i>Navigating ethical, regulatory, and implementation barriers to AI in healthcare: pathways toward inclusive digital health in low-resource settings — a scoping review</i>. Frontiers in Digital Health, 2026.</li>
+      <li id="ref-24">BUSTIN, S. A. et al. <i>The MIQE Guidelines: Minimum Information for Publication of Quantitative Real-Time PCR Experiments</i>. Clinical Chemistry, v. 55, n. 4, 2009.</li>
+      <li id="ref-25">YILMAZ, P. et al. <i>Minimum information about a marker gene sequence (MIMARKS) and minimum information about any (x) sequence (MIxS) specifications</i>. Nature Biotechnology, v. 29, 2011.</li>
     </ol>
   </div>
 </section>
@@ -1520,6 +1767,7 @@ footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
         <a href="#conexao">Brasil–China</a>
         <a href="#aplicacoes">Aplicações</a>
         <a href="#rota">A rota</a>
+        <a href="#metodo">O método</a>
       </div>
       <div class="foot-col">
         <h5>IBLT</h5>
@@ -1564,10 +1812,10 @@ footer .sobre{font-size:.9rem;color:var(--muted);max-width:44ch}
    poster (opcional): imagem de capa, ex. "videos/nucleaone/problema.jpg"
    ===================================================================== */
 var VIDEOS = {
-  problema:   { src: "https://youtu.be/Mf9ftwN53u0", poster: "" },
-  tecnologia: { src: "https://youtu.be/l1XJFhwy7is", poster: "" },
-  parceria:   { src: "https://youtu.be/k_3sv1g9JRM", poster: "" },
-  aplicacoes: { src: "https://youtu.be/DTvVwFZb70k", poster: "" }
+  problema:   { src: "", poster: "" },
+  tecnologia: { src: "", poster: "" },
+  parceria:   { src: "", poster: "" },
+  aplicacoes: { src: "", poster: "" }
 };
 /* true mostra o espaço reservado do vídeo; false esconde o bloco inteiro */
 var MOSTRAR_ESPACOS_VAZIOS = true;
