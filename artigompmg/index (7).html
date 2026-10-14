@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tríplice Hélice entre entes públicos</title>
+<meta name="description" content="Proposta de artigo sobre a cooperação entre o DCC/UFMG e o Ministério Público de Minas Gerais no projeto Pharus, analisada pela lente da Tríplice Hélice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F5; --paper:#FFFFFF; --ink:#1D2633; --muted:#5A6472; --rule:#D8DCE1;
+  --uni:#2C5E8C; --est:#7B3F98; --emp:#A3AAB3; --tint:#EEF2F6;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --measure:40rem;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161B22; --paper:#1D232C; --ink:#E6E9ED; --muted:#A3ACB8; --rule:#323A45;
+    --uni:#79A9D6; --est:#C08BDA; --emp:#5E6672; --tint:#212934;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.1875rem;line-height:1.6;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+a{color:var(--uni);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--uni);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--sans);color:var(--ink);line-height:1.15;letter-spacing:-.01em}
+h2{font-size:1.75rem;font-weight:700;margin:0 0 1rem}
+h3{font-size:1.15rem;font-weight:600;margin:2rem 0 .5rem}
+p{margin:0 0 1rem}
+strong{font-weight:500}
+.skip{position:absolute;left:-999px;top:0;background:var(--paper);padding:.5rem 1rem;font-family:var(--sans)}
+.skip:focus{left:1rem;top:1rem;z-index:10}
+
+/* Hero */
+.hero{padding:clamp(2.5rem,6vw,5rem) 1rem 0;border-bottom:1px solid var(--rule);background:var(--paper)}
+.hero-inner{max-width:72rem;margin:0 auto}
+.kicker{font-family:var(--sans);font-size:.95rem;color:var(--muted);margin:0 0 1.25rem}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.4rem);font-weight:700;max-width:16ch;margin:0 0 1.5rem;letter-spacing:-.025em;line-height:1.02}
+.hero .lede{font-size:clamp(1.15rem,2.1vw,1.4rem);max-width:38rem;color:var(--ink);margin:0 0 2rem}
+.helix{display:block;width:100%;height:auto;margin-top:1rem}
+.helix path{fill:none;stroke-linecap:round}
+.s-uni{stroke:var(--uni);stroke-width:5}
+.s-est{stroke:var(--est);stroke-width:5}
+.s-emp{stroke:var(--emp);stroke-width:2.5;stroke-dasharray:3 11}
+@media (prefers-reduced-motion: no-preference){
+  .s-uni,.s-est{stroke-dasharray:3200;stroke-dashoffset:3200;animation:draw 2.4s cubic-bezier(.45,.05,.2,1) forwards}
+  .s-est{animation-delay:.25s}
+  .s-emp{opacity:0;animation:fade 1.2s 1.8s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{to{opacity:1}}
+}
+.legend{display:flex;flex-wrap:wrap;gap:.75rem 2rem;list-style:none;margin:0;padding:1rem 0 1.75rem;font-family:var(--sans);font-size:.95rem;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:.6rem}
+.legend i{display:inline-block;width:2rem;height:0;border-top:4px solid}
+.legend .l-uni{border-color:var(--uni)}
+.legend .l-est{border-color:var(--est)}
+.legend .l-emp{border-top:3px dotted var(--emp)}
+.legend b{font-weight:600;color:var(--ink)}
+
+/* Layout */
+.layout{max-width:72rem;margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:0 4rem}
+@media (min-width:1080px){.layout{grid-template-columns:13rem minmax(0,1fr)}}
+.toc{display:none}
+@media (min-width:1080px){
+  .toc{display:block;position:sticky;top:2rem;align-self:start;padding-top:4rem;font-family:var(--sans);font-size:.92rem}
+  .toc p{color:var(--muted);margin:0 0 .75rem}
+  .toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule)}
+  .toc a{display:block;padding:.3rem 0 .3rem 1rem;color:var(--muted);text-decoration:none;margin-left:-1px;border-left:2px solid transparent}
+  .toc a:hover{color:var(--ink);border-left-color:var(--uni)}
+}
+main{min-width:0}
+section{padding:4rem 0 1rem;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.prose{max-width:var(--measure)}
+.lead{font-size:1.3rem;line-height:1.5}
+ul.plain{padding-left:1.2rem;margin:0 0 1rem}
+ul.plain li{margin-bottom:.5rem}
+.note{font-size:1rem;color:var(--muted)}
+
+/* Question block */
+.question{border-left:4px solid var(--est);padding:.25rem 0 .25rem 1.5rem;margin:0 0 2rem;max-width:var(--measure)}
+.question p{font-size:1.45rem;line-height:1.4;margin:0}
+ol.objectives{max-width:var(--measure);padding-left:1.4rem}
+ol.objectives li{margin-bottom:.5rem;padding-left:.25rem}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:1.5rem 0 1.5rem;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:1rem;line-height:1.45;min-width:34rem}
+th{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--muted);text-align:left;padding:.6rem 1rem .6rem 0;border-bottom:2px solid var(--ink);vertical-align:bottom}
+td{padding:.85rem 1rem .85rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td:first-child{font-family:var(--sans);font-weight:600;font-size:.95rem}
+tr:last-child td{border-bottom:0}
+code.f{font-family:var(--sans);font-weight:700;color:var(--uni);font-size:.9rem}
+
+/* Timeline */
+.timeline{margin:2rem 0 1rem}
+.tl-months{display:grid;grid-template-columns:repeat(20,1fr);font-family:var(--sans);font-size:.75rem;color:var(--muted);border-bottom:1px solid var(--ink);padding-bottom:.4rem}
+.tl-months span{text-align:center}
+.tl-phases{display:grid;grid-template-columns:repeat(20,1fr);gap:0;margin-top:.75rem}
+.phase{margin:0 2px;padding:.65rem .7rem;background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--uni);border-radius:6px;min-width:0}
+.phase.p3,.phase.p4{border-top-color:var(--est)}
+.phase h3{margin:0;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phase .range{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.1rem 0 0}
+.tl-desc{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:1.5rem 0 0}
+.tl-desc div{border-left:3px solid var(--uni);padding-left:.85rem}
+.tl-desc div.est{border-left-color:var(--est)}
+.tl-desc dt{font-family:var(--sans);font-weight:600;font-size:.95rem;margin-bottom:.3rem}
+.tl-desc dd{margin:0;font-size:.98rem;line-height:1.45}
+.p1{grid-column:1 / span 7}.p2{grid-column:8 / span 6}.p3{grid-column:14 / span 4}.p4{grid-column:18 / span 3}
+.tl-key{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);margin-top:1rem}
+.tl-key span::before{content:"";display:inline-block;width:1.2rem;height:4px;margin-right:.5rem;vertical-align:middle;background:var(--uni)}
+.tl-key span.k-est::before{background:var(--est)}
+@media (max-width:760px){
+  .tl-months{display:none}
+  .tl-phases{grid-template-columns:1fr;gap:.75rem}
+  .phase{grid-column:auto;margin:0}
+  .phase h3{white-space:normal}
+  .tl-desc{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){.tl-desc{grid-template-columns:1fr}}
+
+/* Steps */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:2rem 0;max-width:var(--measure)}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 1.5rem 3.25rem}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2.1rem;height:2.1rem;border-radius:50%;border:2px solid var(--uni);color:var(--uni);font-family:var(--sans);font-weight:700;display:grid;place-items:center;font-size:1rem}
+ol.steps li:not(:last-child)::after{content:"";position:absolute;left:1.02rem;top:2.2rem;bottom:.2rem;width:2px;background:var(--rule)}
+ol.steps h3{margin:0 0 .25rem}
+ol.steps p{margin:0}
+
+.formula{font-family:var(--sans);font-size:clamp(.95rem,2.2vw,1.15rem);background:var(--tint);border-radius:6px;padding:1.1rem 1.25rem;margin:1rem 0 .5rem;overflow-x:auto;white-space:nowrap;max-width:var(--measure)}
+
+/* Checklist */
+ul.next{list-style:none;padding:0;max-width:var(--measure)}
+ul.next li{padding:.55rem 0 .55rem 2rem;position:relative;border-bottom:1px solid var(--rule)}
+ul.next li::before{content:"";position:absolute;left:0;top:.95rem;width:1rem;height:1rem;border:2px solid var(--muted);border-radius:3px}
+
+.refs{font-size:1rem;line-height:1.5;padding-left:0;list-style:none;max-width:46rem}
+.refs li{margin-bottom:.7rem;padding-left:1.5rem;text-indent:-1.5rem}
+
+footer{border-top:1px solid var(--rule);background:var(--paper);padding:2rem 1rem;font-family:var(--sans);font-size:.92rem;color:var(--muted)}
+footer div{max-width:72rem;margin:0 auto}
+footer p{margin:.25rem 0}
+@media (max-width:480px){body{font-size:1.08rem}.lead{font-size:1.15rem}.question p{font-size:1.25rem}h2{font-size:1.5rem}}
+@media print{.toc,.skip{display:none}.layout{display:block}section{break-inside:avoid-page}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Proposta de artigo para o grupo de estudos, outubro de 2026</p>
+    <h1>Quando o Estado é quem demanda inovação</h1>
+    <p class="lede">A cooperação entre o DCC/UFMG e o Ministério Público de Minas Gerais no projeto Pharus, lida pela Tríplice Hélice: 20 meses de uma universidade federal respondendo a dores reais de um órgão do sistema de justiça.</p>
+    <svg class="helix" viewBox="0 0 1200 260" role="img" aria-label="Duas hélices contínuas, universidade e Estado, entrelaçadas; a hélice empresarial aparece apenas pontilhada">
+      <path class="s-emp" d="M-20 166.3 L-12 167.4 L-4 167.9 L4 167.9 L12 167.4 L20 166.3 L28 164.7 L36 162.6 L44 160.1 L52 157.1 L60 153.7 L68 150.0 L76 146.0 L84 141.7 L92 137.3 L100 132.8 L108 128.3 L116 123.8 L124 119.3 L132 115.1 L140 111.0 L148 107.2 L156 103.7 L164 100.6 L172 98.0 L180 95.8 L188 94.0 L196 92.8 L204 92.2 L212 92.0 L220 92.4 L228 93.4 L236 94.8 L244 96.8 L252 99.3 L260 102.1 L268 105.4 L276 109.1 L284 113.0 L292 117.2 L300 121.5 L308 126.0 L316 130.6 L324 135.1 L332 139.6 L340 143.9 L348 148.0 L356 151.9 L364 155.4 L372 158.6 L380 161.4 L388 163.7 L396 165.6 L404 166.9 L412 167.7 L420 168.0 L428 167.7 L436 166.9 L444 165.6 L452 163.7 L460 161.4 L468 158.6 L476 155.4 L484 151.9 L492 148.0 L500 143.9 L508 139.6 L516 135.1 L524 130.6 L532 126.0 L540 121.5 L548 117.2 L556 113.0 L564 109.1 L572 105.4 L580 102.1 L588 99.3 L596 96.8 L604 94.8 L612 93.4 L620 92.4 L628 92.0 L636 92.2 L644 92.8 L652 94.0 L660 95.8 L668 98.0 L676 100.6 L684 103.7 L692 107.2 L700 111.0 L708 115.1 L716 119.3 L724 123.8 L732 128.3 L740 132.8 L748 137.3 L756 141.7 L764 146.0 L772 150.0 L780 153.7 L788 157.1 L796 160.1 L804 162.6 L812 164.7 L820 166.3 L828 167.4 L836 167.9 L844 167.9 L852 167.4 L860 166.3 L868 164.7 L876 162.6 L884 160.1 L892 157.1 L900 153.7 L908 150.0 L916 146.0 L924 141.7 L932 137.3 L940 132.8 L948 128.3 L956 123.8 L964 119.3 L972 115.1 L980 111.0 L988 107.2 L996 103.7 L1004 100.6 L1012 98.0 L1020 95.8 L1028 94.0 L1036 92.8 L1044 92.2 L1052 92.0 L1060 92.4 L1068 93.4 L1076 94.8 L1084 96.8 L1092 99.3 L1100 102.1 L1108 105.4 L1116 109.1 L1124 113.0 L1132 117.2 L1140 121.5 L1148 126.0 L1156 130.6 L1164 135.1 L1172 139.6 L1180 143.9 L1188 148.0 L1196 151.9 L1204 155.4 L1212 158.6 L1220 161.4"/>
+      <path class="s-uni" d="M-20 108.8 L-12 117.1 L-4 125.7 L4 134.3 L12 142.9 L20 151.2 L28 159.3 L36 166.9 L44 174.0 L52 180.5 L60 186.3 L68 191.2 L76 195.3 L84 198.5 L92 200.6 L100 201.8 L108 201.9 L116 201.0 L124 199.1 L132 196.2 L140 192.4 L148 187.6 L156 182.0 L164 175.7 L172 168.8 L180 161.2 L188 153.3 L196 145.0 L204 136.5 L212 127.8 L220 119.3 L228 110.8 L236 102.7 L244 94.9 L252 87.7 L260 81.0 L268 75.1 L276 69.9 L284 65.6 L292 62.2 L300 59.8 L308 58.4 L316 58.0 L324 58.7 L332 60.3 L340 63.0 L348 66.6 L356 71.1 L364 76.5 L372 82.6 L380 89.4 L388 96.8 L396 104.7 L404 112.9 L412 121.4 L420 130.0 L428 138.6 L436 147.1 L444 155.3 L452 163.2 L460 170.6 L468 177.4 L476 183.5 L484 188.9 L492 193.4 L500 197.0 L508 199.7 L516 201.3 L524 202.0 L532 201.6 L540 200.2 L548 197.8 L556 194.4 L564 190.1 L572 184.9 L580 179.0 L588 172.3 L596 165.1 L604 157.3 L612 149.2 L620 140.7 L628 132.2 L636 123.5 L644 115.0 L652 106.7 L660 98.8 L668 91.2 L676 84.3 L684 78.0 L692 72.4 L700 67.6 L708 63.8 L716 60.9 L724 59.0 L732 58.1 L740 58.2 L748 59.4 L756 61.5 L764 64.7 L772 68.8 L780 73.7 L788 79.5 L796 86.0 L804 93.1 L812 100.7 L820 108.8 L828 117.1 L836 125.7 L844 134.3 L852 142.9 L860 151.2 L868 159.3 L876 166.9 L884 174.0 L892 180.5 L900 186.3 L908 191.2 L916 195.3 L924 198.5 L932 200.6 L940 201.8 L948 201.9 L956 201.0 L964 199.1 L972 196.2 L980 192.4 L988 187.6 L996 182.0 L1004 175.7 L1012 168.8 L1020 161.2 L1028 153.3 L1036 145.0 L1044 136.5 L1052 127.8 L1060 119.3 L1068 110.8 L1076 102.7 L1084 94.9 L1092 87.7 L1100 81.0 L1108 75.1 L1116 69.9 L1124 65.6 L1132 62.2 L1140 59.8 L1148 58.4 L1156 58.0 L1164 58.7 L1172 60.3 L1180 63.0 L1188 66.6 L1196 71.1 L1204 76.5 L1212 82.6 L1220 89.4"/>
+      <path class="s-est" d="M-20 151.2 L-12 142.9 L-4 134.3 L4 125.7 L12 117.1 L20 108.8 L28 100.7 L36 93.1 L44 86.0 L52 79.5 L60 73.7 L68 68.8 L76 64.7 L84 61.5 L92 59.4 L100 58.2 L108 58.1 L116 59.0 L124 60.9 L132 63.8 L140 67.6 L148 72.4 L156 78.0 L164 84.3 L172 91.2 L180 98.8 L188 106.7 L196 115.0 L204 123.5 L212 132.2 L220 140.7 L228 149.2 L236 157.3 L244 165.1 L252 172.3 L260 179.0 L268 184.9 L276 190.1 L284 194.4 L292 197.8 L300 200.2 L308 201.6 L316 202.0 L324 201.3 L332 199.7 L340 197.0 L348 193.4 L356 188.9 L364 183.5 L372 177.4 L380 170.6 L388 163.2 L396 155.3 L404 147.1 L412 138.6 L420 130.0 L428 121.4 L436 112.9 L444 104.7 L452 96.8 L460 89.4 L468 82.6 L476 76.5 L484 71.1 L492 66.6 L500 63.0 L508 60.3 L516 58.7 L524 58.0 L532 58.4 L540 59.8 L548 62.2 L556 65.6 L564 69.9 L572 75.1 L580 81.0 L588 87.7 L596 94.9 L604 102.7 L612 110.8 L620 119.3 L628 127.8 L636 136.5 L644 145.0 L652 153.3 L660 161.2 L668 168.8 L676 175.7 L684 182.0 L692 187.6 L700 192.4 L708 196.2 L716 199.1 L724 201.0 L732 201.9 L740 201.8 L748 200.6 L756 198.5 L764 195.3 L772 191.2 L780 186.3 L788 180.5 L796 174.0 L804 166.9 L812 159.3 L820 151.2 L828 142.9 L836 134.3 L844 125.7 L852 117.1 L860 108.8 L868 100.7 L876 93.1 L884 86.0 L892 79.5 L900 73.7 L908 68.8 L916 64.7 L924 61.5 L932 59.4 L940 58.2 L948 58.1 L956 59.0 L964 60.9 L972 63.8 L980 67.6 L988 72.4 L996 78.0 L1004 84.3 L1012 91.2 L1020 98.8 L1028 106.7 L1036 115.0 L1044 123.5 L1052 132.2 L1060 140.7 L1068 149.2 L1076 157.3 L1084 165.1 L1092 172.3 L1100 179.0 L1108 184.9 L1116 190.1 L1124 194.4 L1132 197.8 L1140 200.2 L1148 201.6 L1156 202.0 L1164 201.3 L1172 199.7 L1180 197.0 L1188 193.4 L1196 188.9 L1204 183.5 L1212 177.4 L1220 170.6"/>
+    </svg>
+    <ul class="legend" aria-label="Legenda">
+      <li><i class="l-uni"></i><span><b>Universidade</b>: DCC/UFMG</span></li>
+      <li><i class="l-est"></i><span><b>Estado</b>: Ministério Público de Minas Gerais</span></li>
+      <li><i class="l-emp"></i><span><b>Empresa</b>: ausente neste caso</span></li>
+    </ul>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sumário">
+    <p>Nesta proposta</p>
+    <ol>
+      <li><a href="#tema">O tema</a></li>
+      <li><a href="#pergunta">Pergunta e objetivos</a></li>
+      <li><a href="#desafios">Os desafios do órgão</a></li>
+      <li><a href="#trajetoria">Trajetória M1 a M20</a></li>
+      <li><a href="#teoria">Referencial teórico</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#cna">Análise de Coincidência</a></li>
+      <li><a href="#artigo">O artigo</a></li>
+      <li><a href="#cuidados">Cuidados e próximos passos</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+  </nav>
+
+  <main id="conteudo">
+
+    <section id="tema" aria-labelledby="h-tema">
+      <h2 id="h-tema">O tema</h2>
+      <div class="prose">
+        <p class="lead">A Tríplice Hélice costuma ser contada como uma história entre universidade e empresa, com o governo no papel de financiador. O Pharus conta outra.</p>
+        <p>Nele, um órgão público traz problemas institucionais concretos, e uma universidade federal responde com entregas estruturadas, mês a mês, com o rigor acadêmico que a caracteriza. Não há empresa no arranjo. A inovação nasce do encontro entre dois entes públicos, e quem a adota é o próprio Estado.</p>
+        <p>Propomos ao grupo um artigo que analise essa cooperação ao longo dos seus 20 meses (M1 a M20). O estudo combina uma reconstrução histórica e processual com a Análise de Coincidência (CNA), para identificar quais combinações de condições levam o órgão a adotar o que a universidade entrega.</p>
+        <p>O momento é bom por três razões:</p>
+        <ul class="plain">
+          <li><strong>Há registro denso e datado.</strong> O projeto tem atas semanais, 20 relatórios mensais e versões controladas de cada entrega.</li>
+          <li><strong>A literatura tem uma lacuna.</strong> A cooperação entre universidade e sistema de justiça quase não aparece nos estudos brasileiros de Tríplice Hélice.</li>
+          <li><strong>O grupo reúne olhares complementares.</strong> Juntos, cobrimos computação, direito e proteção de dados, gestão da inovação e métodos configuracionais.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="pergunta" aria-labelledby="h-pergunta">
+      <h2 id="h-pergunta">Pergunta e objetivos</h2>
+      <div class="question">
+        <p>Como uma universidade federal e um órgão do sistema de justiça se articulam para coproduzir inovação, e quais combinações de condições explicam que uma entrega seja adotada pela instituição demandante?</p>
+      </div>
+      <div class="prose">
+        <p><strong>Objetivo geral:</strong> reconstruir a trajetória de 20 meses da cooperação DCC/UFMG–MPMG e identificar as configurações associadas à adoção institucional das soluções entregues.</p>
+        <p><strong>Objetivos específicos:</strong></p>
+      </div>
+      <ol class="objectives">
+        <li>Descrever os marcos, mecanismos, rotinas e instâncias de governança da cooperação de M1 a M20.</li>
+        <li>Mapear os desafios do órgão enfrentados pelo projeto e o que a cooperação produziu para cada um.</li>
+        <li>Analisar como os atores percebem a mediação entre as lógicas acadêmica, jurídica e institucional.</li>
+        <li>Modelar, com CNA, as combinações de condições que levam à adoção das entregas.</li>
+        <li>Derivar lições para a política de cooperação entre ICTs públicas e órgãos do Estado.</li>
+      </ol>
+      <div class="prose">
+        <h3>Títulos provisórios</h3>
+        <ul class="plain">
+          <li>Universidade que resolve o Estado: a coprodução de inovação entre a UFMG e o Ministério Público de Minas Gerais</li>
+          <li>Tríplice Hélice entre entes públicos: a cooperação universidade–sistema de justiça como motor de inovação</li>
+          <li>Configurações de sucesso na cooperação público-pública para inovação: uma Análise de Coincidência</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="desafios" aria-labelledby="h-desafios">
+      <h2 id="h-desafios">Os desafios do órgão</h2>
+      <div class="prose">
+        <p class="lead">O ponto de partida é um campo sem regra própria. A LGPD não se aplica diretamente ao tratamento de dados para fins de investigação penal (art. 4º, III, “d”) e remete o tema a uma lei específica, que ainda não foi aprovada.</p>
+        <p>O órgão precisa, então, construir a própria governança a partir de princípios, normas setoriais e boas práticas. Essa construção conjunta com a universidade é, em si, a inovação que o artigo estuda. Cada desafio abaixo é um episódio “desafio → entrega”, e cada episódio é um caso para a CNA.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Desafio institucional</th><th scope="col">O que a cooperação produziu</th></tr></thead>
+          <tbody>
+            <tr><td>Governar dados sem uma lei específica para a investigação penal</td><td>Mapeamento do marco normativo aplicável e uma política de segurança da informação para o órgão</td></tr>
+            <tr><td>Regimes de sigilo diferentes convivendo no mesmo ambiente</td><td>Identificação da base legal própria de cada tipo de informação</td></tr>
+            <tr><td>Falta de uma classificação comum da informação</td><td>Classificação da informação por nível de sensibilidade</td></tr>
+            <tr><td>Saber quem acessa o quê, com valor de prova</td><td>Políticas de controle de acesso e de registro de auditoria alinhadas à cadeia de custódia</td></tr>
+            <tr><td>Guardar registros pelo tempo certo e prestar contas</td><td>Política de retenção com base legal e indicadores de gestão para a governança do órgão</td></tr>
+            <tr><td>Equipes internas distantes das regras do sistema</td><td>Plano de integração das equipes do órgão e roteiro de resposta a incidentes (em curso)</td></tr>
+            <tr><td>Avaliar o impacto do tratamento de dados</td><td>Registro das operações e relatório de impacto à proteção de dados (em proposta)</td></tr>
+            <tr><td>Manter o que foi construído depois do convênio</td><td>Consolidação e transferência de conhecimento ao órgão (planejado para M18–M20)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note prose">A lista final de episódios sai da análise documental. A expectativa é chegar a 15 ou mais casos.</p>
+    </section>
+
+    <section id="trajetoria" aria-labelledby="h-trajetoria">
+      <h2 id="h-trajetoria">Trajetória de M1 a M20</h2>
+      <div class="prose">
+        <p>A cooperação passa por quatro fases. Nas duas primeiras, a universidade diagnostica e entrega. Nas duas últimas, o centro da ação passa para o órgão: as regras entram nas rotinas do Estado e o conhecimento é transferido.</p>
+      </div>
+      <div class="timeline" role="group" aria-label="Fases do projeto por mês">
+        <div class="tl-months" aria-hidden="true">
+          <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span><span>M7</span><span>M8</span><span>M9</span><span>M10</span><span>M11</span><span>M12</span><span>M13</span><span>M14</span><span>M15</span><span>M16</span><span>M17</span><span>M18</span><span>M19</span><span>M20</span>
+        </div>
+        <div class="tl-phases">
+          <div class="phase p1"><h3>Diagnóstico</h3><p class="range">M1 a M7</p></div>
+          <div class="phase p2"><h3>Entregas estruturantes</h3><p class="range">M8 a M13</p></div>
+          <div class="phase p3"><h3>Integração</h3><p class="range">M14 a M17</p></div>
+          <div class="phase p4"><h3>Transição</h3><p class="range">M18 a M20</p></div>
+        </div>
+        <dl class="tl-desc">
+          <div><dt>Diagnóstico</dt><dd>Levantamento do marco normativo e das necessidades do órgão; primeiras regras de governança.</dd></div>
+          <div><dt>Entregas estruturantes</dt><dd>Classificação da informação, políticas de acesso, auditoria e retenção, indicadores de gestão.</dd></div>
+          <div class="est"><dt>Integração com o órgão</dt><dd>As regras entram nas rotinas das equipes do MPMG.</dd></div>
+          <div class="est"><dt>Transição e encerramento</dt><dd>Consolidação e transferência de conhecimento ao órgão.</dd></div>
+        </dl>
+        <div class="tl-key"><span>Universidade conduz</span><span class="k-est">Órgão assume o centro</span></div>
+      </div>
+      <p class="note prose">Os limites das fases serão conferidos nos relatórios mensais.</p>
+    </section>
+
+    <section id="teoria" aria-labelledby="h-teoria">
+      <h2 id="h-teoria">Referencial teórico</h2>
+      <div class="prose">
+        <p>A Tríplice Hélice é o eixo do artigo. Ela é colocada em diálogo com a literatura de inovação no setor público e de organizações de fronteira, que explica como alguém traduz exigências de um mundo para outro.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Eixo</th><th scope="col">Referências de partida</th><th scope="col">Pergunta que levanta no caso</th></tr></thead>
+          <tbody>
+            <tr><td>Tríplice Hélice</td><td>Etzkowitz &amp; Leydesdorff (2000); Ranga &amp; Etzkowitz (2013)</td><td>O que acontece com o modelo quando falta a hélice empresarial e o Estado é demandante e usuário?</td></tr>
+            <tr><td>Quádrupla Hélice</td><td>Carayannis &amp; Campbell (2009)</td><td>Como a sociedade entra, como titular dos dados que o órgão trata?</td></tr>
+            <tr><td>Inovação no setor público</td><td>De Vries, Bekkers &amp; Tummers (2016); Mazzucato (2018)</td><td>Como missões públicas concretas orientam a inovação?</td></tr>
+            <tr><td>Organizações de fronteira</td><td>Guston (2001)</td><td>Quem traduz exigências jurídicas em soluções aplicáveis, e como?</td></tr>
+            <tr><td>Capacidade absortiva e institucionalização</td><td>Cohen &amp; Levinthal (1990); O’Connor, Corbett &amp; Peters (2018)</td><td>Como o órgão incorpora as entregas e passa a operar sem a universidade?</td></tr>
+            <tr><td>Marco legal de CT&amp;I</td><td>Lei 10.973/2004; Lei 13.243/2016; Decreto 9.283/2018</td><td>Que instrumentos permitem a cooperação entre uma ICT e um órgão público?</td></tr>
+            <tr><td>Proteção de dados como inovação</td><td>LGPD; Cavoukian (2009)</td><td>A conformidade pode ser resultado inovador, e não só restrição?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <h3>Dimensões de análise</h3>
+        <ul class="plain">
+          <li>Mediação como tradução entre as lógicas acadêmica, jurídica e institucional</li>
+          <li>Governança e rotinas da cooperação: reuniões, atas, relatórios, aceite</li>
+          <li>Institucionalização e continuidade no órgão</li>
+          <li>Conformidade regulatória como vetor de inovação</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="metodo" aria-labelledby="h-metodo">
+      <h2 id="h-metodo">Método</h2>
+      <div class="prose">
+        <p>A abordagem é qualitativa, com desenho longitudinal retrospectivo de M1 a M20. Ela combina entrevistas semiestruturadas com análise documental de atas, relatórios mensais, plano de trabalho e versões das entregas. A análise acontece em três etapas:</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Análise histórica</h3><p>Os marcos da cooperação são organizados numa linha do tempo de M1 a M20, revisada por dois autores.</p></li>
+        <li><h3>Análise processual</h3><p>Para cada dimensão de análise, um quadro-síntese cruza cada entrevistado com o que a entrevista revela, um trecho-chave e a implicação para a cooperação.</p></li>
+        <li><h3>Análise configuracional</h3><p>Os episódios “desafio → entrega” são calibrados e modelados com CNA. Os resultados das três etapas são triangulados na discussão.</p></li>
+      </ol>
+      <div class="prose"><h3>Quem entrevistar</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Perfil</th><th scope="col">Hélice</th><th scope="col">O que a entrevista traz</th></tr></thead>
+          <tbody>
+            <tr><td>Gestor universitário</td><td>Universidade</td><td>Origem do convênio, desenho institucional, negociação com o órgão</td></tr>
+            <tr><td>Pesquisador docente</td><td>Universidade</td><td>Como a pesquisa acadêmica vira entrega aplicada</td></tr>
+            <tr><td>Gestor público demandante</td><td>Estado</td><td>Desafios do órgão, critérios de aceite, percepção de valor</td></tr>
+            <tr><td>Equipe do órgão que adota as entregas</td><td>Estado</td><td>Adoção efetiva das políticas e regras no dia a dia</td></tr>
+            <tr><td>Executor universitário (bolsista)</td><td>Universidade</td><td>A rotina de coprodução e o que trava ou acelera as entregas</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Como um dos autores também participa do projeto, a codificação e a calibração são feitas em dupla, com pelo menos um autor de fora do projeto.</p>
+    </section>
+
+    <section id="cna" aria-labelledby="h-cna">
+      <h2 id="h-cna">Análise de Coincidência (CNA)</h2>
+      <div class="prose">
+        <p class="lead">A CNA serve a um caso único quando a unidade de análise é o episódio, e não o projeto. Os 15 ou mais episódios distribuídos entre M1 e M20 viram os casos comparados.</p>
+        <p>A CNA (Baumgartner, 2009) busca as combinações mínimas de condições que, juntas, bastam para produzir um resultado. Ela trata três propriedades da causalidade:</p>
+        <ul class="plain">
+          <li><strong>Conjuntividade:</strong> condições que só funcionam juntas.</li>
+          <li><strong>Disjuntividade:</strong> caminhos diferentes que levam ao mesmo resultado.</li>
+          <li><strong>Sequencialidade:</strong> cadeias causais. A QCA não trata essa propriedade.</li>
+        </ul>
+        <p>A hipótese do artigo é justamente uma cadeia. A ancoragem normativa e a mediação jurídica levam a uma entrega formalizada, e essa entrega leva à adoção pelo órgão. A sequência M1–M20 fornece a ordem temporal que o método aceita como restrição.</p>
+        <p>Há dois precedentes na UFMG. <a href="https://repositorio.ufmg.br/server/api/core/bitstreams/45f472bd-5e96-412b-b454-3cc01f6e1dad/content">Rozenberg (2020)</a> explicou a seleção de startups em um programa público de aceleração de Minas Gerais. <a href="https://repositorio.ufmg.br/server/api/core/bitstreams/9a19e1e6-6e56-45f7-ab35-02cb6c2f5acc/content">Menegale (2022)</a> aplicou CNA dentro de um único centro tecnológico, que é o precedente direto para este desenho.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Código</th><th scope="col">Condição</th><th scope="col">Vale 1 quando</th></tr></thead>
+          <tbody>
+            <tr><td><code class="f">MED</code></td><td>Mediação jurídica desde a concepção</td><td>A frente jurídica participou da definição da entrega</td></tr>
+            <tr><td><code class="f">NOR</code></td><td>Ancoragem normativa explícita</td><td>A entrega cita a norma que a exige</td></tr>
+            <tr><td><code class="f">COP</code></td><td>Coprodução com o órgão</td><td>Servidores do órgão participaram da definição ou da validação</td></tr>
+            <tr><td><code class="f">FOR</code></td><td>Formalização</td><td>Há documento versionado, como política, norma ou nota</td></tr>
+            <tr><td><code class="f">DEM</code></td><td>Demanda formal do órgão</td><td>O desafio foi apontado pelo órgão, e não pela equipe</td></tr>
+            <tr><td><code class="f">APL</code></td><td>Solução aplicada</td><td>A entrega inclui instrumento pronto para uso</td></tr>
+            <tr><td><code class="f">MAT</code></td><td>Maturidade da cooperação</td><td>A entrega ocorreu a partir de M10</td></tr>
+            <tr><td><code class="f">ADO</code></td><td>Resultado: adoção institucional</td><td>O órgão incorporou a entrega às suas normas, rotinas ou planos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>Um exemplo do tipo de modelo que o método devolve. É apenas ilustrativo, e não um resultado:</p>
+      </div>
+      <p class="formula" aria-label="Modelo ilustrativo">(NOR*MED + COP ↔ FOR) * (FOR*DEM + APL*MAT ↔ ADO)</p>
+      <div class="prose">
+        <p class="note">O asterisco significa “e”, o sinal de mais significa “ou”, e a seta dupla liga as condições ao que elas produzem. Parâmetros de partida: CNA com dados binários no pacote <a href="https://cran.r-project.org/web/packages/cna/vignettes/cna.pdf">cna do R</a>, consistência e cobertura a partir de 0,75 e teste de robustez dos modelos.</p>
+        <p>Como alternativa, um segundo artigo pode comparar vários projetos de cooperação entre a UFMG e órgãos públicos, usando o projeto como unidade de análise.</p>
+      </div>
+    </section>
+
+    <section id="artigo" aria-labelledby="h-artigo">
+      <h2 id="h-artigo">O artigo</h2>
+      <div class="prose">
+        <h3>Estrutura</h3>
+        <ol class="objectives" style="padding-left:1.4rem">
+          <li>Introdução: o cenário brasileiro e a cooperação entre entes públicos</li>
+          <li>Referencial: Tríplice e Quádrupla Hélice, inovação no setor público, organizações de fronteira</li>
+          <li>Método: desenho longitudinal, entrevistas, análise documental e CNA</li>
+          <li>Resultados: a trajetória M1–M20, os quadros-síntese e o modelo configuracional</li>
+          <li>Discussão: o que muda na Tríplice Hélice quando o Estado demanda e adota</li>
+          <li>Conclusão, limitações e agenda</li>
+        </ol>
+        <h3>Autoria</h3>
+        <p>Proponente: Lucas Morais, responsável pela frente jurídica e pela análise documental. O grupo define os demais papéis: a visão institucional do convênio, a modelagem com CNA, a dupla de codificação com um autor de fora do projeto e a revisão em gestão da inovação.</p>
+        <h3>Onde publicar</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Veículo</th><th scope="col">Por que combina</th></tr></thead>
+          <tbody>
+            <tr><td>Revista de Administração Pública (FGV)</td><td>Inovação no setor público e cooperação entre órgãos</td></tr>
+            <tr><td>Revista do Serviço Público (ENAP)</td><td>Gestão pública aplicada e governo digital</td></tr>
+            <tr><td>RAUSP Management Journal</td><td>Abertura a métodos configuracionais</td></tr>
+            <tr><td>Triple Helix (Brill)</td><td>Periódico da própria comunidade da Tríplice Hélice</td></tr>
+            <tr><td>ALTEC ou Conferência Anprotec</td><td>Versão curta para testar o argumento antes da revista</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <h3>Cronograma</h3>
+        <p>O artigo é escrito durante a fase final do projeto e fica pronto em M20.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Alinhamento, M15</h3><p>Apresentação ao grupo e pedido de autorização ao órgão.</p></li>
+        <li><h3>Documentos, M15 e M16</h3><p>Linha do tempo e planilha de episódios.</p></li>
+        <li><h3>Entrevistas, M16 e M17</h3><p>Realizadas após o parecer do comitê de ética.</p></li>
+        <li><h3>Análise, M18</h3><p>Quadros-síntese e modelo CNA.</p></li>
+        <li><h3>Redação, M19 e M20</h3><p>Revisão interna e submissão.</p></li>
+      </ol>
+    </section>
+
+    <section id="cuidados" aria-labelledby="h-cuidados">
+      <h2 id="h-cuidados">Cuidados e próximos passos</h2>
+      <div class="prose">
+        <p class="lead">O artigo trata da cooperação, e não do sistema. Nenhum detalhe técnico ou operacional é publicado.</p>
+        <ul class="plain">
+          <li><strong>Autorização:</strong> o órgão e a coordenação do projeto autorizam a pesquisa antes de qualquer coleta.</li>
+          <li><strong>Ética em pesquisa:</strong> as entrevistas passam pelo comitê de ética da UFMG, com consentimento livre e esclarecido e anonimização por perfil.</li>
+          <li><strong>Reflexividade:</strong> o pesquisador participante não codifica sozinho.</li>
+          <li><strong>Número de casos:</strong> com menos de 15 episódios, reduzimos as condições ou passamos ao desenho multicaso.</li>
+        </ul>
+      </div>
+      <ul class="next" aria-label="Próximos passos">
+        <li>Apresentar esta proposta ao grupo e definir a autoria</li>
+        <li>Consultar a coordenação do projeto sobre interesse e autorização</li>
+        <li>Datar cada episódio nos relatórios mensais</li>
+        <li>Ler a introdução ao pacote cna, o texto de estudo sobre CNA e as duas dissertações</li>
+        <li>Avaliar o curso de CNA oferecido em parceria com a UFMG</li>
+        <li>Submeter o projeto ao comitê de ética</li>
+      </ul>
+    </section>
+
+    <section id="referencias" aria-labelledby="h-ref">
+      <h2 id="h-ref">Referências</h2>
+      <ul class="refs">
+        <li>BAUMGARTNER, M. Inferring causal complexity. <em>Sociological Methods &amp; Research</em>, v. 38, n. 1, p. 71–101, 2009.</li>
+        <li>BAUMGARTNER, M.; EPPLE, R. A coincidence analysis of a causal chain: the Swiss minaret vote. <em>Sociological Methods &amp; Research</em>, v. 43, n. 2, p. 280–312, 2014.</li>
+        <li>CARAYANNIS, E. G.; CAMPBELL, D. F. J. “Mode 3” and “Quadruple Helix”. <em>International Journal of Technology Management</em>, v. 46, n. 3/4, 2009.</li>
+        <li>COHEN, W. M.; LEVINTHAL, D. A. Absorptive capacity. <em>Administrative Science Quarterly</em>, v. 35, n. 1, p. 128–152, 1990.</li>
+        <li>DE VRIES, H.; BEKKERS, V.; TUMMERS, L. Innovation in the public sector. <em>Public Administration</em>, v. 94, n. 1, p. 146–166, 2016.</li>
+        <li>ETZKOWITZ, H.; LEYDESDORFF, L. The dynamics of innovation. <em>Research Policy</em>, v. 29, n. 2, p. 109–123, 2000.</li>
+        <li>GUSTON, D. H. Boundary organizations in environmental policy and science. <em>Science, Technology, &amp; Human Values</em>, v. 26, n. 4, p. 399–408, 2001.</li>
+        <li>MAZZUCATO, M. Mission-oriented innovation policies. <em>Industrial and Corporate Change</em>, v. 27, n. 5, p. 803–815, 2018.</li>
+        <li>MENEGALE, B. C. S. <a href="https://repositorio.ufmg.br/server/api/core/bitstreams/9a19e1e6-6e56-45f7-ab35-02cb6c2f5acc/content">Um processo multimétodo de foresight organizacional</a>. Dissertação (Mestrado em Administração), UFMG, 2022.</li>
+        <li>O’CONNOR, G. C.; CORBETT, A. C.; PETERS, L. S. <em>Beyond the champion</em>. Stanford University Press, 2018.</li>
+        <li>RANGA, M.; ETZKOWITZ, H. Triple Helix systems. <em>Industry and Higher Education</em>, v. 27, n. 4, p. 237–262, 2013.</li>
+        <li>ROZENBERG, B. C. <a href="https://repositorio.ufmg.br/server/api/core/bitstreams/45f472bd-5e96-412b-b454-3cc01f6e1dad/content">Complexidade causal na seleção de startups para programas públicos de aceleração</a>. Dissertação (Mestrado em Administração), UFMG, 2020.</li>
+        <li>BRASIL. Lei nº 10.973/2004; Lei nº 13.243/2016; Decreto nº 9.283/2018; Lei nº 13.709/2018 (LGPD).</li>
+        <li>AMBÜHL, M.; BAUMGARTNER, M. <a href="https://cran.r-project.org/web/packages/cna/vignettes/cna.pdf">cna: an R package for Coincidence Analysis</a> (vinheta do pacote, CRAN).</li>
+      </ul>
+      <p class="note prose">As referências são pontos de partida e serão conferidas na revisão bibliográfica.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div>
+    <p>Proposta de artigo para discussão no grupo de estudos. Versão de outubro de 2026.</p>
+    <p>Lucas Thadeu Silva de Ferreira Morais, Universidade Federal de Minas Gerais.</p>
+  </div>
+</footer>
+</body>
+</html>
